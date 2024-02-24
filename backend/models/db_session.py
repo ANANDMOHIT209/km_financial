@@ -43,5 +43,8 @@ class DBSession:
             .filter((User.username == username) | (User.email == email))
             .first()
         )
+    
+    def get_user_by_id(self, user_id: int):
+        return self.session.query(User).filter(User.id == user_id).first()
 
 

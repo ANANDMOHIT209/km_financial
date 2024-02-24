@@ -16,3 +16,8 @@ class UserDetails(ClientReq):
 class LoginUser(ClientReq):
     username:str
     password:str
+
+class LoanApplication(ClientReq):
+    loan_amount: float
+    loan_type: str
+    employment_details: str

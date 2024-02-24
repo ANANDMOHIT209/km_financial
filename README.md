@@ -1,14 +1,18 @@
-## km_financial ##
+# km_financial #
 
-install fastapi
+### Required Installation ###
 
 ```
  pip install fastapi uvicorn sqlalchemy
- pip install python-jose
+ pip install jwt
  pip install passlib
  pip install python-multipart
  pip install timedelta
  python.exe -m pip install --upgrade pip
- pip install bcrypt
+```
+
+### Required Setup ###
+```
+
 ```
 

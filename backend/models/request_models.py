@@ -12,3 +12,7 @@ class UserDetails(ClientReq):
     username: str
     email: str
     password: Optional[str] = None
+
+class LoginUser(ClientReq):
+    username:str
+    password:str

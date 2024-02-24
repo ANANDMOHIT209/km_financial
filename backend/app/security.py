@@ -1,22 +1,12 @@
 # security.py
 from passlib.context import CryptContext
-from jose import JWTError, jwt
-import datetime
-import timedelta
-import pwd_context
+from jose import jwt
+from datetime import datetime, timedelta
 
 
 SECRET_KEY = "your_secret_key"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
-
-# Password hashing
-def get_password_hash(password):
-    return pwd_context.hash(password)
-
-# Password verification
-def verify_password(plain_password, hashed_password):
-    return pwd_context.verify(plain_password, hashed_password)
 
 # Create JWT token
 def create_access_token(data: dict, expires_delta: timedelta = None):

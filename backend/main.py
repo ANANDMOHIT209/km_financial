@@ -2,7 +2,7 @@
 import hashlib
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, make_transient
 from models.db_session import DBSession
 from models.base_md import User
 
@@ -55,10 +55,10 @@ async def login(loginuser : rqm.LoginUser, db: DBSession = Depends(get_db)):
 @app.post("/apply-loan")
 async def apply_loan(
     loan_data: rqm.LoanApplication,
-    email = Depends(su.get_current_user),
+    current_user_email = Depends(su.get_current_user),
     db: DBSession = Depends(get_db)
 ):
-    user = db.get_user_by_email(email)
+    user = db.get_user_by_email(current_user_email)
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     new_loan = bmd.Loan(user_id=user.id, name=user.name, phone=user.phone, email=user.email, loan_amount=loan_data.loan_amount, loan_type=loan_data.loan_type, employment_details=loan_data.employment_details)
@@ -66,6 +66,42 @@ async def apply_loan(
     db.commit()
 
     return {"message": "Loan application submitted successfully"}
+
+
+@app.get("/user_profile")
+async def get_user_profile(
+    current_user_email = Depends(su.get_current_user),
+    db: DBSession = Depends(get_db)
+    ):
+    current_user = db.get_user_by_email(current_user_email)
+    return {
+        "user_id": current_user.id,
+        "name": current_user.name, 
+        "email": current_user.email, 
+        "phone": current_user.phone,
+    }
+
+
+@app.put("/update_profile")
+async def update_user_profile(
+    profile_data: rqm.UpdateUserProfile,
+    current_user_email=Depends(su.get_current_user),
+    db: DBSession = Depends(get_db)
+):
+    current_user = db.get_user_by_email(current_user_email)
+
+    if current_user:
+        current_user.name = profile_data.name
+        db.session.commit()
+        db.session.refresh(current_user)
+        return {
+            "user_id": current_user.id,
+            "email": current_user.email,
+            "name": current_user.name,
+            "phone": current_user.phone,
+        }
+    else:
+        raise HTTPException(status_code=404, detail="User not found")
 
 
 @app.get("/loan/history/{user_id}")

@@ -14,6 +14,9 @@ class UserDetails(ClientReq):
     email: str
     password: str
 
+class UpdateUserProfile(ClientReq):
+    name: str
+
 class LoginUser(ClientReq):
     email:str
     password:str

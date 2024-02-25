@@ -10,19 +10,21 @@ class User(Base):
     __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True)
-    username = Column(String, unique=True, index=True)
+    name = Column(String, index=True)
+    phone = Column(String, index=True, unique=True)
     email = Column(String, index=True, unique=True)
     password = Column(String)
 
-    def __repr__(self):
-        return f"<User(name={self.username}, email={self.email})>"
-    
+
 class Loan(Base):
     __tablename__ = 'loans'
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey('users.id'), index=True)
-    loan_amount = Column(Float)
-    loan_type = Column(String)
+    name = Column(String, index=True)
+    phone = Column(String, unique=True)
+    email = Column(String, unique=True)
+    loan_amount = Column(Float, index=True)
+    loan_type = Column(String, index=True)
     employment_details = Column(String)
     

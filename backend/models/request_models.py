@@ -9,12 +9,13 @@ class ClientReq(BaseModel):
     ttl: Optional[int] = None
 
 class UserDetails(ClientReq):
-    username: str
+    name: str
+    phone: str
     email: str
-    password: Optional[str] = None
+    password: str
 
 class LoginUser(ClientReq):
-    username:str
+    email:str
     password:str
 
 class LoanApplication(ClientReq):

@@ -31,16 +31,16 @@ class DBSession:
     def close(self):
         self.session.close()
 
-    def get_user_by_username(self, username: str):
-        return self.session.query(User).filter(User.username == username).first()
+    def get_user_by_phone(self, phone: str):
+        return self.session.query(User).filter(User.phone == phone).first()
 
     def get_user_by_email(self, email: str):
         return self.session.query(User).filter(User.email == email).first()
 
-    def get_user_by_username_or_email(self, username: str, email: str):
+    def get_user_by_phone_or_email(self, phone: str, email: str):
         return (
             self.session.query(User)
-            .filter((User.username == username) | (User.email == email))
+            .filter((User.phone == phone) | (User.email == email))
             .first()
         )
     

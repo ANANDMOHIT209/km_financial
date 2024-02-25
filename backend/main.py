@@ -22,12 +22,12 @@ def get_db():
 
 @app.post("/signup")
 async def signup(user_details: rqm.UserDetails, db: DBSession = Depends(get_db)):
-    existing_user = db.get_user_by_username_or_email(user_details.username, user_details.email)
+    existing_user = db.get_user_by_phone_or_email(user_details.phone, user_details.email)
     if existing_user:
-        raise HTTPException(status_code=400, detail="Username or email already registered")
+        raise HTTPException(status_code=400, detail="Phone or email already registered")
 
     hashed_password = hashlib.sha256(user_details.password.encode("utf-8")).hexdigest()
-    new_user = User(username=user_details.username, email=user_details.email, password=hashed_password)
+    new_user = User(name=user_details.name, phone=user_details.phone,  email=user_details.email, password=hashed_password)
     db.add_to_session(new_user)
     db.commit()
 
@@ -36,30 +36,31 @@ async def signup(user_details: rqm.UserDetails, db: DBSession = Depends(get_db))
 
 @app.post("/login")
 async def login(loginuser : rqm.LoginUser, db: DBSession = Depends(get_db)):
-    user = db.get_user_by_username(loginuser.username)
+    user = db.get_user_by_email(loginuser.email)
     hashed_password = hashlib.sha256(loginuser.password.encode("utf-8")).hexdigest()
     if user and user.password == hashed_password:
-        access_token = su.genrate_jwt_token(user.username)
+        access_token = su.genrate_jwt_token(user.email)
         access_token = "".join(access_token)
         userdetails = su.get_current_user(access_token)
         response = {
             "access_token": access_token,
-            "username": user.username,
+            "email": user.email,
             "userdetails": userdetails,
         }
         return response
     raise HTTPException(status_code=401, detail="Invalid credentials")
 
+
 @app.post("/apply-loan")
 async def apply_loan(
     loan_data: rqm.LoanApplication,
-    user_name = Depends(su.get_current_user),
+    email = Depends(su.get_current_user),
     db: DBSession = Depends(get_db)
 ):
-    user = db.get_user_by_username(user_name)
+    user = db.get_user_by_email(email)
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
-    new_loan = bmd.Loan(user_id=user.id, loan_amount=loan_data.loan_amount, loan_type=loan_data.loan_type, employment_details=loan_data.employment_details)
+    new_loan = bmd.Loan(user_id=user.id, name=user.name, phone=user.phone, email=user.email, loan_amount=loan_data.loan_amount, loan_type=loan_data.loan_type, employment_details=loan_data.employment_details)
     db.add_to_session(new_loan)
     db.commit()
 

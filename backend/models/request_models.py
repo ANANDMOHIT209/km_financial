@@ -15,7 +15,7 @@ class UserDetails(ClientReq):
     password: str
 
 class UpdateUserProfile(ClientReq):
-    name: str
+    name: Optional[str] = None
 
 class LoginUser(ClientReq):
     email:str
@@ -25,3 +25,8 @@ class LoanApplication(ClientReq):
     loan_amount: float
     loan_type: str
     employment_details: str
+
+class UpdateLoanApplication(ClientReq):
+    loan_amount: Optional[float] = None
+    loan_type: Optional[str] = None
+    employment_details: Optional[str] = None

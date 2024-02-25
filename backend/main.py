@@ -91,7 +91,8 @@ async def update_user_profile(
     current_user = db.get_user_by_email(current_user_email)
 
     if current_user:
-        current_user.name = profile_data.name
+        if current_user.name is not None:
+            current_user.name = profile_data.name
         db.session.commit()
         db.session.refresh(current_user)
         return {
@@ -156,4 +157,37 @@ async def get_loan_details(
         }
 
     raise HTTPException(status_code=404, detail="Loan not found")
+
+
+@app.put("/loan/update/{loan_id}")
+async def update_loan_application(
+    update_data: rqm.UpdateLoanApplication,
+    loan_id: int,
+    current_user_email=Depends(su.get_current_user),
+    db: DBSession = Depends(get_db)
+):
+    current_user = db.get_user_by_email(current_user_email)
+
+    loan_to_update = db.get_loan_by_id(loan_id)
+
+    if loan_to_update:
+        if update_data.loan_amount is not None:
+            loan_to_update.loan_amount = update_data.loan_amount
+        if update_data.loan_type is not None:
+            loan_to_update.loan_type = update_data.loan_type
+        if update_data.employment_details is not None:
+            loan_to_update.employment_details = update_data.employment_details
+        db.session.commit()
+        db.session.refresh(loan_to_update)
+
+        
+        return {
+            "loan_id": loan_to_update.id,
+            "user_id": loan_to_update.user_id,
+            "loan_amount": loan_to_update.loan_amount,
+            "loan_type": loan_to_update.loan_type,
+            "employment_details": loan_to_update.employment_details,
+        }
+    else:
+        raise HTTPException(status_code=404, detail="Loan not found")
 

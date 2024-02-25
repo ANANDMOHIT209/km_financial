@@ -20,6 +20,12 @@ def get_db():
     finally:
         db.close()
 
+def user_is_admin(current_user_email = Depends(su.get_current_user), db: DBSession = Depends(get_db)):
+    current_user = db.get_user_by_email(current_user_email)
+    if current_user.is_admin == False:
+        raise HTTPException(status_code=403, detail="User is not an admin")
+    return current_user
+
 
 @app.post("/signup")
 async def signup(user_details: rqm.UserDetails, db: DBSession = Depends(get_db)):
@@ -68,6 +74,50 @@ async def apply_loan(
     return {"message": "Loan application submitted successfully"}
 
 
+@app.put("/loan/{loan_id}/approve")
+async def approve_loan_application(
+    loan_id: int,
+    current_user = Depends(user_is_admin),
+    db: DBSession = Depends(get_db)
+):
+    loan_to_approve = db.get_loan_by_id(loan_id)
+
+    if loan_to_approve:
+        loan_to_approve.status = "approved"
+        db.session.commit()
+        db.session.refresh(loan_to_approve)
+
+        return {
+            "loan_id": loan_to_approve.id,
+            "user_id": loan_to_approve.user_id,
+            "status": loan_to_approve.status,
+        }
+    else:
+        raise HTTPException(status_code=404, detail="Loan not found")
+    
+
+@app.put("/loan/{loan_id}/reject")
+async def reject_loan_application(
+    loan_id: int,
+    current_user = Depends(user_is_admin),
+    db: DBSession = Depends(get_db)
+):
+    loan_to_reject = db.get_loan_by_id(loan_id)
+
+    if loan_to_reject:
+        loan_to_reject.status = "rejected"
+        db.session.commit()
+        db.session.refresh(loan_to_reject)
+
+        return {
+            "loan_id": loan_to_reject.id,
+            "user_id": loan_to_reject.user_id,
+            "status": loan_to_reject.status,
+        }
+    else:
+        raise HTTPException(status_code=404, detail="Loan not found")
+
+
 @app.get("/user_profile")
 async def get_user_profile(
     current_user_email = Depends(su.get_current_user),
@@ -112,7 +162,7 @@ async def get_loan_application_history(
     db: DBSession = Depends(get_db)
 ):
     current_user = db.get_user_by_email(current_user_email)
-    if current_user:
+    if current_user or current_user.is_admin == True:
         loan_history = db.get_loan_history_by_user(user_id)
         if loan_history:
             return [
@@ -141,20 +191,21 @@ async def get_loan_details(
     current_user = db.get_user_by_email(current_user_email)
     loan = db.get_loan_by_id(loan_id)
 
-    if loan:
-        if loan.user_id != current_user.id:
-            raise HTTPException(status_code=404, detail="You don't have permission to access this loan.")
-
-        return {
-            "loan_id": loan.id,
-            "user_id": loan.user_id,
-            "name": loan.name,
-            "phone": loan.phone,
-            "email": loan.email,
-            "loan_amount": loan.loan_amount,
-            "loan_type": loan.loan_type,
-            "employment_details": loan.employment_details,
-        }
+    if loan or current_user.is_admin == True:
+        if loan.user_id == current_user.id or current_user.is_admin == True:
+            return {
+                "loan_id": loan.id,
+                "user_id": loan.user_id,
+                "name": loan.name,
+                "phone": loan.phone,
+                "email": loan.email,
+                "loan_amount": loan.loan_amount,
+                "loan_type": loan.loan_type,
+                "employment_details": loan.employment_details,
+                "status": loan.status,
+            }
+        else:
+            raise HTTPException(status_code=404, detail="You don't have permission to access this loan.")    
 
     raise HTTPException(status_code=404, detail="Loan not found")
 

@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey
+from sqlalchemy import create_engine, Column, Integer, String, BOOLEAN, Float, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 
 
@@ -13,6 +13,7 @@ class User(Base):
     name = Column(String, index=True)
     phone = Column(String, index=True, unique=True)
     email = Column(String, index=True, unique=True)
+    is_admin = Column(BOOLEAN, default=False) 
     password = Column(String)
 
 
@@ -27,4 +28,5 @@ class Loan(Base):
     loan_amount = Column(Float, index=True)
     loan_type = Column(String, index=True)
     employment_details = Column(String)
+    status = Column(String, default="pending")
     

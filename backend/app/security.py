@@ -2,7 +2,8 @@ from fastapi import Depends, HTTPException, status, Header
 from fastapi.security import OAuth2PasswordBearer
 import jwt
 import time
-from models.base_md import User  # Assuming you have a User model
+from models.base_md import User 
+from models.db_session import DBSession
 
 SECRET_KEY = "secret_key"
 ALGORITHM = "HS256"
@@ -12,7 +13,7 @@ def get_current_user(token: str):
     if token is None:
         return None
     return decode_token(token)
-   
+
 
 def decode_token(token: str):
     try:

@@ -12,13 +12,14 @@ import app.security as su
 
 app = FastAPI()
 
-# Dependency to get the database session
+
 def get_db():
     db = DBSession()
     try:
         yield db
     finally:
         db.close()
+
 
 @app.post("/signup")
 async def signup(user_details: rqm.UserDetails, db: DBSession = Depends(get_db)):
@@ -66,11 +67,40 @@ async def apply_loan(
 
     return {"message": "Loan application submitted successfully"}
 
+
+@app.get("/loan/history/{user_id}")
+async def get_loan_application_history(
+    user_id: int,
+    current_user_email=Depends(su.get_current_user),
+    db: DBSession = Depends(get_db)
+):
+    current_user = db.get_user_by_email(current_user_email)
+    if current_user:
+        loan_history = db.get_loan_history_by_user(user_id)
+        if loan_history:
+            return [
+                {
+                    "loan_id": loan.id,
+                    "user_id": loan.user_id,
+                    "name": loan.name,
+                    "phone": loan.phone,
+                    "email": loan.email,
+                    "loan_amount": loan.loan_amount,
+                    "loan_type": loan.loan_type,
+                    "employment_details": loan.employment_details,
+                }
+                for loan in loan_history
+            ]
+
+    return []
+
+
 @app.get("/loan/{loan_id}")
 async def get_loan_details(
     loan_id: int,
     current_user_email = Depends(su.get_current_user),
-    db: DBSession = Depends(get_db)):
+    db: DBSession = Depends(get_db)
+):
     current_user = db.get_user_by_email(current_user_email)
     loan = db.get_loan_by_id(loan_id)
 
@@ -90,7 +120,4 @@ async def get_loan_details(
         }
 
     raise HTTPException(status_code=404, detail="Loan not found")
-
-
-
 

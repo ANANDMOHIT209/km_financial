@@ -53,5 +53,12 @@ class DBSession:
             .filter((Loan.id == loan_id))
             .first()
         )
+    
+    def get_loan_history_by_user(self, user_id: int):
+        return (
+            self.session.query(Loan)
+            .filter((Loan.user_id == user_id))
+            .all()
+        )
 
 

@@ -23,12 +23,7 @@
     env\Scripts\activate.bat
 ```
 
-3. Open env setup in powershell
-```
-    env\Scripts\Activate.ps1
-```
-
-4. Toexit from env setup
+3. To exit from env setup
 ```
     exit
 ```

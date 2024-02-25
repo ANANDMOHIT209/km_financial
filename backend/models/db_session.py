@@ -4,7 +4,7 @@ import os
 
 # km _financial import
 from core.db import get_session, get_engine
-from models.base_md import Base, User
+from models.base_md import Base, User, Loan
 
 class DBSession:
     def __init__(self):
@@ -46,5 +46,12 @@ class DBSession:
     
     def get_user_by_id(self, user_id: int):
         return self.session.query(User).filter(User.id == user_id).first()
+    
+    def get_loan_by_id(self,loan_id: int):
+        return (
+            self.session.query(Loan)
+            .filter((Loan.id == loan_id))
+            .first()
+        )
 
 

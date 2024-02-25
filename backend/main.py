@@ -66,6 +66,31 @@ async def apply_loan(
 
     return {"message": "Loan application submitted successfully"}
 
+@app.get("/loan/{loan_id}")
+async def get_loan_details(
+    loan_id: int,
+    current_user_email = Depends(su.get_current_user),
+    db: DBSession = Depends(get_db)):
+    current_user = db.get_user_by_email(current_user_email)
+    loan = db.get_loan_by_id(loan_id)
+
+    if loan:
+        if loan.user_id != current_user.id:
+            raise HTTPException(status_code=404, detail="You don't have permission to access this loan.")
+
+        return {
+            "loan_id": loan.id,
+            "user_id": loan.user_id,
+            "name": loan.name,
+            "phone": loan.phone,
+            "email": loan.email,
+            "loan_amount": loan.loan_amount,
+            "loan_type": loan.loan_type,
+            "employment_details": loan.employment_details,
+        }
+
+    raise HTTPException(status_code=404, detail="Loan not found")
+
 
 
 

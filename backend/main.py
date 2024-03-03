@@ -1,13 +1,12 @@
 # main.py
 import hashlib
-import timedelta
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session, make_transient
 from models.db_session import DBSession
 from models.base_md import User
 import math
-import datetime
+from datetime import timedelta, datetime
 
 
 import models.request_models as rqm

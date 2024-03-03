@@ -21,7 +21,12 @@ class LoginUser(ClientReq):
     email:str
     password:str
 
-class LoanApplication(ClientReq):
+class LoanCalculationDetails(BaseModel):
+    loan_amount: float
+    annual_interest_rate: float
+    loan_term: int 
+
+class LoanApplication(LoanCalculationDetails, ClientReq):
     loan_amount: float
     loan_type: str
     employment_details: str
@@ -29,4 +34,9 @@ class LoanApplication(ClientReq):
 class UpdateLoanApplication(ClientReq):
     loan_amount: Optional[float] = None
     loan_type: Optional[str] = None
+    loan_term: Optional[int] = None
     employment_details: Optional[str] = None
+
+
+
+    

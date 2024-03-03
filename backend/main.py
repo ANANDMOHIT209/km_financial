@@ -1,10 +1,14 @@
 # main.py
 import hashlib
+import timedelta
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session, make_transient
 from models.db_session import DBSession
 from models.base_md import User
+import math
+import datetime
+
 
 import models.request_models as rqm
 import models.base_md as bmd
@@ -25,6 +29,24 @@ def user_is_admin(current_user_email = Depends(su.get_current_user), db: DBSessi
     if current_user.is_admin == False:
         raise HTTPException(status_code=403, detail="User is not an admin")
     return current_user
+
+
+def calculate_monthly_payment(loan_amount, interest_rate, loan_term):
+    monthly_interest_rate = interest_rate / (12 * 100)
+    total_payments = loan_term
+    monthly_payment = (loan_amount * monthly_interest_rate) / (1 - math.pow((1 + monthly_interest_rate), -total_payments))
+    return monthly_payment
+
+
+def update_loan_details(loan_id: int, loan_amount: float, annual_interest_rate: float, loan_term: int, db: DBSession = Depends(get_db)):
+    loan_details = bmd.LoanDetails(
+        loan_id=loan_id,
+        loan_amount=loan_amount,
+        annual_interest_rate=annual_interest_rate,
+        loan_term=loan_term
+    )
+    db.add_to_session(loan_details)
+    db.commit()
 
 
 @app.post("/signup")
@@ -67,7 +89,17 @@ async def apply_loan(
     user = db.get_user_by_email(current_user_email)
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
-    new_loan = bmd.Loan(user_id=user.id, name=user.name, phone=user.phone, email=user.email, loan_amount=loan_data.loan_amount, loan_type=loan_data.loan_type, employment_details=loan_data.employment_details)
+    new_loan = bmd.Loan(
+        user_id=user.id,
+        name=user.name, 
+        phone=user.phone, 
+        email=user.email, 
+        loan_amount=loan_data.loan_amount, 
+        loan_type=loan_data.loan_type, 
+        annual_interest_rate=loan_data.annual_interest_rate, 
+        loan_term=loan_data.annual_interest_rate, 
+        employment_details=loan_data.employment_details
+    )
     db.add_to_session(new_loan)
     db.commit()
 
@@ -86,7 +118,7 @@ async def approve_loan_application(
         loan_to_approve.status = "approved"
         db.session.commit()
         db.session.refresh(loan_to_approve)
-
+        update_loan_details(loan_id, loan_to_approve.loan_amount, loan_to_approve.annual_interest_rate, loan_to_approve.loan_term, db)
         return {
             "loan_id": loan_to_approve.id,
             "user_id": loan_to_approve.user_id,
@@ -174,7 +206,10 @@ async def get_loan_application_history(
                     "email": loan.email,
                     "loan_amount": loan.loan_amount,
                     "loan_type": loan.loan_type,
+                    "annual_interest_rate" : loan.annual_interest_rate,
+                    "loan_term": loan.loan_term, 
                     "employment_details": loan.employment_details,
+                    "status": loan.status,
                 }
                 for loan in loan_history
             ]
@@ -201,6 +236,8 @@ async def get_loan_details(
                 "email": loan.email,
                 "loan_amount": loan.loan_amount,
                 "loan_type": loan.loan_type,
+                "annual_interest_rate" : loan.annual_interest_rate,
+                "loan_term": loan.loan_term,
                 "employment_details": loan.employment_details,
                 "status": loan.status,
             }
@@ -237,8 +274,61 @@ async def update_loan_application(
             "user_id": loan_to_update.user_id,
             "loan_amount": loan_to_update.loan_amount,
             "loan_type": loan_to_update.loan_type,
+            "loan_term": loan_to_update.loan_term, 
             "employment_details": loan_to_update.employment_details,
         }
     else:
         raise HTTPException(status_code=404, detail="Loan not found")
 
+
+def calculate_total_repayment(monthly_payment, loan_term):
+    return monthly_payment * loan_term
+
+@app.post("/loan/calculate")
+async def calculate_loan(
+    loan_details: rqm.LoanCalculationDetails,
+    current_user_email = Depends(su.get_current_user)
+):
+    try:
+        monthly_payment = calculate_monthly_payment(loan_details.loan_amount, loan_details.interest_rate, loan_details.loan_term)
+        total_repayment = calculate_total_repayment(monthly_payment, loan_details.loan_term)
+        return {"monthly_payment": round(monthly_payment, 2), "total_repayment": round(total_repayment, 2)}
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    
+
+@app.get("/loan/{loan_id}/repayment-schedule")
+async def get_repayment_schedule(
+    loan_id: int,
+    current_user_email = Depends(su.get_current_user),
+    db: Session = Depends(get_db)
+    ):
+    loan = db.query(bmd.Loan).filter(bmd.Loan.id == loan_id).first()
+    if not loan:
+        raise HTTPException(status_code=404, detail="Loan not found")
+
+    principal = loan.loan_amount
+    annual_interest_rate = loan.annual_interest_rate / 100 
+    loan_term_months = loan.loan_term
+
+    monthly_interest_rate = annual_interest_rate / 12
+    total_payments = loan_term_months
+    monthly_payment = (principal * monthly_interest_rate) / (1 - (1 + monthly_interest_rate) ** -total_payments)
+
+    repayment_schedule = []
+    balance = principal
+    for month in range(1, total_payments + 1):
+        interest = balance * monthly_interest_rate
+        principal_payment = monthly_payment - interest
+        balance -= principal_payment
+        due_date = datetime.now() + timedelta(days=month*30) 
+        repayment_schedule.append({
+            "month": month,
+            "due_date": due_date.strftime('%Y-%m-%d'),
+            "principal": principal_payment,
+            "interest": interest,
+            "total_payment": monthly_payment,
+            "balance": balance
+        })
+
+    return {"repayment_schedule": repayment_schedule}

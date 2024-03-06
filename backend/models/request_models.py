@@ -30,12 +30,20 @@ class LoanApplication(LoanCalculationDetails, ClientReq):
     loan_amount: float
     loan_type: str
     employment_details: str
+    aadhar_no: str
+    pan_no: str
+    bank_details: str
+    account_no: str
 
 class UpdateLoanApplication(ClientReq):
     loan_amount: Optional[float] = None
     loan_type: Optional[str] = None
     loan_term: Optional[int] = None
     employment_details: Optional[str] = None
+    aadhar_no: Optional[str] = None
+    pan_no: Optional[str] = None
+    bank_details: Optional[str] = None
+    account_no: Optional[str] = None
 
 
 

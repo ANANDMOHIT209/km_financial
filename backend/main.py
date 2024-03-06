@@ -87,17 +87,21 @@ async def apply_loan(
 ):
     user = db.get_user_by_email(current_user_email)
     if not user:
-        raise HTTPException(status_code=404, detail="User not found")
+        raise HTTPException(status_code=401, detail="User not found")
     new_loan = bmd.Loan(
         user_id=user.id,
         name=user.name, 
         phone=user.phone, 
         email=user.email, 
+        aadhar_no= loan_data.aadhar_no,
+        pan_no= loan_data.pan_no,
+        bank_details= loan_data.bank_details,
+        account_no= loan_data.account_no,
         loan_amount=loan_data.loan_amount, 
         loan_type=loan_data.loan_type, 
         annual_interest_rate=loan_data.annual_interest_rate, 
         loan_term=loan_data.annual_interest_rate, 
-        employment_details=loan_data.employment_details
+        employment_details=loan_data.employment_details,
     )
     db.add_to_session(new_loan)
     db.commit()
@@ -111,9 +115,15 @@ async def approve_loan_application(
     current_user = Depends(user_is_admin),
     db: DBSession = Depends(get_db)
 ):
+    
+    user = db.get_user_by_email(current_user)
+    if not user:
+        raise HTTPException(status_code=401, detail="User not found")
     loan_to_approve = db.get_loan_by_id(loan_id)
-
     if loan_to_approve:
+        if loan_to_approve not in db.session:
+            db.session.add(loan_to_approve)
+
         loan_to_approve.status = "approved"
         db.session.commit()
         db.session.refresh(loan_to_approve)
@@ -155,6 +165,8 @@ async def get_user_profile(
     db: DBSession = Depends(get_db)
     ):
     current_user = db.get_user_by_email(current_user_email)
+    if not current_user:
+        raise HTTPException(status_code=401, detail="User not found")
     return {
         "user_id": current_user.id,
         "name": current_user.name, 
@@ -170,7 +182,8 @@ async def update_user_profile(
     db: DBSession = Depends(get_db)
 ):
     current_user = db.get_user_by_email(current_user_email)
-
+    if not current_user:
+        raise HTTPException(status_code=401, detail="User not found")
     if current_user:
         if current_user.name is not None:
             current_user.name = profile_data.name
@@ -212,6 +225,8 @@ async def get_loan_application_history(
                 }
                 for loan in loan_history
             ]
+    else:
+        raise HTTPException(status_code=401, detail="User not found")
 
     return []
 
@@ -241,7 +256,7 @@ async def get_loan_details(
                 "status": loan.status,
             }
         else:
-            raise HTTPException(status_code=404, detail="You don't have permission to access this loan.")    
+            raise HTTPException(status_code=401, detail="User not found")
 
     raise HTTPException(status_code=404, detail="Loan not found")
 
@@ -255,6 +270,9 @@ async def update_loan_application(
 ):
     current_user = db.get_user_by_email(current_user_email)
 
+    if not current_user:
+        raise HTTPException(status_code=401, detail="User not found")
+
     loan_to_update = db.get_loan_by_id(loan_id)
 
     if loan_to_update:
@@ -264,6 +282,14 @@ async def update_loan_application(
             loan_to_update.loan_type = update_data.loan_type
         if update_data.employment_details is not None:
             loan_to_update.employment_details = update_data.employment_details
+        if update_data.aadhar_no is not None:
+            loan_to_update.aadhar_no = update_data.aadhar_no
+        if update_data.pan_no is not None:
+            loan_to_update.pan_no = update_data.pan_no
+        if update_data.bank_details is not None:
+            loan_to_update.bank_details = update_data.bank_details
+        if update_data.account_no is not None:
+            loan_to_update.account_no = update_data.account_no
         db.session.commit()
         db.session.refresh(loan_to_update)
 
@@ -286,10 +312,15 @@ def calculate_total_repayment(monthly_payment, loan_term):
 @app.post("/loan/calculate")
 async def calculate_loan(
     loan_details: rqm.LoanCalculationDetails,
-    current_user_email = Depends(su.get_current_user)
+    current_user_email = Depends(su.get_current_user),
+    db: DBSession = Depends(get_db)
 ):
+
+    current_user = db.get_user_by_email(current_user_email)
+    if not current_user:
+        raise HTTPException(status_code=401, detail="User not found")
     try:
-        monthly_payment = calculate_monthly_payment(loan_details.loan_amount, loan_details.interest_rate, loan_details.loan_term)
+        monthly_payment = calculate_monthly_payment(loan_details.loan_amount, loan_details.annual_interest_rate, loan_details.loan_term)
         total_repayment = calculate_total_repayment(monthly_payment, loan_details.loan_term)
         return {"monthly_payment": round(monthly_payment, 2), "total_repayment": round(total_repayment, 2)}
     except Exception as e:
@@ -302,6 +333,11 @@ async def get_repayment_schedule(
     current_user_email = Depends(su.get_current_user),
     db: Session = Depends(get_db)
     ):
+
+    current_user = db.get_user_by_email(current_user_email)
+    if not current_user:
+        raise HTTPException(status_code=401, detail="User not found")
+
     loan = db.query(bmd.Loan).filter(bmd.Loan.id == loan_id).first()
     if not loan:
         raise HTTPException(status_code=404, detail="Loan not found")

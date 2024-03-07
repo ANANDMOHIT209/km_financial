@@ -1,6 +1,6 @@
 ## Getting Started with Create React App
 
-For Dependicies
+To run the project first install all the dependency using
 ``npm install --legacy-peer-deps``
 
 

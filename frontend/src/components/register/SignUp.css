@@ -1,0 +1,68 @@
+/* SignUp.css */
+.signup-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* Align the form container to the center */
+    align-items: center;
+    /* To vertically center the items */
+}
+
+.signup-form {
+    width: 400px;
+    /* Set a fixed width for the form container */
+    padding: 20px;
+}
+
+.signup-form h2 {
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    padding-left: 10px;
+    /* Add space on the left side of the input fields */
+}
+
+.input-group input::placeholder {
+    padding-left: 5px;
+    /* Add space between placeholders and text */
+}
+
+.signup-footer {
+    margin-top: 10px;
+    /* Adjust the margin between the form and the footer */
+}
+
+.signup-footer p {
+    font-size: 14px;
+    /* Set the font size of the text to be smaller */
+}
+
+.signup-image {
+    padding: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .signup-container {
+        flex-direction: column;
+    }
+
+    .signup-image {
+        order: 1;
+        /* Place the image below the form in mobile view */
+    }
+}

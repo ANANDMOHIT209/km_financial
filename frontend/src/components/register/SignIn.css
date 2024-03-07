@@ -1,0 +1,67 @@
+/* SignIn.css */
+.signin-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* Align the form container to the center */
+    align-items: center;
+    /* To vertically center the items */
+}
+.signin-footer {
+    margin-top: 0px;
+    /* Adjust the margin between the form and the footer */
+}
+
+.signin-footer p {
+    font-size: 14px;
+    /* Set the font size of the text to be smaller */
+}
+.signin-form {
+    width: 400px;
+    /* Set a fixed width for the form container */
+    padding: 20px;
+}
+
+.signin-form h2 {
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    padding-left: 10px;
+    /* Add space on the left side of the input fields */
+}
+
+.input-group input::placeholder {
+    padding-left: 5px;
+    padding-bottom: 0px;
+    /* Add space between placeholders and text */
+}
+
+.signin-image {
+    padding: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .signin-container {
+        flex-direction: column;
+    }
+
+    .signin-image {
+        order: 1;
+        /* Place the image below the form in mobile view */
+    }
+}

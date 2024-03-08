@@ -45,6 +45,21 @@ class UpdateLoanApplication(ClientReq):
     bank_details: Optional[str] = None
     account_no: Optional[str] = None
 
+class LoanData(BaseModel):
+    Gender: int
+    Married: int
+    Dependents: int
+    Education: int
+    Self_Employed: int
+    ApplicantIncome: int
+    CoapplicantIncome: int
+    LoanAmount: int
+    Loan_Amount_Term: int
+    Credit_History: int
+    Rural: int
+    Semiurban: int
+    Urban: int
+
 
 
     

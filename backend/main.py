@@ -12,6 +12,11 @@ from datetime import timedelta, datetime
 import models.request_models as rqm
 import models.base_md as bmd
 import app.security as su
+import pickle
+import pandas as pd
+
+with open('Ensemble.pkl', 'rb') as file:
+    model = pickle.load(file)
 
 app = FastAPI()
 
@@ -331,39 +336,49 @@ async def calculate_loan(
 async def get_repayment_schedule(
     loan_id: int,
     current_user_email = Depends(su.get_current_user),
-    db: Session = Depends(get_db)
+    db: DBSession = Depends(get_db)
     ):
 
     current_user = db.get_user_by_email(current_user_email)
     if not current_user:
         raise HTTPException(status_code=401, detail="User not found")
 
-    loan = db.query(bmd.Loan).filter(bmd.Loan.id == loan_id).first()
+    loan = db.get_loan_by_id(loan_id)
     if not loan:
         raise HTTPException(status_code=404, detail="Loan not found")
 
     principal = loan.loan_amount
     annual_interest_rate = loan.annual_interest_rate / 100 
-    loan_term_months = loan.loan_term
-
     monthly_interest_rate = annual_interest_rate / 12
-    total_payments = loan_term_months
-    monthly_payment = (principal * monthly_interest_rate) / (1 - (1 + monthly_interest_rate) ** -total_payments)
-
+    monthly_payment = calculate_monthly_payment(loan.loan_amount, loan.annual_interest_rate,loan.loan_term)
+    total_repayment = calculate_total_repayment(monthly_payment, loan.loan_term)
+    print(monthly_payment)
+    print(total_repayment)
     repayment_schedule = []
     balance = principal
-    for month in range(1, total_payments + 1):
+    for month in range(1, 10):
         interest = balance * monthly_interest_rate
-        principal_payment = monthly_payment - interest
-        balance -= principal_payment
+        total_repayment -= monthly_payment 
+        balance -= monthly_payment
         due_date = datetime.now() + timedelta(days=month*30) 
         repayment_schedule.append({
             "month": month,
             "due_date": due_date.strftime('%Y-%m-%d'),
-            "principal": principal_payment,
+            "principal": monthly_payment,
             "interest": interest,
-            "total_payment": monthly_payment,
+            "total_payment": monthly_payment*month,
             "balance": balance
         })
 
     return {"repayment_schedule": repayment_schedule}
+
+@app.post("/predict")
+async def predict_loan_approval(data: rqm.LoanData):
+    input_data = pd.DataFrame([data.dict()])
+    
+    prediction = model.predict(input_data)
+    
+    if prediction[0] == 1:
+        return {"prediction": "Loan will be approved"}
+    else:
+        return {"prediction": "Loan will not be approved"}

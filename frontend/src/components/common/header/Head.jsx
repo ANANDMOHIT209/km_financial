@@ -7,7 +7,7 @@ const Head = () => {
         <div className='container flexSB'>
           <div className='logo'>
             <h1>KM FINANCIAL</h1>
-            <span>LOANS </span>
+            <span>GET LOANS EASILY</span>
           </div>
 
           <div className='social'>

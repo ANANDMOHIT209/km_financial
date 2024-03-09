@@ -1,18 +1,24 @@
 import React, { useState } from "react";
-import "./LoanForm.css";
-import { Link ,useHistory} from "react-router-dom";
-import api from "../../api";
+import {
+  TextField,
+  Button,
+  Grid,
+  Typography,
+  Container,
+  MenuItem,
+} from "@mui/material";
 
-function LoanForm() {
-  const history = useHistory();
+const LoanForm = () => {
   const [formData, setFormData] = useState({
-    loan_amount: "",
-    loan_type: "",
-    employment_details: "",
-    aadhar_no: "",
-    pan_no: "",
-    bank_details: "",
-    account_no: "",
+    applicant_name: "Yash Anand",
+    loan_amount: "10000",
+    loan_type: "Other Loans",
+    employment_details: "Student",
+    aadhar_no: "250825082508",
+    pan_no: "DDKLT5840M",
+    bank_name: "Bank Of India",
+    account_no: "1234567890",
+    bank_ifsc: "BKID0002541",
   });
 
   const handleChange = (e) => {
@@ -40,92 +46,177 @@ function LoanForm() {
       alert("Error submitting loan application:", error.response.data.detail);
     }
   };
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await fetch("http://your-flask-backend-url/submit", {
-  //       // Replace this URL with your actual Flask backend endpoint
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(formData),
-  //     });
-  //     // Handle response as needed
-  //     console.log("Form submitted successfully:", response);
-  //   } catch (error) {
-  //     console.error("Error submitting form:", error);
-  //   }
-  // };
+  
+  const loanTypes = [
+    "Buissness Loans",
+    "Personal Loans",
+    "Home Loans",
+    "Vehicle Loans",
+    "Education Loans",
+    "Other Loans",
+  ];
+
+  const employmentTypes = [
+    "Salaried",
+    "Non-Salaried",
+    "Unemployed",
+    "Student",
+    "Others",
+  ];
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Loan Amount:</label>
-        <input
-          type="text"
-          name="loan_amount"
-          value={formData.loan_amount}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label>Loan Type:</label>
-        <input
-          type="text"
-          name="loan_type"
-          value={formData.loan_type}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label>Employment Details:</label>
-        <input
-          type="text"
-          name="employment_details"
-          value={formData.employment_details}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label>Aadhar Number:</label>
-        <input
-          type="text"
-          name="aadhar_no"
-          value={formData.aadhar_no}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label>PAN Number:</label>
-        <input
-          type="text"
-          name="pan_no"
-          value={formData.pan_no}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label>Bank Details:</label>
-        <input
-          type="text"
-          name="bank_details"
-          value={formData.bank_details}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label>Account Number:</label>
-        <input
-          type="text"
-          name="account_no"
-          value={formData.account_no}
-          onChange={handleChange}
-        />
-      </div>
-      <button type="submit">Submit</button>
-    </form>
+    <Container maxWidth="md">
+      <form onSubmit={handleSubmit}>
+        <Grid
+          container
+          spacing={4}
+          sx={{ padding: "20px", margin: "20px", backgroundColor: "#f0f0f0" }}
+        >
+          <Grid item xs={12}>
+            <Typography variant="h5">Loan Application Form</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              type="text"
+              id="applicant_name"
+              name="applicant_name"
+              label="Applicant Name"
+              value={formData.applicant_name}
+              onChange={handleChange}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              type="number"
+              id="loan_amount"
+              name="loan_amount"
+              label="Loan Amount"
+              value={formData.loan_amount}
+              onChange={handleChange}
+              fullWidth
+              placeholder="Rs. 10000"
+              InputProps={{
+                inputMode: "numeric",
+                pattern: "[0-9]*",
+                maxLength: 8, // Maximum length of the number input
+              }}
+              inputProps={{
+                min: 1000, // Minimum value
+                max: 99999999, // Maximum value
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <TextField
+              select
+              id="loan_type"
+              name="loan_type"
+              label="Loan Type"
+              value={formData.loan_type}
+              onChange={handleChange}
+              fullWidth
+            >
+              {loanTypes.map((option) => (
+                <MenuItem key={option} value={option}>
+                  {option}
+                </MenuItem>
+              ))}
+            </TextField>
+          </Grid>
+
+          <Grid item xs={12}>
+            <TextField
+              select
+              id="employment_details"
+              name="employment_details"
+              label="Employment Details"
+              value={formData.employment_details}
+              onChange={handleChange}
+              fullWidth
+            >
+              {employmentTypes.map((option) => (
+                <MenuItem key={option} value={option}>
+                  {option}
+                </MenuItem>
+              ))}
+            </TextField>
+          </Grid>
+
+          <Grid item xs={12}>
+            <TextField
+              type="text"
+              id="aadhar_no"
+              name="aadhar_no"
+              label="Aadhar Number"
+              value={formData.aadhar_no}
+              onChange={handleChange}
+              fullWidth
+              inputProps={{ maxLength: 12 }}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <TextField
+              type="text"
+              id="pan_no"
+              name="pan_no"
+              label="PAN Number"
+              value={formData.pan_no}
+              onChange={handleChange}
+              fullWidth
+              inputProps={{ maxLength: 10 }}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <TextField
+              type="text"
+              id="bank_name"
+              name="bank_name"
+              label="Bank Name"
+              value={formData.bank_name}
+              onChange={handleChange}
+              fullWidth
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <TextField
+              type="number"
+              id="account_no"
+              name="account_no"
+              label="Account Number"
+              value={formData.account_no}
+              onChange={handleChange}
+              fullWidth
+              inputProps={{ maxLength: 15 }}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <TextField
+              type="text"
+              id="bank_ifsc"
+              name="bank_ifsc"
+              label="IFSC Code"
+              value={formData.bank_ifsc}
+              onChange={handleChange}
+              fullWidth
+              inputProps={{ maxLength: 10 }}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <Button type="submit" variant="contained" color="primary">
+              Apply Loan
+            </Button>
+          </Grid>
+        </Grid>
+      </form>
+    </Container>
   );
-}
+};
 
 export default LoanForm;

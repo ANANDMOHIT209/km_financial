@@ -106,7 +106,13 @@ async def apply_loan(
     current_user_email = Depends(su.get_current_user),
     db: DBSession = Depends(get_db)
 ):
+    print('ABC')
     user = db.get_user_by_email(current_user_email)
+    # if current_user_email is None or not authorization.startswith("Bearer "):
+    #     raise HTTPException(status_code=401, detail="Unauthorized")
+
+    # token = current_user_email.split("Bearer ")[1]
+    # user =db.get_user_by_email(loan_data.email) 
     if not user:
         raise HTTPException(status_code=401, detail="User not found")
     new_loan = bmd.Loan(
@@ -118,6 +124,7 @@ async def apply_loan(
         pan_no= loan_data.pan_no,
         bank_details= loan_data.bank_details,
         account_no= loan_data.account_no,
+        ifsc_code = loan_data.ifsc_code,
         loan_amount=loan_data.loan_amount, 
         loan_type=loan_data.loan_type, 
         annual_interest_rate=loan_data.annual_interest_rate, 

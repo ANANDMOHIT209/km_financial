@@ -27,6 +27,7 @@ class Loan(Base):
     pan_no = Column(String, index=True)
     bank_details = Column(String, index=True)
     account_no = Column(String, index=True)
+    ifsc_code = Column(String, index = True)
     loan_amount = Column(Float, index=True)
     loan_type = Column(String, index=True)
     annual_interest_rate = Column(Float, index=True)

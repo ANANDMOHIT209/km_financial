@@ -22,8 +22,8 @@ const SignIn = () => {
       const response = await api.post("/login", formData);
       const { access_token } = response.data.message;
       localStorage.setItem("accessToken", access_token);
-      alert("Login successful!");
-      history.push("/profile", { email: formData.email }); // Pass email as a prop
+      alert("Login Successfully")
+      history.push("/applyloan")
     } catch (error) {
       alert("Error login:", error.response.data.detail);
     }

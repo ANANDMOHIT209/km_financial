@@ -34,6 +34,7 @@ class LoanApplication(LoanCalculationDetails, ClientReq):
     pan_no: str
     bank_details: str
     account_no: str
+    ifsc_code: str
 
 class UpdateLoanApplication(ClientReq):
     loan_amount: Optional[float] = None

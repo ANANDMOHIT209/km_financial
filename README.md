@@ -11,6 +11,7 @@
     pip install -U scikit-learn
     python.exe -m pip install --upgrade pip
     npm install axiom
+    npm install axios
     npm install path-browserify browserify-fs
 ```
 

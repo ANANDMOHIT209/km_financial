@@ -9,7 +9,8 @@ SECRET_KEY = "secret_key"
 ALGORITHM = "HS256"
 
 # Function to get the current user from the token
-def get_current_user(token: str):
+def get_current_user(token: str = Header(None)):
+    print(token)
     if token is None:
         return None
     return decode_token(token)

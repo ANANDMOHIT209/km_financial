@@ -7,18 +7,26 @@ import {
   Container,
   MenuItem,
 } from "@mui/material";
+import api from "../../api";
+import { useHistory} from "react-router-dom";
+import axios from 'axios';
+
 
 const LoanForm = () => {
+  const history = useHistory();
   const [formData, setFormData] = useState({
-    applicant_name: "Yash Anand",
-    loan_amount: "10000",
-    loan_type: "Other Loans",
-    employment_details: "Student",
-    aadhar_no: "250825082508",
-    pan_no: "DDKLT5840M",
-    bank_name: "Bank Of India",
-    account_no: "1234567890",
-    bank_ifsc: "BKID0002541",
+    "applicant_name": "Yash Anand",
+    "aadhar_no": "250825082508",
+    "pan_no": "DDKLT5840M",
+    "bank_details": "Bank Of India, Branch Name",
+    "account_no": "1234567890",
+    "ifsc_code": "BKID0002541",
+    "loan_amount": 10000.0,
+    "loan_type": "Other Loans",
+    "annual_interest_rate": 5.0, // Example value, adjust as necessary
+    "loan_term": 12, // Example value, adjust as necessary
+    "employment_details":"Others"// Example value, adjust as necessary
+    
   });
 
   const handleChange = (e) => {
@@ -29,23 +37,29 @@ const LoanForm = () => {
     });
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const accessToken = localStorage.getItem("accessToken");
-      const response = await api.post("/apply-loan/", formData, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json",
-        },
-      });
+      const accessToken = localStorage.getItem("accessToken"); 
+      
+      const headers = {
+        "token": `${accessToken}`,
+        "Content-Type": "application/json",
+       };
+        
+      const response = await axios.post(
+       
+        "http://localhost:8000/apply-loan",
+        formData,
+        {headers},
+      );
       alert(response.data.message); 
       history.push("/");
     } catch (error) {
       alert("Error submitting loan application:", error.response.data.detail);
     }
   };
+
   
   const loanTypes = [
     "Buissness Loans",
@@ -176,7 +190,7 @@ const LoanForm = () => {
               id="bank_name"
               name="bank_name"
               label="Bank Name"
-              value={formData.bank_name}
+              value={formData.bank_details}
               onChange={handleChange}
               fullWidth
             />
@@ -184,7 +198,7 @@ const LoanForm = () => {
 
           <Grid item xs={12}>
             <TextField
-              type="number"
+              type="text"
               id="account_no"
               name="account_no"
               label="Account Number"
@@ -201,7 +215,33 @@ const LoanForm = () => {
               id="bank_ifsc"
               name="bank_ifsc"
               label="IFSC Code"
-              value={formData.bank_ifsc}
+              value={formData.ifsc_code}
+              onChange={handleChange}
+              fullWidth
+              inputProps={{ maxLength: 10 }}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <TextField
+              type="text"
+              id="annual_interest_rate"
+              name="annual_interest_rate"
+              label="Annual Intrest rate"
+              value={formData.annual_interest_rate}
+              onChange={handleChange}
+              fullWidth
+              inputProps={{ maxLength: 10 }}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <TextField
+              type="text"
+              id="loan_term"
+              name="loan_term"
+              label="Loan Term"
+              value={formData.annual_interest_rate}
               onChange={handleChange}
               fullWidth
               inputProps={{ maxLength: 10 }}

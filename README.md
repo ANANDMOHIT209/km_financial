@@ -10,6 +10,8 @@
     pip install timedelta
     pip install -U scikit-learn
     python.exe -m pip install --upgrade pip
+    npm install axiom
+    npm install path-browserify browserify-fs
 ```
 
 ### Required Setup ###

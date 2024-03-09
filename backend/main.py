@@ -7,6 +7,7 @@ from models.db_session import DBSession
 from models.base_md import User
 import math
 from datetime import timedelta, datetime
+from fastapi.middleware.cors import CORSMiddleware
 
 
 import models.request_models as rqm
@@ -19,6 +20,18 @@ with open('Ensemble.pkl', 'rb') as file:
     model = pickle.load(file)
 
 app = FastAPI()
+
+origins = [
+    'http://localhost:3000'
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], # Allow all origins
+    allow_credentials=True,
+    allow_methods=["*"], # Allow all methods
+    allow_headers=["*"], # Allow all headers
+)
 
 
 def get_db():
@@ -76,10 +89,12 @@ async def login(loginuser : rqm.LoginUser, db: DBSession = Depends(get_db)):
         access_token = "".join(access_token)
         userdetails = su.get_current_user(access_token)
         response = {
-            "access_token": access_token,
-            "email": user.email,
-            "userdetails": userdetails,
-        }
+           "message": {
+                "access_token": access_token,
+                "email": user.email,
+                "userdetails": userdetails,
+                }
+            }
         return response
     raise HTTPException(status_code=401, detail="Invalid credentials")
 

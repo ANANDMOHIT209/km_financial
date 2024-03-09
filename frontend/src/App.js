@@ -17,7 +17,7 @@ import SignIn from "./components/register/SignIn";
 function App() {
   return (
     <>
-      <Router>
+      <Router forceRefresh={true}>
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
@@ -27,8 +27,8 @@ function App() {
           <Route exact path="/pricing" component={Pricing} />
           <Route exact path="/journal" component={Blog} />
           <Route exact path="/contact" component={Contact} />
-          <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/signup/" component={SignUp} />
+          <Route exact path="/signin/" component={SignIn} />
         </Switch>
         <Footer />
       </Router>

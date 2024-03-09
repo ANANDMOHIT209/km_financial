@@ -82,6 +82,7 @@ async def signup(user_details: rqm.UserDetails, db: DBSession = Depends(get_db))
 
 @app.post("/login")
 async def login(loginuser : rqm.LoginUser, db: DBSession = Depends(get_db)):
+    response = {}
     user = db.get_user_by_email(loginuser.email)
     hashed_password = hashlib.sha256(loginuser.password.encode("utf-8")).hexdigest()
     if user and user.password == hashed_password:
@@ -135,7 +136,7 @@ async def approve_loan_application(
     current_user = Depends(user_is_admin),
     db: DBSession = Depends(get_db)
 ):
-    
+    response = {}
     user = db.get_user_by_email(current_user)
     if not user:
         raise HTTPException(status_code=401, detail="User not found")
@@ -148,11 +149,14 @@ async def approve_loan_application(
         db.session.commit()
         db.session.refresh(loan_to_approve)
         update_loan_details(loan_id, loan_to_approve.loan_amount, loan_to_approve.annual_interest_rate, loan_to_approve.loan_term, db)
-        return {
+        response= {
+            "message": {
             "loan_id": loan_to_approve.id,
             "user_id": loan_to_approve.user_id,
             "status": loan_to_approve.status,
+            }
         }
+        return response
     else:
         raise HTTPException(status_code=404, detail="Loan not found")
     
@@ -184,15 +188,19 @@ async def get_user_profile(
     current_user_email = Depends(su.get_current_user),
     db: DBSession = Depends(get_db)
     ):
+    response = {}
     current_user = db.get_user_by_email(current_user_email)
     if not current_user:
         raise HTTPException(status_code=401, detail="User not found")
-    return {
+    response = {
+        "message": {
         "user_id": current_user.id,
         "name": current_user.name, 
         "email": current_user.email, 
         "phone": current_user.phone,
+        }
     }
+    return response
 
 
 @app.put("/update_profile")
@@ -201,6 +209,7 @@ async def update_user_profile(
     current_user_email=Depends(su.get_current_user),
     db: DBSession = Depends(get_db)
 ):
+    response = {}
     current_user = db.get_user_by_email(current_user_email)
     if not current_user:
         raise HTTPException(status_code=401, detail="User not found")
@@ -209,12 +218,15 @@ async def update_user_profile(
             current_user.name = profile_data.name
         db.session.commit()
         db.session.refresh(current_user)
-        return {
+        response = {
+            "message": {
             "user_id": current_user.id,
             "email": current_user.email,
             "name": current_user.name,
             "phone": current_user.phone,
+            }
         }
+        return response
     else:
         raise HTTPException(status_code=404, detail="User not found")
 
@@ -225,6 +237,7 @@ async def get_loan_application_history(
     current_user_email=Depends(su.get_current_user),
     db: DBSession = Depends(get_db)
 ):
+    response = {}
     current_user = db.get_user_by_email(current_user_email)
     if current_user or current_user.is_admin == True:
         loan_history = db.get_loan_history_by_user(user_id)

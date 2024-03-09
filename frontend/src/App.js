@@ -30,6 +30,7 @@ function App() {
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/loanform" component={LoanForm} />         
         </Switch>
         <Footer />
       </Router>

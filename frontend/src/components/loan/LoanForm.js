@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "./LoanForm.css";
+import { Link ,useHistory} from "react-router-dom";
+import api from "../../api";
 
 function LoanForm() {
+  const history = useHistory();
   const [formData, setFormData] = useState({
     loan_amount: "",
     loan_type: "",
@@ -20,23 +23,40 @@ function LoanForm() {
     });
   };
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://your-flask-backend-url/submit", {
-        // Replace this URL with your actual Flask backend endpoint
-        method: "POST",
+      const accessToken = localStorage.getItem("accessToken");
+      const response = await api.post("/apply-loan/", formData, {
         headers: {
+          Authorization: `Bearer ${accessToken}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
       });
-      // Handle response as needed
-      console.log("Form submitted successfully:", response);
+      alert(response.data.message); 
+      history.push("/");
     } catch (error) {
-      console.error("Error submitting form:", error);
+      alert("Error submitting loan application:", error.response.data.detail);
     }
   };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await fetch("http://your-flask-backend-url/submit", {
+  //       // Replace this URL with your actual Flask backend endpoint
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(formData),
+  //     });
+  //     // Handle response as needed
+  //     console.log("Form submitted successfully:", response);
+  //   } catch (error) {
+  //     console.error("Error submitting form:", error);
+  //   }
+  // };
 
   return (
     <form onSubmit={handleSubmit}>

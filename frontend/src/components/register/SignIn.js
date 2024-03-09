@@ -1,10 +1,11 @@
 // SignIn.js
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link ,useHistory} from "react-router-dom";
 import "./SignIn.css";
 import api from "../../api";
 
 const SignIn = ({ handleSignIn }) => {
+  const history = useHistory();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -18,7 +19,10 @@ const SignIn = ({ handleSignIn }) => {
     e.preventDefault();
     try {
       const response = await api.post("/login", formData);
-      alert(response.data.message.access_token); 
+      const { access_token } = response.data.message["access_token"]; 
+      localStorage.setItem("accessToken", access_token);
+      alert("Login successful!"); 
+      history.push("/");
     } catch (error) {
       alert("Error login:", error.response.data.detail);
     }

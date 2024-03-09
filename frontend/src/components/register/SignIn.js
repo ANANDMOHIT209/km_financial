@@ -1,10 +1,11 @@
 // SignIn.js
 import React, { useState } from "react";
-import { Link ,useHistory} from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./SignIn.css";
 import api from "../../api";
+import UserProfile from "../profile/UserProfile";
 
-const SignIn = ({ handleSignIn }) => {
+const SignIn = () => {
   const history = useHistory();
   const [formData, setFormData] = useState({
     email: "",
@@ -19,19 +20,14 @@ const SignIn = ({ handleSignIn }) => {
     e.preventDefault();
     try {
       const response = await api.post("/login", formData);
-      const { access_token } = response.data.message["access_token"]; 
+      const { access_token } = response.data.message;
       localStorage.setItem("accessToken", access_token);
-      alert("Login successful!"); 
-      history.push("/");
+      alert("Login successful!");
+      history.push("/profile", { email: formData.email }); // Pass email as a prop
     } catch (error) {
       alert("Error login:", error.response.data.detail);
     }
   };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   handleSignIn(formData);
-  // };
 
   return (
     <div className="signin-container">

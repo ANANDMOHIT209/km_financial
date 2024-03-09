@@ -13,6 +13,7 @@ import Contact from "./components/contact/Contact";
 import SignUp from "./components/register/SignUp";
 import SignIn from "./components/register/SignIn";
 import LoanForm from "./components/loan/LoanForm"; 
+import UserProfile from "./components/profile/UserProfile";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
+          <Route path="/profile" component={UserProfile} />
           <Route exact path="/applyloan" component={LoanForm} />{" "}
         </Switch>
         <Footer />

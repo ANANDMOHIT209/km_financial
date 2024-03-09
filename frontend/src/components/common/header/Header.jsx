@@ -48,6 +48,9 @@ const Header = () => {
              <div className='start'>
                <div className='button' onClick={() => handleRedirect('signin')}>SIGN IN</div>               
              </div>
+             <div className='start'>
+               <div className='button' onClick={() => handleRedirect('profile')}>Profile</div>               
+             </div>
              <button className='toggle' onClick={() => setClick(!click)}>
                {click ? <i className='fa fa-times'> </i> : <i className='fa fa-bars'></i>}
              </button>

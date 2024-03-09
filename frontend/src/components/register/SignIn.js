@@ -1,9 +1,11 @@
 // SignIn.js
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link ,useHistory} from "react-router-dom";
 import "./SignIn.css";
+import api from "../../api";
 
 const SignIn = ({ handleSignIn }) => {
+  const history = useHistory();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -13,10 +15,23 @@ const SignIn = ({ handleSignIn }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    handleSignIn(formData);
+    try {
+      const response = await api.post("/login", formData);
+      const { access_token } = response.data.message["access_token"]; 
+      localStorage.setItem("accessToken", access_token);
+      alert("Login successful!"); 
+      history.push("/");
+    } catch (error) {
+      alert("Error login:", error.response.data.detail);
+    }
   };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   handleSignIn(formData);
+  // };
 
   return (
     <div className="signin-container">
@@ -46,7 +61,7 @@ const SignIn = ({ handleSignIn }) => {
           
           <div className="signin-footer">
             <p>
-              Don't have an account? <Link to="/signup">Sign Up</Link>
+              Don't have an account? <Link to="/signup/">Sign Up</Link>
             </p>
           </div>
           <button type="submit">Sign In</button>

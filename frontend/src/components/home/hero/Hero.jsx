@@ -15,7 +15,7 @@ const Hero = () => {
               <button className='primary-btn'>
                 GET LOAN NOW <i className='fa fa-long-arrow-alt-right'></i>
               </button>
-              <Link to="/signup">
+              <Link to="/signup/">
                 <button>
                   SIGN UP 
                 </button>

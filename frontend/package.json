@@ -11,10 +11,15 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
+    "axiom": "^0.1.6",
+    "axios": "^1.6.7",
+    "browserify-fs": "^1.0.0",
+    "cors": "^2.8.5",
     "google-maps-react": "^2.0.6",
     "material-icons": "^1.10.11",
-    "react": "^17.0.0 || ^18.0.0",
-    "react-dom": "^17.0.0 || ^18.0.0",
+    "path-browserify": "^1.0.1",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
     "react-router-dom": "^5.3.1",
     "react-scripts": "5.0.1",
     "react-slick": "^0.29.0",
@@ -31,6 +36,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "vm": false,
+    "child_process": false
   },
   "eslintConfig": {
     "extends": [

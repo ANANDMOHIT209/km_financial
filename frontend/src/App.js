@@ -17,7 +17,7 @@ import LoanForm from "./components/loan/LoanForm";
 function App() {
   return (
     <>
-      <Router>
+      <Router forceRefresh={true}>
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />

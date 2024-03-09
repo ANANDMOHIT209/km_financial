@@ -29,19 +29,21 @@ const LoanForm = () => {
     });
   };
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://your-flask-backend-url/submit", {
-        method: "POST",
+      const accessToken = localStorage.getItem("accessToken");
+      const response = await api.post("/apply-loan/", formData, {
         headers: {
+          Authorization: `Bearer ${accessToken}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
       });
-      console.log("Form submitted successfully:", response);
+      alert(response.data.message); 
+      history.push("/");
     } catch (error) {
-      console.error("Error submitting form:", error);
+      alert("Error submitting loan application:", error.response.data.detail);
     }
   };
   

@@ -13,6 +13,7 @@ import Blog from "./components/blog/Blog";
 import Contact from "./components/contact/Contact";
 import SignUp from "./components/register/SignUp";
 import SignIn from "./components/register/SignIn";
+import LoanForm from "./components/loan/LoanForm";
 
 function App() {
   return (
@@ -27,8 +28,8 @@ function App() {
           <Route exact path="/pricing" component={Pricing} />
           <Route exact path="/journal" component={Blog} />
           <Route exact path="/contact" component={Contact} />
-          <Route exact path="/signup/" component={SignUp} />
-          <Route exact path="/signin/" component={SignIn} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/signin" component={SignIn} />
         </Switch>
         <Footer />
       </Router>

@@ -3,44 +3,67 @@
   padding: 20px 0;
   color: #fff;
 }
+
 .logo h1 {
   font-size: 35px;
   font-weight: 900;
 }
+
 .head .icon {
   margin-left: 10px;
 }
+
 /*--------head------------*/
+
 /*--------header------------*/
 header {
-  background-color: rgba(255, 255, 255, 0.2);
-  margin: 0 30px;
+  background-color: rgba(98, 199, 192, 0.2);
+  margin: 0 70px;
+  justify-content: space-between;
+  /* Ensure elements are spread out horizontally */
+  align-items: center;
+  /* Vertically center align items */
 }
+
 header .nav {
   display: flex !important;
+  border: 50px;
 }
+
 header li {
   margin-right: 40px;
 }
+
 header ul {
   padding: 30px 20px;
 }
+
 header ul li a {
   color: #fff;
   font-weight: 500;
   transition: 0.5s;
 }
+
 header ul li a:hover {
   color: #1eb2a6;
 }
+
+.right {
+  display: flex;
+  /* Make the children elements display in a row */
+  align-items: center;
+  /* Vertically center align items */
+}
+
 .start {
   background-color: #1eb2a6;
-  padding: 30px 70px;
+  padding: 20px 10px;
   color: #fff;
-  clip-path: polygon(10% 0%, 100% 0, 100% 100%, 0% 100%);
+  /* Add margin between buttons */
 }
+
 .button {
-  background-color: #1eb2a6;
+  background-color: #011211;
   padding: 15px 30px;
   color: #fff;
   cursor: pointer;
@@ -50,25 +73,32 @@ header ul li a:hover {
   border-radius: 5px;
   font-weight: bold;
 }
+
 .toggle {
   display: none;
 }
+
 /*--------header------------*/
+
 @media screen and (max-width: 768px) {
   .start {
     clip-path: none;
   }
+
   header {
     margin: 0;
     background-color: #1eb2a6;
     position: relative;
   }
+
   header ul.flexSB {
     display: none;
   }
+
   header ul li {
     margin-bottom: 20px;
   }
+
   .toggle {
     display: block;
     background: none;
@@ -78,6 +108,7 @@ header ul li a:hover {
     right: 0;
     top: -20px;
   }
+
   .mobile-nav {
     position: absolute;
     top: 7vh;

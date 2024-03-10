@@ -23,7 +23,7 @@ const SignIn = () => {
       const { access_token } = response.data.message;
       localStorage.setItem("accessToken", access_token);
       alert("Login Successfully")
-      history.push("/applyloan")
+      history.push("/")
     } catch (error) {
       alert("Error login:", error.response.data.detail);
     }

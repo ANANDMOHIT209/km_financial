@@ -55,9 +55,11 @@ import Contact from "./components/contact/Contact";
 import SignUp from "./components/register/SignUp";
 import SignIn from "./components/register/SignIn";
 import LoanForm from "./components/loan/LoanForm"; 
-import UserProfile from "./components/profile/UserProfile";
+import ProfilePage from "./components/profile/UserProfile";
 import LoanHistory from "./components/profile/Loan_profile";
 import LoanDetails from "./components/loan/LoanDetail";
+import UpdateLoanForm from "./components/loan/LoanUpdate";
+import UpdateProfile from "./components/profile/UpdateProfile";
 import { AuthProvider, useAuth } from './AuthContext'; // Import the context
 
 function App() {
@@ -75,9 +77,11 @@ function App() {
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
-          <Route exact path="/profile" component={UserProfile} />
+          <Route exact path="/profile" component={ProfilePage} />
           <Route exact path="/loan-history" component={LoanHistory} />
+          <Route exact path="/update_profile" component={UpdateProfile} />
           <Route  path="/loan/:loanId" component={LoanDetails} />
+          <Route  path="/loan-update/:loanId" component={UpdateLoanForm} />
           <Route exact path="/applyloan" component={LoanForm} />
         </Switch>
         <Footer />

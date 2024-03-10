@@ -38,6 +38,7 @@ const ProfilePage = () => {
       <p>Email: {profileData.email}</p>
       <p>Phone: {profileData.phone}</p>
       <button onClick={() => history.push('/loan-history')}>View Loan History</button>
+      <button onClick={() => history.push('/update_profile')}>Update User Profile</button>
     </div>
  );
 };

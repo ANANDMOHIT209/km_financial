@@ -54,6 +54,9 @@ const LoanHistory = () => {
               <td>
                 <button onClick={() => history.push(`/loan/${loan.loan_id}`)}>View Details</button>
               </td>
+              <td>
+                <button onClick={() => history.push(`/loan-update/${loan.loan_id}`)}>Update Details</button>
+              </td>
             </tr>
           ))}
         </tbody>

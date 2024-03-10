@@ -44,7 +44,7 @@ const LoanDetails = () => {
       <p>Loan Term: {loan.loan_term}</p>
       <p>Employment Details: {loan.employment_details}</p>
       <p>Status: {loan.status}</p>
-      {/* Add more details as needed */}
+      
     </div>
  );
 };

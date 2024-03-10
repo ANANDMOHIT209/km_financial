@@ -1,5 +1,5 @@
 .hero {
-  background-image: url("../../../../public/images/bg.webp");
+  background-image: url("../../../../public/images/bg-design.svg");
   background-size: cover;
   background-attachment: fixed;
   position: absolute;
@@ -13,13 +13,51 @@
   color: #fff;
 }
 .hero #heading h3 {
-  color: #fff;
+  color: #ffffff;
 }
 .hero #heading {
   text-align: left;
   margin: 0;
   padding: 0;
 }
+
+/* primary-btn-hero */
+
+.primary-btn-hero {
+  background-color: #007bff;
+  /* Blue color for the button */
+  color: #fff;
+  /* White text color */
+  margin-top: 50px;
+  border: 5px solid #007bff;
+  /* Remove button border */
+  padding: 15px 20px;
+  /* Add padding to the button */
+  font-size: 20px;
+  font-weight: 500;
+  /* Set font size */
+  cursor: pointer;
+  /* Change cursor to pointer on hover */
+  transition: background-color 0.3s ease;
+  /* Smooth transition for background color change */
+  text-decoration: none;
+  /* Remove default text decoration */
+  display: inline-block;
+  /* Make the button inline block */
+  border-radius: 5px;
+  /* Add some border radius for a rounded appearance */
+}
+
+.primary-btn-hero:hover {
+  background-color: #0056b3;
+  /* Darker blue color on hover */
+}
+
+.primary-btn-hero i {
+  margin-left: 5px;
+  /* Add some space between the button text and the icon */
+}
+
 @media screen and (max-width: 768px) {
   .margin {
     height: 40vh;
@@ -31,5 +69,8 @@
   }
   .hero .row {
     width: 100%;
+  }
+  .primary-btn-hero{
+      margin-top: 15px;
   }
 }

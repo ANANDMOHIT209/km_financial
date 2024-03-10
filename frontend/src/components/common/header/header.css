@@ -1,7 +1,7 @@
 /*--------head------------*/
 .head {
   padding: 20px 0;
-  color: #fff;
+  color: #000000;
 }
 
 .logo h1 {
@@ -17,12 +17,13 @@
 
 /*--------header------------*/
 header {
-  background-color: rgba(98, 199, 192, 0.2);
+  background-color: rgba(115, 205, 199, 0.2);
+  /* Set the background color with transparency */
   margin: 0 70px;
   justify-content: space-between;
-  /* Ensure elements are spread out horizontally */
   align-items: center;
-  /* Vertically center align items */
+  /* Add box-shadow to create the glass finish effect */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1), 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 header .nav {
@@ -63,7 +64,7 @@ header ul li a:hover {
 }
 
 .button {
-  background-color: #011211;
+  background-color: #ffffff;
   padding: 15px 30px;
   color: #fff;
   cursor: pointer;

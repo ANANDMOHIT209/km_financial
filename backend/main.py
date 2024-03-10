@@ -27,7 +27,7 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Allow all origins
+    allow_origins=["http://localhost:3000"], # Allow all origins
     allow_credentials=True,
     allow_methods=["*"], # Allow all methods
     allow_headers=["*"], # Allow all headers
@@ -238,16 +238,15 @@ async def update_user_profile(
         raise HTTPException(status_code=404, detail="User not found")
 
 
-@app.get("/loan/history/{user_id}")
+@app.get("/loan/history")
 async def get_loan_application_history(
-    user_id: int,
     current_user_email=Depends(su.get_current_user),
     db: DBSession = Depends(get_db)
 ):
     response = {}
     current_user = db.get_user_by_email(current_user_email)
     if current_user or current_user.is_admin == True:
-        loan_history = db.get_loan_history_by_user(user_id)
+        loan_history = db.get_loan_history_by_user(current_user.id)
         if loan_history:
             return [
                 {
@@ -271,18 +270,19 @@ async def get_loan_application_history(
     return []
 
 
+
 @app.get("/loan/{loan_id}")
 async def get_loan_details(
     loan_id: int,
-    current_user_email = Depends(su.get_current_user),
-    db: DBSession = Depends(get_db)
+    current_user_email=Depends(su.get_current_user),
+    db: DBSession=Depends(get_db)
 ):
     current_user = db.get_user_by_email(current_user_email)
     loan = db.get_loan_by_id(loan_id)
-
-    if loan or current_user.is_admin == True:
-        if loan.user_id == current_user.id or current_user.is_admin == True:
-            return {
+    if loan:  # No need to compare with True
+        if loan.user_id == current_user.id:
+            response = {
+                "message": { 
                 "loan_id": loan.id,
                 "user_id": loan.user_id,
                 "name": loan.name,
@@ -290,16 +290,17 @@ async def get_loan_details(
                 "email": loan.email,
                 "loan_amount": loan.loan_amount,
                 "loan_type": loan.loan_type,
-                "annual_interest_rate" : loan.annual_interest_rate,
+                "annual_interest_rate": loan.annual_interest_rate,
                 "loan_term": loan.loan_term,
                 "employment_details": loan.employment_details,
                 "status": loan.status,
+                }
             }
+            return response
         else:
             raise HTTPException(status_code=401, detail="User not found")
 
     raise HTTPException(status_code=404, detail="Loan not found")
-
 
 @app.put("/loan/update/{loan_id}")
 async def update_loan_application(

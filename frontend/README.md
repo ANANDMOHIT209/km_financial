@@ -3,6 +3,7 @@
 To run the project first install all the dependency using
 ``npm install --legacy-peer-deps``
 
+``npm install react-spring``
 
 ## Available Scripts
 

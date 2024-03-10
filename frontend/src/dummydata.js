@@ -20,27 +20,27 @@ export const homeAbout = [
 ]
 export const awrapper = [
   {
-    cover: "https://img.icons8.com/external-yogi-aprelliyanto-basic-outline-yogi-aprelliyanto/80/ffffff/external-graduation-education-yogi-aprelliyanto-basic-outline-yogi-aprelliyanto.png",
-    data: "3,000",
-    title: "SUCCESS STORIES",
+    cover: "https://img.icons8.com/3d-fluency/94/home-automation.png",
+    data: "100+",
+    title: "Banking Partners",
   },
 
   {
-    cover: "https://img.icons8.com/ios/80/ffffff/athlete.png",
-    data: "320",
-    title: "TRUSTED TUTORS",
+    cover: "https://img.icons8.com/3d-fluency/94/person-male--v2.png",
+    data: "1000+",
+    title: "TRUSTED CLIENTS",
   },
   {
-    cover: "https://img.icons8.com/external-outline-icons-maxicons/80/ffffff/external-calender-insurance-outline-outline-icons-maxicons.png",
-    data: "1,000",
-    title: "SCHEDULES",
+    cover: "https://img.icons8.com/3d-fluency/94/money.png",
+    data: "2,000+",
+    title: "APPROVED LOANS",
   },
-  {
-    cover: "https://img.icons8.com/ios/80/ffffff/macbook-idea--v3.png",
-    data: "587",
-    title: "COURSES",
-  },
-]
+  // {
+  //   cover: "https://img.icons8.com/ios/80/ffffff/macbook-idea--v3.png",
+  //   data: "20+",
+  //   title: "YEARS IN BUSINESS",
+  // },
+];
 export const coursesCard = [
   {
     id: 1,

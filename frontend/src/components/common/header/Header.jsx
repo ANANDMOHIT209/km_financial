@@ -104,23 +104,23 @@ const Header = () => {
                <Link to='/'>Home</Link>
              </li>
              <li>
-               <Link to='/courses'>All Courses</Link>
-           </li>
+               <Link to='/applyloan'>Apply Loan</Link>
+            </li>
              <li>
-               <Link to='/about'>About</Link>
+               <Link to='/about'>Calculator</Link>
              </li>
              <li>
-               <Link to='/team'>Team</Link>
+               <Link to='/about'>About Us</Link>
              </li>
-             <li>
-               <Link to='/pricing'>Pricing</Link>
-             </li>
-             <li>
-               <Link to='/journal'>Journal</Link>
-             </li>
-             <li>
+              <li>
                <Link to='/contact'>Contact</Link>
              </li>
+             <li>
+               <Link to='/pricing'>a</Link>
+             </li>
+             <li>
+               <Link to='/journal'>a</Link>
+             </li>            
           </ul>
           <div className="right">
             {!isAuthenticated && (

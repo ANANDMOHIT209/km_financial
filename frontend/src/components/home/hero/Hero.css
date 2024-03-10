@@ -1,5 +1,5 @@
 .hero {
-  background-image: url("../../../../public/images/homepage1.svg");
+  background-image: url("../../../../public/images/bg-design.svg");
   background-size: cover;
   background-attachment: fixed;
   position: absolute;
@@ -13,7 +13,7 @@
   color: #fff;
 }
 .hero #heading h3 {
-  color: #fff;
+  color: #ffffff;
 }
 .hero #heading {
   text-align: left;
@@ -34,6 +34,7 @@
   padding: 15px 20px;
   /* Add padding to the button */
   font-size: 20px;
+  font-weight: 500;
   /* Set font size */
   cursor: pointer;
   /* Change cursor to pointer on hover */

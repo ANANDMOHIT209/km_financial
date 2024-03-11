@@ -60,6 +60,9 @@ import LoanHistory from "./components/profile/Loan_profile";
 import LoanDetails from "./components/loan/LoanDetail";
 import UpdateLoanForm from "./components/loan/LoanUpdate";
 import UpdateProfile from "./components/profile/UpdateProfile";
+import EmiCalculator from "./components/calculator/emi";
+import FDCalculator from "./components/calculator/fd";
+import SIPCalculator from "./components/calculator/sip";
 import { AuthProvider, useAuth } from './AuthContext'; // Import the context
 
 function App() {
@@ -83,6 +86,9 @@ function App() {
           <Route  path="/loan/:loanId" component={LoanDetails} />
           <Route  path="/loan-update/:loanId" component={UpdateLoanForm} />
           <Route exact path="/applyloan" component={LoanForm} />
+          <Route exact path="/emicalculator" component={EmiCalculator} />
+          <Route exact path="/fdcalculator" component={FDCalculator} />
+          <Route exact path="/sipcalculator" component={SIPCalculator} />
         </Switch>
         <Footer />
       </Router>

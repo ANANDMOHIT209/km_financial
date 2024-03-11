@@ -26,6 +26,11 @@ class LoanCalculationDetails(BaseModel):
     annual_interest_rate: float
     loan_term: int 
 
+class FDCalculation(BaseModel):
+    principal: float
+    interest_rate: float
+    tenure: int
+
 class LoanApplication(LoanCalculationDetails, ClientReq):
     loan_amount: float
     loan_type: str

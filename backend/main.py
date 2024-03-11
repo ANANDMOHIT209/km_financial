@@ -54,6 +54,20 @@ def calculate_monthly_payment(loan_amount, interest_rate, loan_term):
     monthly_payment = (loan_amount * monthly_interest_rate) / (1 - math.pow((1 + monthly_interest_rate), -total_payments))
     return monthly_payment
 
+def calculate_maturity_amount(principal, interest_rate, tenure):
+    # Convert interest rate to decimal
+    interest_rate_decimal = interest_rate / 100.0
+    
+    # Calculate periodic rate of interest
+    periodic_interest_rate = interest_rate_decimal / 12.0
+    
+    # Calculate number of payments
+    num_payments = tenure * 12
+    
+    # Calculate Maturity Amount
+    maturity_amount = principal * ((pow(1 + periodic_interest_rate, num_payments) - 1) / periodic_interest_rate) * (1 + periodic_interest_rate)
+    
+    return maturity_amount
 
 def update_loan_details(loan_id: int, loan_amount: float, annual_interest_rate: float, loan_term: int, db: DBSession = Depends(get_db)):
     loan_details = bmd.LoanDetails(
@@ -64,6 +78,11 @@ def update_loan_details(loan_id: int, loan_amount: float, annual_interest_rate: 
     )
     db.add_to_session(loan_details)
     db.commit()
+
+def calculate_total_return(principal, interest_rate, tenure):
+    interest_rate_decimal = interest_rate / 100
+    total_return = principal + principal * ((1 + interest_rate_decimal) ** tenure - 1)
+    return total_return
 
 
 @app.post("/signup")
@@ -350,6 +369,25 @@ async def update_loan_application(
 def calculate_total_repayment(monthly_payment, loan_term):
     return monthly_payment * loan_term
 
+@app.post("/loan/fdcalculate")
+async def calculate_loan(
+    loan_details: rqm.FDCalculation,
+    current_user_email = Depends(su.get_current_user),
+    db: DBSession = Depends(get_db)
+):
+    current_user = db.get_user_by_email(current_user_email)
+    if not current_user:
+        raise HTTPException(status_code=401, detail="User not found")
+    try:
+        total_return = calculate_total_return( loan_details.principal, loan_details.interest_rate, loan_details.tenure)
+        return { "principal":loan_details.principal,
+                 "estimatate_return": round((round(total_return, 2)-loan_details.principal),2),
+                 "total_return": round(total_return, 2),
+                }
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
 @app.post("/loan/calculate")
 async def calculate_loan(
     loan_details: rqm.LoanCalculationDetails,
@@ -363,7 +401,53 @@ async def calculate_loan(
     try:
         monthly_payment = calculate_monthly_payment(loan_details.loan_amount, loan_details.annual_interest_rate, loan_details.loan_term)
         total_repayment = calculate_total_repayment(monthly_payment, loan_details.loan_term)
-        return {"monthly_payment": round(monthly_payment, 2), "total_repayment": round(total_repayment, 2)}
+        return { "principal":loan_details.loan_amount,
+                 "monthly_payment": round(monthly_payment, 2),
+                 "total_repayment": round(total_repayment, 2),
+                 "interest": round((round(total_repayment, 2)-loan_details.loan_amount),2)
+                 }
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    
+
+@app.post("/loan/fdcalculate")
+async def calculate_loan(
+    loan_details: rqm.FDCalculation,
+    current_user_email = Depends(su.get_current_user),
+    db: DBSession = Depends(get_db)
+):
+
+    current_user = db.get_user_by_email(current_user_email)
+    if not current_user:
+        raise HTTPException(status_code=401, detail="User not found")
+    try:
+        total_return = calculate_total_return( loan_details.principal, loan_details.interest_rate, loan_details.tenure)
+        print(total_return)
+        return { "principal":loan_details.principal,
+                 "estimatate_return": (round(total_return, 2)-loan_details.principal),
+                 "total_return": round(total_return, 2),
+                }
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@app.post("/loan/sipcalculate")
+async def calculate_loan(
+    loan_details: rqm.FDCalculation,
+    current_user_email = Depends(su.get_current_user),
+    db: DBSession = Depends(get_db)
+):
+
+    current_user = db.get_user_by_email(current_user_email)
+    if not current_user:
+        raise HTTPException(status_code=401, detail="User not found")
+    try:
+        total_return = calculate_maturity_amount( loan_details.principal, loan_details.interest_rate, loan_details.tenure)
+        print(total_return)
+        return { "principal":(loan_details.principal*loan_details.tenure*12),
+                 "estimatate_return": (round(total_return, 2)-(loan_details.principal*loan_details.tenure*12)),
+                 "total_return": round(total_return, 2),
+                }
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
     

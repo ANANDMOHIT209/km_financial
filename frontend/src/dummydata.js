@@ -1,23 +1,29 @@
 export const homeAbout = [
   {
     id: 1,
-    cover: "https://img.icons8.com/dotty/80/000000/storytelling.png",
-    title: "Online Courses",
-    desc: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+    cover: "./images/loan-features/Competitive Interest Rate_2.svg",
+    title: "Interest Rate",
+    desc: "Our interest rates starts from x%* p.a.",
   },
   {
-    id: 1,
-    cover: "https://img.icons8.com/ios/80/000000/diploma.png",
-    title: "Earn A Certificates",
-    desc: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+    id: 2,
+    cover: "./images/loan-features/Seamless_experience.svg",
+    title: "Quick Disbursals",
+    desc: "Get your loan amount as quick as 7 days in your account.",
   },
   {
-    id: 1,
-    cover: "https://img.icons8.com/ios/80/000000/athlete.png",
-    title: "Learn with Expert",
-    desc: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+    id: 3,
+    cover: "./images/loan-features/document.svg",
+    title: "Minimal Documentation",
+    desc: "Save time with minimal documentation.",
   },
-]
+  {
+    id: 4,
+    cover: "./images/loan-features/canlander_3.svg",
+    title: "Hassle-free Purchase",
+    desc: "Experience hassle-free purchase.",
+  },
+];
 export const awrapper = [
   {
     cover: "https://img.icons8.com/3d-fluency/94/home-automation.png",
@@ -171,10 +177,10 @@ export const coursesCard = [
 ];
 export const online = [
   {
-    cover: "./images/courses/online/o1.png",
-    hoverCover: "./images/courses/online/o1.1.png",
-    courseName: "UI/UX Design Courses",
-    course: "25 Courses",
+    cover: "./images/loan-features/document-dollar.svg",
+    hoverCover: "./images/loan-features/document-dollar.svg",
+    courseName: "Personal Loan",
+    course: "upto 5 Lakhs",
   },
   {
     cover: "./images/courses/online/o2.png",
@@ -242,7 +248,7 @@ export const online = [
     courseName: "Web Management",
     course: "17 Courses",
   },
-]
+];
 export const team = [
   {
     cover: "./images/team/t1.webp",

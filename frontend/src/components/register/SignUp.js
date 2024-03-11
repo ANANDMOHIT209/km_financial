@@ -83,14 +83,12 @@ const SignUp = () => {
           <button type="submit">Sign Up</button>
         </form>
       </div>
-      <div className="signup-image">
-        <img
-          src="img.jpg"
+        <img className="signup-image"
+          src="20.svg"
           alt="Sign Up Image"
           width="200"
           height="150"
         />
-      </div>
     </div>
   );
 };

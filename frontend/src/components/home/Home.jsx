@@ -4,17 +4,19 @@ import Hblog from "./Hblog"
 import HAbout from "./HAbout"
 import Hero from "./hero/Hero"
 import Hprice from "./Hprice"
+import Faq from "../pricing/Faq"
 import Testimonal from "./testimonal/Testimonal"
 
 const Home = () => {
   return (
     <>
       <Hero />
-      <AboutCard />
-      <HAbout />
-      <Testimonal />
-      <Hblog />
       <Hprice />
+      <HAbout />
+      <AboutCard />
+      <Testimonal />
+      <Hblog />      
+      <Faq />      
     </>
   )
 }

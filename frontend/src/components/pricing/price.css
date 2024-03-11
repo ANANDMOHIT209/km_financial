@@ -22,7 +22,7 @@
   border-radius: 5px;
 }
 .faq .box {
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.282);
   margin-bottom: 20px;
 }
 .faq button {
@@ -41,7 +41,9 @@
 }
 .faq .accordion:hover {
   background-color: #1eb2a6;
-  color: #fff;
+  color: #000000;
 }
 
 /*--------------faq-------------*/
+
+

@@ -6,7 +6,7 @@ const Hprice = () => {
   return (
     <>
       <section className='hprice padding'>
-        <Heading subtitle='OUR PRICING' title='Pricing & Packages' />
+        <Heading subtitle='Apply for KM Finance Loan in 3 easy steps – it’s easy, seamless and quick.' title='How To Apply For a Personal Loan ?' />
         <div className='price container grid'>
           <PriceCard />
         </div>

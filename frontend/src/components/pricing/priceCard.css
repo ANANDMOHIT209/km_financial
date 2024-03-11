@@ -1,0 +1,49 @@
+.container-price {
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    padding: 20px;    
+}
+
+.image-container {
+    flex: 0 0 50%;
+}
+
+.text-container {
+    flex: 0 0 45%;
+}
+
+.steps__list {
+    list-style: none;
+    padding: 0;
+}
+
+.steps__list li {
+    margin-bottom: 15px;
+}
+
+.steps__count {
+    margin-bottom: 5px;
+}
+
+.steps__text {
+    margin-left: 20px;
+}
+
+.button-container {
+    margin-top: 20px;
+}
+
+.button-know {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #FFA500;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+}
+
+.button-know:hover {
+    background-color: #FF8C00;
+}

@@ -75,8 +75,8 @@ function App() {
           <Route exact path="/about" component={About} />
           <Route exact path="/courses" component={CourseHome} />
           <Route exact path="/team" component={Team} />
-          <Route exact path="/pricing" component={Pricing} />
-          <Route exact path="/journal" component={Blog} />
+          <Route exact path="/loan-process" component={Pricing} />
+          <Route exact path="/blogs" component={Blog} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />

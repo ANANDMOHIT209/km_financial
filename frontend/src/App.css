@@ -113,11 +113,11 @@ p {
 .margin {
   margin-top: 40.3%;
 }
-.grid {
+/* .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 30px;
-}
+} */
 .flex {
   display: flex;
 }

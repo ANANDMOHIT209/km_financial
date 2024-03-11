@@ -1,10 +1,8 @@
 .signup-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    /* Align the form container to the center */
-    align-items: center;
-    /* To vertically center the items */
+    justify-content: center;    /* Align the form container to the center */
+    align-items: center;    /* To vertically center the items */
     
 }
 
@@ -13,7 +11,7 @@
     margin-top: 40px;
     padding: 20px;
     box-shadow: 0 0 10px #F1F8F5;    /* Increase the alpha value for more opacity */
-    background-color: #eae9f2;
+    background-color: #FFF1EB;
 }
 
 .signup-form h2 {
@@ -54,7 +52,7 @@
     /* Set the font size of the text to be smaller */
 }
 
-.signup-image {
+.signUp-image {
     padding: 20px;
 }
 

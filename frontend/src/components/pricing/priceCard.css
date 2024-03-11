@@ -1,49 +1,106 @@
+/* Container for the entire price card */
 .container-price {
     display: flex;
-    justify-content:flex-start;
+    /* Use flexbox for layout */
+    justify-content: center;
+    /* Center content horizontally */
     align-items: center;
-    padding: 20px;    
+    /* Center content vertically */
+    padding: 20px;
+    /* Add padding around the container */
 }
 
+/* Container for the image */
 .image-container {
     flex: 0 0 50%;
+    /* Take up 50% of the available space */
+    text-align: center;
+    /* Center the content horizontally */
 }
 
+/* Container for the text */
 .text-container {
-    flex: 0 0 45%;
+    flex: 0 0 40%;
+    /* Take up 45% of the available space */
+    text-align: left;
+    /* Align text to the left */
+    margin-top: 25px;
+    /* Add space between the image and the text */
 }
 
+/* List for the steps */
 .steps__list {
     list-style: none;
+    /* Remove default list styles */
     padding: 0;
+    /* Remove default padding */
 }
 
+/* Individual step item */
 .steps__list li {
     margin-bottom: 15px;
+    /* Add space between each step */
 }
 
+/* Style for step count */
 .steps__count {
     margin-bottom: 5px;
+    /* Add space below the step count */
 }
 
+/* Style for step text */
 .steps__text {
     margin-left: 20px;
+    /* Add space to the left of the text */
 }
 
+/* Container for the button */
 .button-container {
-    margin-top: 20px;
+    margin-top: 30px;    /* Add space above the button */
 }
 
+/* Style for the button */
 .button-know {
     display: inline-block;
-    padding: 10px 20px;
+    /* Display the button as inline-block */
+    padding: 15px 30px;
+    /* Add padding to the button */
     background-color: #FFA500;
+    /* Set background color */
     color: #fff;
+    /* Set text color to white */
     text-decoration: none;
+    /* Remove underline */
     border: none;
+    outline: none;
     border-radius: 5px;
+    font-weight: bold;
 }
 
+/* Hover effect for the button */
 .button-know:hover {
     background-color: #FF8C00;
+    /* Change background color on hover */
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .container-price {
+        flex-direction: column;
+        /* Stack elements vertically */
+        align-items: center;
+        /* Center elements horizontally */
+    }
+
+    .image-container {
+        order: 1;
+        /* Change the order of the image */
+        margin-bottom: 20px;
+        /* Add space between image and text */
+    }
+
+    .text-container {
+        order: 2;
+        /* Change the order of the text */
+    }
 }

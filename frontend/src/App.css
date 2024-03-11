@@ -6,7 +6,7 @@
 }
 body {
   font-family: "Roboto", sans-serif;
-  background-color: #f8f8f8;
+  background-color: #B5ABFF;
 }
 /*------------global-----------*/
 .container {
@@ -29,7 +29,7 @@ body {
 }
 .icon:hover {
   cursor: pointer;
-  background-color: #1eb2a6;
+  background-color: #7F78D2;
   color: #fff;
 }
 a {
@@ -43,9 +43,10 @@ li {
 }
 button {
   padding: 17px 30px;
-  background-color: #fff;
-  color: #1eb2a6;
+  background-color: #378CE7;
+  color: #f7f1f1;
   font-weight: 600;
+  font-size: 18px;
   border: none;
   margin: 30px 10px 0 0;
   border-radius: 3px;
@@ -126,7 +127,7 @@ p {
   grid-gap: 30px;
 }
 .outline-btn {
-  margin: 0;
+  margin-top: 80px;
   box-shadow: none;
   border: 2px solid #1eb2a6;
   width: 100%;

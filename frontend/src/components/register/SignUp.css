@@ -1,4 +1,3 @@
-/* SignUp.css */
 .signup-container {
     display: flex;
     flex-direction: row;
@@ -6,12 +5,15 @@
     /* Align the form container to the center */
     align-items: center;
     /* To vertically center the items */
+    
 }
 
 .signup-form {
     width: 400px;
-    /* Set a fixed width for the form container */
+    margin-top: 40px;
     padding: 20px;
+    box-shadow: 0 0 10px #F1F8F5;    /* Increase the alpha value for more opacity */
+    background-color: #eae9f2;
 }
 
 .signup-form h2 {

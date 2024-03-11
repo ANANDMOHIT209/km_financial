@@ -1,7 +1,7 @@
 .newletter {
-  background-color: #1eb2a6;
+  background-color: #B5ABFF;
   padding: 50px 0;
-  color: #fff;
+  color: #ffffff;
 }
 .newletter .right,
 .newletter .left {
@@ -27,11 +27,11 @@
 }
 .newletter i {
   padding: 12px;
-  color: #1eb2a6;
+  color: #7F78D2;
   background-color: #fff;
 }
 footer {
-  background-color: #eeeeee;
+  background-color: #ffffff;
 }
 footer .container {
   display: grid;
@@ -44,15 +44,15 @@ footer .container {
   }
 }
 footer .logo span {
-  color: #1eb2a6;
+  color: #000000;
   font-size: 14px;
 }
 footer .logo p {
-  color: grey;
+  color: rgb(0, 0, 0);
   margin: 30px 0 15px 0;
 }
 footer .logo .icon {
-  background-color: #1eb2a6;
+  background-color: #6A5ACD;
   color: white;
   margin-right: 10px;
 }
@@ -64,7 +64,7 @@ footer ul li {
   margin-bottom: 20px;
 }
 footer .link li::before {
-  color: #1eb2a6;
+  color: #6A5ACD;
   margin-right: 5px;
 }
 footer .items {
@@ -80,7 +80,7 @@ footer .items img {
 footer .items span,
 footer .items i {
   font-size: 12px;
-  color: #1eb2a6;
+  color: #6A5ACD;
   margin-right: 5px;
   text-transform: capitalize;
 }
@@ -95,17 +95,14 @@ footer .last ul li {
 footer .last i {
   width: 60px;
   font-size: 20px;
-  color: #1eb2a6;
+  color: #7F78D2;
 }
 .legal {
   text-align: center;
   padding: 10px 0;
-  color: grey;
-  background-color: #e9e9e9;
+  color: rgb(255, 255, 255);
+  background-color: #333333;
 }
 .legal p {
   font-size: 15px;
-}
-.legal i {
-  color: #1eb2a6;
 }

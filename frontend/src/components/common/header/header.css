@@ -17,7 +17,7 @@
 
 /*--------header------------*/
 header {
-  background-color: rgba(115, 205, 199, 0.2);
+  background-color: rgba(202, 240, 237, 0.2);
   /* Set the background color with transparency */
   margin: 0 70px;
   justify-content: space-between;
@@ -40,13 +40,14 @@ header ul {
 }
 
 header ul li a {
-  color: #fff;
+  color: #000000;
   font-weight: 500;
+  font-size: 25px;
   transition: 0.5s;
 }
 
 header ul li a:hover {
-  color: #1eb2a6;
+  color: #1e4db2;
 }
 
 .right {
@@ -57,16 +58,16 @@ header ul li a:hover {
 }
 
 .start {
-  background-color: #1eb2a6;
+  background-color: rgba(202, 240, 237, 0.2);
   padding: 20px 10px;
   color: #fff;
   /* Add margin between buttons */
 }
 
 .button {
-  background-color: #ffffff;
+  background-color: #06308d;
   padding: 15px 30px;
-  color: #fff;
+  color: #F1F8F5;
   cursor: pointer;
   /* Ensure cursor changes to pointer on hover */
   border: none;

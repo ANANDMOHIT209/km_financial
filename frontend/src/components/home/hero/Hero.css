@@ -24,12 +24,13 @@
 /* primary-btn-hero */
 
 .primary-btn-hero {
+  position: relative;
+  z-index: 1;
   background-color: #007bff;
   /* Blue color for the button */
   color: #fff;
   /* White text color */
   margin-top: 50px;
-  border: 5px solid #007bff;
   /* Remove button border */
   padding: 15px 20px;
   /* Add padding to the button */

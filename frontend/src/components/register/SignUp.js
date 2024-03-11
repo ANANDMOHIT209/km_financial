@@ -58,7 +58,7 @@ const SignUp = () => {
           <div className="input-group">
             <label>Phone</label>
             <input
-              type="text"
+              type="number"
               name="phone"
               placeholder="Enter your phone number"
               onChange={handleChange}
@@ -84,7 +84,12 @@ const SignUp = () => {
         </form>
       </div>
       <div className="signup-image">
-        <img src="img.jpg" alt="Sign Up Image" width="200" height="150" />
+        <img
+          src="img.jpg"
+          alt="Sign Up Image"
+          width="200"
+          height="150"
+        />
       </div>
     </div>
   );

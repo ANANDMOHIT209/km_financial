@@ -18,8 +18,12 @@
 }
 .signin-form {
     width: 400px;
-    /* Set a fixed width for the form container */
     padding: 20px;
+    margin: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Add box shadow */
+    background-color: #fff;
+    /* Add a background color to the form container */
 }
 
 .signin-form h2 {

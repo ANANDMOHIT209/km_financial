@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./SignIn.css";
 import api from "../../api";
+import loginImg from "./login.svg";
 import UserProfile from "../profile/UserProfile";
 
 const SignIn = () => {
@@ -31,6 +32,10 @@ const SignIn = () => {
 
   return (
     <div className="signin-container">
+      <div className="signin-image">
+        {/* Your image component goes here */}
+        <img src={loginImg} alt="Sign Up Image" width="600" height="400" />
+      </div>
       <div className="signin-form">
         <h2>Sign In</h2>
         <form onSubmit={handleSubmit}>
@@ -54,7 +59,7 @@ const SignIn = () => {
               required
             />
           </div>
-          
+
           <div className="signin-footer">
             <p>
               Don't have an account? <Link to="/signup/">Sign Up</Link>
@@ -62,10 +67,6 @@ const SignIn = () => {
           </div>
           <button type="submit">Sign In</button>
         </form>
-      </div>
-      <div className="signin-image">
-        {/* Your image component goes here */}
-        <img src="img.jpg" alt="Sign Up Image" width="100" height="100" />
       </div>
     </div>
   );

@@ -2,10 +2,8 @@
 .signin-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    /* Align the form container to the center */
-    align-items: center;
-    /* To vertically center the items */
+    justify-content: center;    /* Align the form container to the center */
+    align-items: center;    /* To vertically center the items */
 }
 .signin-footer {
     margin-top: 0px;
@@ -22,7 +20,7 @@
     margin: 50px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     /* Add box shadow */
-    background-color: #fff;
+    background-color:#FFF1EB;
     /* Add a background color to the form container */
 }
 

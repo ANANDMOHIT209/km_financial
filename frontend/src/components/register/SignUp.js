@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Link ,useHistory} from "react-router-dom";
 import "./SignUp.css";
+import signupImg from "./signup.png";
 import api from "../../api";
 
 const SignUp = () => {
@@ -32,6 +33,9 @@ const SignUp = () => {
 
   return (
     <div className="signup-container">
+      <div className="signUp-image">
+        <img src={signupImg} alt="Sign In Image" width="700" height="450" />
+      </div>
       <div className="signup-form">
         <h2>Sign Up</h2>
         <form onSubmit={handleSubmit}>
@@ -82,14 +86,6 @@ const SignUp = () => {
           </div>
           <button type="submit">Sign Up</button>
         </form>
-      </div>
-      <div className="signup-image">
-        <img
-          src="img.jpg"
-          alt="Sign Up Image"
-          width="200"
-          height="150"
-        />
       </div>
     </div>
   );

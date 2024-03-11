@@ -37,7 +37,7 @@
   color: #999999;
 }
 .aboutHome .item:hover {
-  background-color: #1eb2a6;
+  background-color: #87d0ea;
   color: #fff;
   cursor: pointer;
   box-shadow: 0 5px 25px -2px rgb(0 0 0 / 6%);
@@ -55,15 +55,13 @@
   color: #fff;
 } */
 .awrapper-container {
-  background-color: azure;
-  height: 30vh;
+  background-color: rgba(255, 255, 255, 0.3);
   color: #090909;
+  margin-top: 20px;
   padding: 20px;
   display: flex;
   justify-content: center;
   /* Center content horizontally */
-  align-items: center;
-  /* Center content vertically */
 }
 
 .awrapper-content {
@@ -91,6 +89,34 @@
   font-size: 20px;
   font-weight: 500;
   margin-top: 5px;
+}
+
+/* AboutCard.css */
+
+.item-container {
+  margin-bottom: 20px;
+  /* Adjust margin between each item */
+}
+
+.item-content {
+  display: flex;
+  align-items: center;
+  /* You can adjust flexbox properties here */
+}
+
+.item-img {
+  margin-right: 20px;
+  /* Adjust space between image and text */
+}
+
+.item-text {
+  flex-grow: 1;
+  /* Allow text to grow and take up available space */
+}
+
+.item-img img {
+  max-width: 100%;
+  /* Ensure images don't exceed container width */
 }
 
 /* Media query for smaller screens */

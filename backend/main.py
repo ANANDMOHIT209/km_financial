@@ -92,7 +92,16 @@ async def signup(user_details: rqm.UserDetails, db: DBSession = Depends(get_db))
         raise HTTPException(status_code=400, detail="Phone or email already registered")
 
     hashed_password = hashlib.sha256(user_details.password.encode("utf-8")).hexdigest()
-    new_user = User(name=user_details.name, phone=user_details.phone,  email=user_details.email, password=hashed_password)
+    new_user = User(
+        name=user_details.name,
+        phone=user_details.phone,
+        email=user_details.email,
+        gender=user_details.gender,
+        pincode = user_details.pincode,
+        state = user_details.state,
+        address_detail = user_details.address_detail,
+        password=hashed_password
+        )
     db.add_to_session(new_user)
     db.commit()
 
@@ -112,7 +121,6 @@ async def login(loginuser : rqm.LoginUser, db: DBSession = Depends(get_db)):
            "message": {
                 "access_token": access_token,
                 "email": user.email,
-                "userdetails": userdetails,
                 }
             }
         return response
@@ -125,20 +133,14 @@ async def apply_loan(
     current_user_email = Depends(su.get_current_user),
     db: DBSession = Depends(get_db)
 ):
-    print('ABC')
     user = db.get_user_by_email(current_user_email)
-    # if current_user_email is None or not authorization.startswith("Bearer "):
-    #     raise HTTPException(status_code=401, detail="Unauthorized")
-
-    # token = current_user_email.split("Bearer ")[1]
-    # user =db.get_user_by_email(loan_data.email) 
     if not user:
         raise HTTPException(status_code=401, detail="User not found")
     new_loan = bmd.Loan(
         user_id=user.id,
-        name=user.name, 
-        phone=user.phone, 
-        email=user.email, 
+        # name=user.name, 
+        # phone=user.phone, 
+        # email=user.email, 
         aadhar_no= loan_data.aadhar_no,
         pan_no= loan_data.pan_no,
         bank_details= loan_data.bank_details,
@@ -224,6 +226,10 @@ async def get_user_profile(
         "name": current_user.name, 
         "email": current_user.email, 
         "phone": current_user.phone,
+        "gender": current_user.gender,
+        "pincode": current_user.pincode,
+        "state": current_user.state,
+        "address_detail": current_user.address_detail,
         }
     }
     return response
@@ -242,6 +248,14 @@ async def update_user_profile(
     if current_user:
         if current_user.name is not None:
             current_user.name = profile_data.name
+        if current_user.gender is not None:
+            current_user.gender = profile_data.gender
+        if current_user.pincode is not None:
+            current_user.pincode = profile_data.pincode
+        if current_user.state is not None:
+            current_user.state = profile_data.state
+        if current_user.address_detail is not None:
+            current_user.address_detail = profile_data.address_detail
         db.session.commit()
         db.session.refresh(current_user)
         response = {
@@ -250,6 +264,10 @@ async def update_user_profile(
             "email": current_user.email,
             "name": current_user.name,
             "phone": current_user.phone,
+            "gender": current_user.gender,
+            "pincode": current_user.pincode,
+            "state" : current_user.state,
+            "address_detail": current_user.address_detail,
             }
         }
         return response
@@ -271,9 +289,9 @@ async def get_loan_application_history(
                 {
                     "loan_id": loan.id,
                     "user_id": loan.user_id,
-                    "name": loan.name,
-                    "phone": loan.phone,
-                    "email": loan.email,
+                    "name": loan.user.name,
+                    "phone": loan.user.phone,
+                    "email": loan.user.email,
                     "loan_amount": loan.loan_amount,
                     "loan_type": loan.loan_type,
                     "annual_interest_rate" : loan.annual_interest_rate,
@@ -298,15 +316,24 @@ async def get_loan_details(
 ):
     current_user = db.get_user_by_email(current_user_email)
     loan = db.get_loan_by_id(loan_id)
-    if loan:  # No need to compare with True
+    if loan: 
         if loan.user_id == current_user.id:
             response = {
                 "message": { 
                 "loan_id": loan.id,
                 "user_id": loan.user_id,
-                "name": loan.name,
-                "phone": loan.phone,
-                "email": loan.email,
+                "name": loan.user.name,
+                "phone": loan.user.phone,
+                "email": loan.user.email,
+                "gender": loan.user.gender,
+                "pincode": loan.user.pincode,
+                "state": loan.user.state,
+                "address":loan.user.address_detail,
+                "aadhar_no": loan.aadhar_no,
+                "pan_no": loan.pan_no,
+                "bank_details":loan.bank_details,
+                "account_no": loan.account_no,
+                "ifsc_code": loan.ifsc_code,
                 "loan_amount": loan.loan_amount,
                 "loan_type": loan.loan_type,
                 "annual_interest_rate": loan.annual_interest_rate,

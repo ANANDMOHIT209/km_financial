@@ -37,6 +37,10 @@ const ProfilePage = () => {
       <p>Name: {profileData.name}</p>
       <p>Email: {profileData.email}</p>
       <p>Phone: {profileData.phone}</p>
+      <p>Gender: {profileData.gender}</p>
+      <p>Email: {profileData.pincode}</p>
+      <p>Phone: {profileData.state}</p>
+      <p>Phone: {profileData.address_detail}</p>
       <button onClick={() => history.push('/loan-history')}>View Loan History</button>
       <button onClick={() => history.push('/update_profile')}>Update User Profile</button>
     </div>

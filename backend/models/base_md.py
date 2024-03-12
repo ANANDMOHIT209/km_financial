@@ -12,17 +12,22 @@ class User(Base):
     name = Column(String, index=True)
     phone = Column(String, index=True, unique=True)
     email = Column(String, index=True, unique=True)
+    gender =Column(String, index=True)
+    pincode = Column(String, index =True)
+    state = Column(String, index=True)
+    address_detail = Column(String,index=True)
     is_admin = Column(BOOLEAN, default=True) 
     password = Column(String)
+    loans = relationship("Loan", back_populates="user")
 
 
 class Loan(Base):
     __tablename__ = 'loans'
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey('users.id'), index=True)
-    name = Column(String, index=True)
-    phone = Column(String, index=True)
-    email = Column(String, index=True)
+    # name = Column(String, index=True)
+    # phone = Column(String, index=True)
+    # email = Column(String, index=True)
     aadhar_no = Column(String, index=True)
     pan_no = Column(String, index=True)
     bank_details = Column(String, index=True)
@@ -35,6 +40,7 @@ class Loan(Base):
     employment_details = Column(String)
     status = Column(String, default="pending")
 
+    user = relationship("User", back_populates="loans") # Added relationship definition
     details = relationship("LoanDetails", back_populates="loan", uselist=False)
 
 

@@ -12,10 +12,18 @@ class UserDetails(ClientReq):
     name: str
     phone: str
     email: str
+    gender: str
+    pincode: str
+    state: str
+    address_detail:str
     password: str
 
 class UpdateUserProfile(ClientReq):
     name: Optional[str] = None
+    gender: Optional[str] = None
+    pincode: Optional[str] = None
+    state: Optional[str] = None
+    address_detail: Optional[str] = None
 
 class LoginUser(ClientReq):
     email:str

@@ -12,6 +12,10 @@ const SignUp = () => {
     phone: "",
     email: "",
     password: "",
+    gender:"",
+    pincode: "",
+    state: "",
+    address_detail: "",
   });
 
   const handleChange = (e) => {
@@ -62,9 +66,49 @@ const SignUp = () => {
           <div className="input-group">
             <label>Phone</label>
             <input
-              type="number"
+              type="text"
               name="phone"
               placeholder="Enter your phone number"
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label>Gender</label>
+            <input
+              type="text"
+              name="gender"
+              placeholder="Gender"
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label>Pincode</label>
+            <input
+              type="text"
+              name="pincode"
+              placeholder="Pincode"
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label>Address</label>
+            <input
+              type="text"
+              name="address_detail"
+              placeholder="Address"
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label>State</label>
+            <input
+              type="text"
+              name="state"
+              placeholder="State"
               onChange={handleChange}
               required
             />

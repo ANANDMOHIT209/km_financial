@@ -19,7 +19,7 @@
 
 1. Create a virtual env 
 ```
-    phython -m venv env
+    python -m venv env
 ```
 
 2. Open env setup in command prompt

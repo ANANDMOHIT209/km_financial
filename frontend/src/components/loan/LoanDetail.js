@@ -1,61 +1,126 @@
 // LoanDetails.js
-import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { useParams, useHistory } from "react-router-dom";
+import axios from "axios";
+import "./LoanDetails.css";
 
 const LoanDetails = () => {
- const { loanId } = useParams();
- const [loan, setLoan] = useState({});
- const history = useHistory();
- useEffect(() => {
+  const { loanId } = useParams();
+  const [loan, setLoan] = useState({});
+  const history = useHistory();
+
+  useEffect(() => {
     const fetchLoanDetails = async () => {
       try {
-        const accessToken = localStorage.getItem("accessToken"); 
-      
+        const accessToken = localStorage.getItem("accessToken");
         const headers = {
-          "token": `${accessToken}`,
+          token: `${accessToken}`,
           "Content-Type": "application/json",
         };
         const response = await axios.get(
           `http://localhost:8000/loan/${loanId}`,
-          {headers},
-         );
+          { headers }
+        );
         setLoan(response.data.message);
       } catch (error) {
-        console.error('Error fetching loan details:', error);
+        console.error("Error fetching loan details:", error);
       }
     };
 
     fetchLoanDetails();
- }, [history]);
+  }, [history]);
 
- if (!loan) return <div>Loading...</div>;
+  if (!loan) return <div>Loading...</div>;
 
- return (
-    <div>
-      <h2>Loan Details</h2>
-      <p>Loan ID: {loan.loan_id}</p>
-      <p>Name: {loan.name}</p>
-      <p>Phone: {loan.phone}</p>
-      <p>Email: {loan.email}</p>
-      <p>Gender: {loan.gender}</p>
-      <p>Pincode: {loan.pincode}</p>
-      <p>State: {loan.state}</p>
-      <p>Address: {loan.address}</p>
-      <p>Aadhar Number: {loan.aadhar_no}</p>
-      <p>Pan Number: {loan.pan_no}</p>
-      <p>Bank name: {loan.bank_details}</p>
-      <p>Account Number: {loan.account_no}</p>
-      <p>IFSC code: {loan.ifsc_code}</p>
-      <p>Loan Amount: {loan.loan_amount}</p>
-      <p>annual Interest rate: {loan.annual_interest_rate}</p>
-      <p>Loan Type: {loan.loan_type}</p>
-      <p>Loan Term: {loan.loan_term}</p>
-      <p>Employment Details: {loan.employment_details}</p>
-      <p>Status: {loan.status}</p>
-      
+  return (
+    <div className="loan-details-container">
+      <h2 className="loan-details-heading">Loan Details</h2>
+      <div className="loan-details-table-container">
+        <table className="loan-details-table">
+          <tbody>
+            <tr>
+              <td className="loan-details-label">Loan ID:</td>
+              <td className="loan-details-value">{loan.loan_id}</td>
+            </tr>
+            <tr>
+              <td className="loan-details-label">Name:</td>
+              <td className="loan-details-value">{loan.name}</td>
+            </tr>
+            <tr>
+              <td className="loan-details-label">Phone:</td>
+              <td className="loan-details-value">{loan.phone}</td>
+            </tr>
+            <tr>
+              <td className="loan-details-label">Email:</td>
+              <td className="loan-details-value">{loan.email}</td>
+            </tr>
+            <tr>
+              <td className="loan-details-label">Gender:</td>
+              <td className="loan-details-value">{loan.gender}</td>
+            </tr>
+            <tr>
+              <td className="loan-details-label">Pincode:</td>
+              <td className="loan-details-value">{loan.pincode}</td>
+            </tr>
+            <tr>
+              <td className="loan-details-label">State:</td>
+              <td className="loan-details-value">{loan.state}</td>
+            </tr>
+            <tr>
+              <td className="loan-details-label">Address:</td>
+              <td className="loan-details-value">{loan.address}</td>
+            </tr>
+            <tr>
+              <td className="loan-details-label">Aadhar Number:</td>
+              <td className="loan-details-value">{loan.aadhar_no}</td>
+            </tr>
+            <tr>
+              <td className="loan-details-label">Pan Number:</td>
+              <td className="loan-details-value">{loan.pan_no}</td>
+            </tr>
+            <tr>
+              <td className="loan-details-label">Bank name:</td>
+              <td className="loan-details-value">{loan.bank_details}</td>
+            </tr>
+            <tr>
+              <td className="loan-details-label">Account Number:</td>
+              <td className="loan-details-value">{loan.account_no}</td>
+            </tr>
+            <tr>
+              <td className="loan-details-label">IFSC code:</td>
+              <td className="loan-details-value">{loan.ifsc_code}</td>
+            </tr>
+            <tr>
+              <td className="loan-details-label">Loan Amount:</td>
+              <td className="loan-details-value">{loan.loan_amount}</td>
+            </tr>
+            <tr>
+              <td className="loan-details-label">Annual Interest rate:</td>
+              <td className="loan-details-value">
+                {loan.annual_interest_rate}
+              </td>
+            </tr>
+            <tr>
+              <td className="loan-details-label">Loan Type:</td>
+              <td className="loan-details-value">{loan.loan_type}</td>
+            </tr>
+            <tr>
+              <td className="loan-details-label">Loan Term: (in Months)</td>
+              <td className="loan-details-value">{loan.loan_term}</td>
+            </tr>
+            <tr>
+              <td className="loan-details-label">Employment Details:</td>
+              <td className="loan-details-value">{loan.employment_details}</td>
+            </tr>
+            <tr>
+              <td className="loan-details-label">Status:</td>
+              <td className="loan-details-value">{loan.status}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
- );
+  );
 };
 
 export default LoanDetails;

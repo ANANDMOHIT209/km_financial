@@ -1,0 +1,48 @@
+/* LoanDetails.css */
+.loan-details-container {
+    max-width: 600px;
+    margin: 25px auto;
+    padding: 20px;
+    border: 2px solid #0d0000;
+    border-radius: 8px;
+}
+
+.loan-details-heading {
+    text-align: center;
+    /* Center align the text */
+}
+
+.loan-details-label {
+    font-weight: bold;
+    padding-right: 10px;
+    vertical-align: top;
+    /* Align labels to the top */
+}
+
+.loan-details-value {
+    padding-left: 10px;
+    /* Add padding to separate values from labels */
+}
+
+/* Style for table */
+.loan-details-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+}
+
+/* Style for table rows */
+.loan-details-table tr td {
+    border: 1px solid #ddd;
+    /* Add border between rows */
+}
+
+/* Style for table cells */
+.loan-details-table td {
+    padding: 10px 16px;
+    /* Add padding to table cells */
+    text-align: left;
+    /* Left align text in table cells */
+}
+
+

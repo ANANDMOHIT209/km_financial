@@ -1,24 +1,100 @@
-/* UserProfile.css */
-.user-profile {
-    width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .profile-header {
-    margin-bottom: 20px;
-  }
-  
-  .profile-pic {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-  }
-  
-  .profile-details p {
-    margin: 5px 0;
-  }
-  
+.profile-container {
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-width: 400px;
+  text-align: center;
+  /* Remove flexbox properties */
+}
+
+.profile-heading {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.profile-data{
+  justify-content: center;
+}
+.profile-data-div {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.profile-data-div p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+ 
+  /* Align text within the container */
+}
+
+.profile-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.profile-button:hover {
+  background-color: #0056b3;
+}
+
+.profile-button-container {
+  text-align: center;
+  margin-top: 20px;
+  /* Adjust margin as needed */
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+/* Loan Profile CSS */
+
+.loan-history-container {
+  margin: 20px;
+}
+
+.loan-history-heading {
+  font-size: 24px;
+  color: #333;
+}
+
+.loan-history-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.loan-history-table th,
+.loan-history-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+  /* Center align text */
+}
+
+.view-details-btn,
+.update-details-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  display: block;
+  /* Convert buttons to block-level elements */
+  margin: 0 auto;
+  /* Center buttons horizontally */
+}
+
+.view-details-btn:hover,
+.update-details-btn:hover {
+  background-color: #0056b3;
+}

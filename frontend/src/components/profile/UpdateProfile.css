@@ -1,0 +1,45 @@
+/* UpdateProfile.css */
+
+.update-profile-container {
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.update-profile-title {
+    margin-bottom: 20px;
+    padding-bottom: 40px;
+}
+
+.update-profile-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.update-profile-button {
+    margin-top: 20px;
+}
+
+.update-profile-form .MuiFormControl-root {
+    width: 100%;
+}
+
+.update-profile-form .MuiInputLabel-root {
+    margin-bottom: 8px;
+}
+
+.update-profile-form .MuiSelect-root {
+    margin-top: 8px;
+}
+
+.update-profile-form .MuiGrid-item {
+    padding: 8px;
+}
+
+@media (min-width: 600px) {
+    .update-profile-form .MuiGrid-item {
+        flex: 0 0 50%;
+    }
+}

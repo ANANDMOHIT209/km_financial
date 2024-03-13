@@ -1,6 +1,5 @@
-// SignUp.js
 import React, { useState } from "react";
-import { Link ,useHistory} from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./SignUp.css";
 import signupImg from "./signup.png";
 import api from "../../api";
@@ -12,14 +11,17 @@ const SignUp = () => {
     phone: "",
     email: "",
     password: "",
-    gender:"",
+    gender: "",
     pincode: "",
     state: "",
     address_detail: "",
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    // If the phone field, only allow numbers and limit to 10 characters
+    const value =   e.target.name === "phone"  ? e.target.value.replace(/\D/g, "").slice(0, 10)
+        : e.target.value;
+    setFormData({ ...formData, [e.target.name]: value });
   };
 
   const handleSubmit = async (e) => {
@@ -38,7 +40,7 @@ const SignUp = () => {
   return (
     <div className="signup-container">
       <div className="signUp-image">
-        <img src={signupImg} alt="Sign In Image" width="700" height="450" />
+        <img src={signupImg} alt="Sign Up Image"/>
       </div>
       <div className="signup-form">
         <h2>Sign Up</h2>
@@ -53,6 +55,15 @@ const SignUp = () => {
               required
             />
           </div>
+          <div className="input-group gender">
+            <label htmlFor="gender">Gender</label>
+            <select name="gender" id="gender" onChange={handleChange} required>
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
           <div className="input-group">
             <label>Email</label>
             <input
@@ -63,8 +74,8 @@ const SignUp = () => {
               required
             />
           </div>
-          <div className="input-group">
-            <label>Phone</label>
+          <div className="input-group ">
+            <label htmlFor="phone">Phone</label>
             <input
               type="text"
               name="phone"
@@ -73,17 +84,53 @@ const SignUp = () => {
               required
             />
           </div>
-          <div className="input-group">
-            <label>Gender</label>
-            <input
-              type="text"
-              name="gender"
-              placeholder="Gender"
-              onChange={handleChange}
-              required
-            />
+          <div className="input-group state">
+            <label htmlFor="state">State</label>
+            <select name="state" id="state" onChange={handleChange} required>
+              <option value="">Select State</option>
+              <option value="Andhra Pradesh">Andhra Pradesh</option>
+              <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+              <option value="Assam">Assam</option>
+              <option value="Bihar">Bihar</option>
+              <option value="Chhattisgarh">Chhattisgarh</option>
+              <option value="Goa">Goa</option>
+              <option value="Gujarat">Gujarat</option>
+              <option value="Haryana">Haryana</option>
+              <option value="Himachal Pradesh">Himachal Pradesh</option>
+              <option value="Jharkhand">Jharkhand</option>
+              <option value="Karnataka">Karnataka</option>
+              <option value="Kerala">Kerala</option>
+              <option value="Madhya Pradesh">Madhya Pradesh</option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Manipur">Manipur</option>
+              <option value="Meghalaya">Meghalaya</option>
+              <option value="Mizoram">Mizoram</option>
+              <option value="Nagaland">Nagaland</option>
+              <option value="Odisha">Odisha</option>
+              <option value="Punjab">Punjab</option>
+              <option value="Rajasthan">Rajasthan</option>
+              <option value="Sikkim">Sikkim</option>
+              <option value="Tamil Nadu">Tamil Nadu</option>
+              <option value="Telangana">Telangana</option>
+              <option value="Tripura">Tripura</option>
+              <option value="Uttar Pradesh">Uttar Pradesh</option>
+              <option value="Uttarakhand">Uttarakhand</option>
+              <option value="West Bengal">West Bengal</option>
+              <option value="Andaman and Nicobar Islands">
+                Andaman and Nicobar Islands
+              </option>
+              <option value="Chandigarh">Chandigarh</option>
+              <option value="Dadra and Nagar Haveli">
+                Dadra and Nagar Haveli
+              </option>
+              <option value="Daman and Diu">Daman and Diu</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Jammu And Kashmir">Jammu And Kashmir</option>
+              <option value="Lakshadweep">Lakshadweep</option>
+              <option value="Puducherry">Puducherry</option>
+            </select>
           </div>
-          <div className="input-group">
+          <div className="input-group pincode">
             <label>Pincode</label>
             <input
               type="text"
@@ -103,16 +150,7 @@ const SignUp = () => {
               required
             />
           </div>
-          <div className="input-group">
-            <label>State</label>
-            <input
-              type="text"
-              name="state"
-              placeholder="State"
-              onChange={handleChange}
-              required
-            />
-          </div>
+
           <div className="input-group">
             <label>Password</label>
             <input

@@ -61,9 +61,27 @@
   margin: 20px;
 }
 
+.loan-history-container {
+  text-align: center;
+}
+
+.loan-history-message {
+  background-color: #f8f9fa;
+  /* Example background color */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Example box shadow */
+  border-radius: 8px;
+  margin: 0 auto;
+  /* Center the message horizontally */
+  width: 60%;
+  /* Adjust width as needed */
+}
+
 .loan-history-heading {
   font-size: 24px;
   color: #333;
+  padding: 25px 0;
 }
 
 .loan-history-table {

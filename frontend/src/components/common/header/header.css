@@ -115,7 +115,7 @@ header ul li a:hover {
 
 /*--------header------------*/
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 932px) {
   .start {
     clip-path: none;
   }

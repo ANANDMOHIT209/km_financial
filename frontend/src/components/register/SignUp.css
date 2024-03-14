@@ -1,84 +1,68 @@
 .signup-container {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    height: 100vh;
 }
 
 .signup-form {
-    width: 50%;
-    /* Set the width to 50% of the screen */
-    max-width: 650px;
-    margin-top: 40px;
-    padding: 20px;
+    margin: 20px;
+    width: 60%;
     box-shadow: 0 0 10px #f1f8f5;
     background-color: #fff1eb;
-}
-
-.signup-form h2 {
-    margin-bottom: 20px;
+    padding: 20px;
 }
 
 .input-group {
     margin-bottom: 20px;
+    overflow: hidden;
 }
 
 .input-group label {
     display: block;
-    margin-bottom: 5px;
 }
 
-.input-group input,
 .input-group select {
     width: 100%;
-    padding: 10px;
+    padding: 8px;
+    margin-top: 5px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    padding-left: 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-.input-group input::placeholder,
-.input-group select::placeholder {
-    padding-left: 5px;
+.input-group input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-.signup-footer {
-    margin-top: 10px;
+
+.input-group.gender {
+    width: 40%;
+    float: left;
 }
 
-.signup-footer p {
-    font-size: 14px;
-}
-
-.signUp-image {
-    padding: 20px;
-    max-width: 100%;
+.input-group.email {
+    width: 40%;
+    float: left;
 }
 
 .input-group.state,
-.input-group.pincode {
-    display: inline-block;
-    width: calc(50% - 5px);
-    margin-right: 10px;
+.input-group.phone {
+    width: 50%;
+    float: right;
 }
 
-@media screen and (min-width: 768px) {
-    .signup-container {
-        flex-direction: row;
-        justify-content: center;
-    }
 
-    .signup-form {
-        width: 600px;
-    }
+.input-group.pincode {
+    width: 40%;
+    float: left;
+}
 
-    .signup-image {
-        order: 1;
-        margin-right: 20px;
-    }
-
-    .input-group.gender {
-        width: 50%;
-        margin-right: 10px;
-    }
+.input-group.address {
+    width: 100%;
 }

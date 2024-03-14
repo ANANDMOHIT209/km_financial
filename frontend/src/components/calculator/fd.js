@@ -43,12 +43,23 @@ const FDCalculator = () => {
 
  
  return (
-    <Container maxWidth="md">
+  <Container maxWidth="md">
+  <Grid container spacing={4} justifyContent="center">
+    <Grid item xs={6}>
       <form onSubmit={handleSubmit}>
-        <Grid container spacing={4} sx={{ padding: "20px", margin: "20px", backgroundColor: "#f0f0f0" }}>
+        <Grid
+          container
+          spacing={4}
+          sx={{
+            padding: "20px",
+            marginTop: "20px",
+            backgroundColor: "#f0f0f0",
+          }}
+        >
           <Grid item xs={12}>
             <Typography variant="h5">FD Calculator</Typography>
           </Grid>
+
           <Grid item xs={12}>
             <TextField
               type="number"
@@ -92,20 +103,16 @@ const FDCalculator = () => {
           </Grid>
         </Grid>
       </form>
+      </Grid>
       
       {/* Display calculation result */}
       {calculationResult && (
-        <Grid container spacing={4}>
           <Grid item xs={6}>
-            <Box sx={{ padding: "20px", margin: "20px"}}>
+            <Box sx={{ padding: "20px", margin: "20px",backgroundColor: "#f0f0f0",}}>
               <Typography variant="h6">Calculation Result</Typography>
               <Typography>Invested Amount: {calculationResult.principal}</Typography>
               <Typography>Estimated Return: {calculationResult.estimatate_return}</Typography>
               <Typography>Total Return: {calculationResult.total_return}</Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={6}>
-            <Box sx={{ padding: "20px", margin: "20px"}}>
               <PieChart
                 series={[
                   {
@@ -120,8 +127,8 @@ const FDCalculator = () => {
               />
             </Box>
           </Grid>
-        </Grid>
       )}
+      </Grid>
     </Container>
  );
 };

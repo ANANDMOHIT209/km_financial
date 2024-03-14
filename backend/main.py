@@ -137,10 +137,7 @@ async def apply_loan(
     if not user:
         raise HTTPException(status_code=401, detail="User not found")
     new_loan = bmd.Loan(
-        user_id=user.id,
-        # name=user.name, 
-        # phone=user.phone, 
-        # email=user.email, 
+        user_id=user.id, 
         aadhar_no= loan_data.aadhar_no,
         pan_no= loan_data.pan_no,
         bank_details= loan_data.bank_details,
@@ -149,7 +146,7 @@ async def apply_loan(
         loan_amount=loan_data.loan_amount, 
         loan_type=loan_data.loan_type, 
         annual_interest_rate=loan_data.annual_interest_rate, 
-        loan_term=loan_data.annual_interest_rate, 
+        loan_term=loan_data.loan_term, 
         employment_details=loan_data.employment_details,
     )
     db.add_to_session(new_loan)

@@ -79,7 +79,7 @@ const UpdateLoanForm = () => {
   };
 
   return (
-    <Container maxWidth="md" style={{ paddingTop: "30px" }}>
+    <Container maxWidth="md" style={{  marginTop: "50px", paddingTop: "30px", backgroundColor: "#f0f0f0" }}>
       <form
         onSubmit={handleSubmit}
         style={{ margin: "0 auto", maxWidth: "100%" }}
@@ -107,6 +107,7 @@ const UpdateLoanForm = () => {
           <Grid item>
             <FormControl fullWidth sx={{ minWidth: 260 }}>
               <TextField
+                type="text"
                 id="employment_details"
                 value={loanDetails.employment_details}
                 select
@@ -186,7 +187,7 @@ const UpdateLoanForm = () => {
               variant="contained"
               color="primary"
               style={{
-                marginBottom: "25px",
+                marginBottom: "30",
                 marginLeft: "25px",
                 padding: "10px 14px",
                 fontSize: "1.1rem",

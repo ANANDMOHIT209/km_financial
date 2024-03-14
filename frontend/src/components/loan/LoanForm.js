@@ -18,10 +18,10 @@ const LoanForm = () => {
     "applicant_name": "Yash Anand",
     "aadhar_no": "250825082508",
     "pan_no": "DDKLT5840M",
-    "bank_details": "Bank Of India, Branch Name",
+    "bank_details": "Axix Bank, Patna",
     "account_no": "1234567890",
-    "ifsc_code": "BKID0002541",
-    "loan_amount": 10000.0,
+    "ifsc_code": "AXIS0002541",
+    "loan_amount": 50000.0,
     "loan_type": "Other Loans",
     "annual_interest_rate": 5.0, // Example value, adjust as necessary
     "loan_term": 12, // Example value, adjust as necessary
@@ -54,7 +54,7 @@ const LoanForm = () => {
         {headers},
       );
       alert(response.data.message); 
-      history.push("/");
+      history.push("/loan-history");
     } catch (error) {
       alert("Error submitting loan application:", error.response.data.detail);
     }
@@ -145,7 +145,7 @@ const LoanForm = () => {
               select
               id="employment_details"
               name="employment_details"
-              label="Employment Details"
+              label="Employment Status"
               value={formData.employment_details}
               onChange={handleChange}
               fullWidth
@@ -214,11 +214,11 @@ const LoanForm = () => {
               type="text"
               id="bank_ifsc"
               name="bank_ifsc"
-              label="IFSC Code"
+              label="Bank IFSC Code"
               value={formData.ifsc_code}
               onChange={handleChange}
               fullWidth
-              inputProps={{ maxLength: 10 }}
+              inputProps={{ maxLength: 12 }}
             />
           </Grid>
 
@@ -240,8 +240,8 @@ const LoanForm = () => {
               type="text"
               id="loan_term"
               name="loan_term"
-              label="Loan Term"
-              value={formData.annual_interest_rate}
+              label="Loan Term (in Months)"
+              value={formData.loan_term}
               onChange={handleChange}
               fullWidth
               inputProps={{ maxLength: 10 }}

@@ -32,52 +32,56 @@ const LoanHistory = () => {
 
   return (
     <div className="loan-history-container">
-      {" "}
-      {/* Assign a unique class name */}
-      <h2 className="loan-history-heading">Loan History</h2>{" "}
-      {/* Assign unique class names */}
-      <table className="loan-history-table">
-        <thead>
-          <tr>
-            <th>Loan ID</th>
-            <th>Name</th>
-            <th>Loan Amount</th>
-            <th>Loan Type</th>
-            <th>Status</th>
-            <th>View Details</th>
-            <th>Update Details</th> {/* Added missing th */}
-          </tr>
-        </thead>
-        <tbody>
-          {loanHistory.map((loan) => (
-            <tr key={loan.loan_id}>
-              <td>{loan.loan_id}</td>
-              <td>{loan.name}</td>
-              <td>{loan.loan_amount}</td>
-              <td>{loan.loan_type}</td>
-              <td>{loan.status}</td>
-              <td>
-                <button
-                  className="view-details-btn"
-                  onClick={() => history.push(`/loan/${loan.loan_id}`)}
-                >
-                  View Details
-                </button>{" "}
-                {/* Assign unique class name */}
-              </td>
-              <td>
-                <button
-                  className="update-details-btn"
-                  onClick={() => history.push(`/loan-update/${loan.loan_id}`)}
-                >
-                  Update Details
-                </button>{" "}
-                {/* Assign unique class name */}
-              </td>
+      <h2 className="loan-history-heading">Loan History</h2>
+      {loanHistory.length === 0 ? (
+        <div className="loan-history-message">
+          <p>No loan history found. Apply for a new loan now!</p>
+          <button onClick={() => history.push("/applyloan")}>
+            Apply for a Loan
+          </button>
+        </div>
+      ) : (
+        <table className="loan-history-table">
+          <thead>
+            <tr>
+              <th>Loan ID</th>
+              <th>Name</th>
+              <th>Loan Amount</th>
+              <th>Loan Type</th>
+              <th>Status</th>
+              <th>View Details</th>
+              <th>Update Details</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {loanHistory.map((loan) => (
+              <tr key={loan.loan_id}>
+                <td>{loan.loan_id}</td>
+                <td>{loan.name}</td>
+                <td>{loan.loan_amount}</td>
+                <td>{loan.loan_type}</td>
+                <td>{loan.status}</td>
+                <td>
+                  <button
+                    className="view-details-btn"
+                    onClick={() => history.push(`/loan/${loan.loan_id}`)}
+                  >
+                    View Details
+                  </button>
+                </td>
+                <td>
+                  <button
+                    className="update-details-btn"
+                    onClick={() => history.push(`/loan-update/${loan.loan_id}`)}
+                  >
+                    Update Details
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };

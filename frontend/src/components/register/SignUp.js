@@ -40,7 +40,7 @@ const SignUp = () => {
   return (
     <div className="signup-container">
       <div className="signUp-image">
-        <img src={signupImg} alt="Sign Up Image"/>
+        <img src={signupImg} alt="Sign Up Image" />
       </div>
       <div className="signup-form">
         <h2>Sign Up</h2>
@@ -55,6 +55,16 @@ const SignUp = () => {
               required
             />
           </div>
+          <div className="input-group phone">
+            <label htmlFor="phone">Phone</label>
+            <input
+              type="text"
+              name="phone"
+              placeholder="Enter your phone number"
+              onChange={handleChange}
+              required
+            />
+          </div>
           <div className="input-group gender">
             <label htmlFor="gender">Gender</label>
             <select name="gender" id="gender" onChange={handleChange} required>
@@ -64,22 +74,12 @@ const SignUp = () => {
               <option value="other">Other</option>
             </select>
           </div>
-          <div className="input-group">
+          <div className="input-group email">
             <label>Email</label>
             <input
               type="email"
               name="email"
               placeholder="Enter your email"
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="input-group ">
-            <label htmlFor="phone">Phone</label>
-            <input
-              type="text"
-              name="phone"
-              placeholder="Enter your phone number"
               onChange={handleChange}
               required
             />
@@ -140,7 +140,7 @@ const SignUp = () => {
               required
             />
           </div>
-          <div className="input-group">
+          <div className="input-group address">
             <label>Address</label>
             <input
               type="text"

@@ -27,13 +27,17 @@ const ProfilePage = () => {
         setProfileData(response.data.message);
 
         // Determine the profile image based on gender
-        if (response.data.message.gender === "Male") {
+        if (
+          response.data.message.gender === "male" ||
+          response.data.message.gender === "Male"
+        ) {
           setProfileImage(maleProfileImage); // Set the male profile image
-        } else if (response.data.message.gender === "Female") {
+        } else if (
+          response.data.message.gender === "female" ||
+          response.data.message.gender === "Female"
+        ) {
           setProfileImage(femaleProfileImage); // Set the female profile image
-        } else {
-          setProfileImage(maleProfileImage);
-        }
+        } 
       } catch (error) {
         alert("Error fetching profile data:", error);
         // Handle error, e.g., redirect to login if not authenticated

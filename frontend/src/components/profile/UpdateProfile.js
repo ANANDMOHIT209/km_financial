@@ -44,23 +44,23 @@ const UpdateProfile = () => {
     fetchUserProfile();
   }, []);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;    
-    
-    if (name === "gender" || name === "state") {
-      // Handle Select components separately
-      setProfile((prevProfile) => ({
-        ...prevProfile,
-        [name]: value,
-      }));
-    } else {
-      // Handle other input fields
-      setProfile({
-        ...profile,
-        [name]: value,
-      });
-    }
-  };
+ const handleChange = (e) => {
+   const { name, value } = e.target;
+
+   if (name === "gender" || name === "state") {
+     // Handle Select components separately
+     setProfile((prevProfile) => ({
+       ...prevProfile,
+       [name]: value,
+     }));
+   } else {
+     // Handle other input fields
+     setProfile({
+       ...profile,
+       [name]: value,
+     });
+   }
+ };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -125,7 +125,11 @@ const UpdateProfile = () => {
               labelId="gender-label"
               id="gender"
               value={profile.gender}
-              onChange={handleChange}
+              onChange={(e) =>
+                handleChange({
+                  target: { name: "gender", value: e.target.value },
+                })
+              }
               fullWidth
               required
             >
@@ -142,7 +146,11 @@ const UpdateProfile = () => {
               labelId="state-label"
               id="state"
               value={profile.state}
-              onChange={handleChange}
+              onChange={(e) =>
+                handleChange({
+                  target: { name: "state", value: e.target.value },
+                })
+              }
               fullWidth
               required
             >

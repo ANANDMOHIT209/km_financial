@@ -5,6 +5,7 @@
 ```
     pip install fastapi uvicorn sqlalchemy
     pip install PyJWT
+    pip install pandas
     pip install passlib
     pip install python-multipart
     pip install timedelta

@@ -4,7 +4,7 @@
 
 ```
     pip install fastapi uvicorn sqlalchemy
-    pip install jwt
+    pip install PyJWT
     pip install passlib
     pip install python-multipart
     pip install timedelta

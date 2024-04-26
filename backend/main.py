@@ -8,16 +8,19 @@ from models.base_md import User
 import math
 from datetime import timedelta, datetime
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.encoders import jsonable_encoder
 
 
 import models.request_models as rqm
 import models.base_md as bmd
 import app.security as su
+import dump_model as dm
 import pickle
 import pandas as pd
+import numpy as np
 
-with open('Ensemble.pkl', 'rb') as file:
-    model = pickle.load(file)
+pickle_in = open("Ensemble.pkl","rb")
+classifier=pickle.load(pickle_in)
 
 app = FastAPI()
 
@@ -153,59 +156,6 @@ async def apply_loan(
     db.commit()
 
     return {"message": "Loan application submitted successfully"}
-
-
-@app.put("/loan/{loan_id}/approve")
-async def approve_loan_application(
-    loan_id: int,
-    current_user = Depends(user_is_admin),
-    db: DBSession = Depends(get_db)
-):
-    response = {}
-    user = db.get_user_by_email(current_user)
-    if not user:
-        raise HTTPException(status_code=401, detail="User not found")
-    loan_to_approve = db.get_loan_by_id(loan_id)
-    if loan_to_approve:
-        if loan_to_approve not in db.session:
-            db.session.add(loan_to_approve)
-
-        loan_to_approve.status = "approved"
-        db.session.commit()
-        db.session.refresh(loan_to_approve)
-        update_loan_details(loan_id, loan_to_approve.loan_amount, loan_to_approve.annual_interest_rate, loan_to_approve.loan_term, db)
-        response= {
-            "message": {
-            "loan_id": loan_to_approve.id,
-            "user_id": loan_to_approve.user_id,
-            "status": loan_to_approve.status,
-            }
-        }
-        return response
-    else:
-        raise HTTPException(status_code=404, detail="Loan not found")
-    
-
-@app.put("/loan/{loan_id}/reject")
-async def reject_loan_application(
-    loan_id: int,
-    current_user = Depends(user_is_admin),
-    db: DBSession = Depends(get_db)
-):
-    loan_to_reject = db.get_loan_by_id(loan_id)
-
-    if loan_to_reject:
-        loan_to_reject.status = "rejected"
-        db.session.commit()
-        db.session.refresh(loan_to_reject)
-
-        return {
-            "loan_id": loan_to_reject.id,
-            "user_id": loan_to_reject.user_id,
-            "status": loan_to_reject.status,
-        }
-    else:
-        raise HTTPException(status_code=404, detail="Loan not found")
 
 
 @app.get("/user_profile")
@@ -518,11 +468,101 @@ async def get_repayment_schedule(
 
 @app.post("/predict")
 async def predict_loan_approval(data: rqm.LoanData):
-    input_data = pd.DataFrame([data.dict()])
-    
-    prediction = model.predict(input_data)
-    
+    input_data = data.model_dump()
+    #return input_data
+
+    input_list = [
+        input_data['Gender'],
+        input_data['Married'],
+        input_data['Dependents'],
+        input_data['Education'],
+        input_data['Self_Employed'],
+        input_data['ApplicantIncome'],
+        input_data['CoapplicantIncome'],
+        input_data['LoanAmount'],
+        input_data['Loan_Amount_Term'],
+        input_data['Credit_History'],
+        input_data['Rural'],
+        input_data['Semiurban'],
+        input_data['Urban']
+    ]
+
+    #return input_list
+    # dm.dump_model()
+    # return {}
+
+    # Convert the list into a NumPy array and reshape it to match the expected input shape of the classifier
+    input_array = np.array(input_list).reshape(1, -1)
+
+    prediction = classifier.predict(input_array)
+    print(prediction)
     if prediction[0] == 1:
         return {"prediction": "Loan will be approved"}
     else:
         return {"prediction": "Loan will not be approved"}
+    
+
+    
+    
+
+@app.put("/loan/{loan_id}/approve")
+async def approve_loan_application(
+    loan_id: int,
+    current_user_email = Depends(su.get_current_user),
+    db: DBSession = Depends(get_db)
+):
+    response = {}
+    user = db.get_user_by_email(current_user_email)
+    if not user.is_admin:
+        raise HTTPException(status_code=401, detail="User not found")
+    loan_to_approve = db.get_loan_by_id(loan_id)
+    if loan_to_approve:
+        # if loan_to_approve not in db.session:
+        #     db.session.add(loan_to_approve)
+        if loan_to_approve.status == "pending":
+            loan_to_approve.status = "approved"
+            db.session.commit()
+            # loan_to_approve = db.get_loan_by_id(loan_id)
+            # db.session.refresh(loan_to_approve)
+            # update_loan_details(loan_id, loan_to_approve.loan_amount, loan_to_approve.annual_interest_rate, loan_to_approve.loan_term, db)
+            response= {
+                "message": {
+                "loan_id": loan_to_approve.id,
+                "user_id": loan_to_approve.user_id,
+                "status": loan_to_approve.status,
+                }
+            }
+        else:
+            raise ValueError("Loan is either already accepted or rejected")
+        
+    else:
+        raise HTTPException(status_code=404, detail="Loan not found")
+    return response
+    
+
+@app.put("/loan/{loan_id}/reject")
+async def reject_loan_application(
+    loan_id: int,
+    current_user_email = Depends(su.get_current_user),
+    db: DBSession = Depends(get_db)
+):
+    user = db.get_user_by_email(current_user_email)
+    if not user.is_admin:
+        raise HTTPException(status_code=401, detail="User not found")
+    loan_to_reject = db.get_loan_by_id(loan_id)
+
+    if loan_to_reject:
+        if loan_to_reject.status == "pending":
+            loan_to_reject.status = "rejected"
+            db.session.commit()
+            db.session.refresh(loan_to_reject)
+
+            return {
+                "loan_id": loan_to_reject.id,
+                "user_id": loan_to_reject.user_id,
+                "status": loan_to_reject.status,
+            }
+        else:
+            raise ValueError("Loan is either already accepted or rejected")
+    else:
+        raise HTTPException(status_code=404, detail="Loan not found")

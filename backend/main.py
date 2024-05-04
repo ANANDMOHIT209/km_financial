@@ -499,10 +499,7 @@ async def predict_loan_approval(data: rqm.LoanData):
     if prediction[0] == 1:
         return {"prediction": "Loan will be approved"}
     else:
-        return {"prediction": "Loan will not be approved"}
-    
-
-    
+        return {"prediction": "Loan will not be approved"}  
     
 
 @app.put("/loan/{loan_id}/approve")
@@ -566,3 +563,78 @@ async def reject_loan_application(
             raise ValueError("Loan is either already accepted or rejected")
     else:
         raise HTTPException(status_code=404, detail="Loan not found")
+
+
+@app.post("/all_users_profile_pg")
+async def get_all_users_profile(
+    users_profile_req: rqm.UsersProfileReq,
+    current_user_email = Depends(su.get_current_user),
+    db: DBSession = Depends(get_db)
+):
+    response = {}
+    user = db.get_user_by_email(current_user_email)
+    if not user.is_admin:
+        raise HTTPException(status_code=401, detail="User not found")
+    user_details = db.get_users_profile_with_pagination(
+        users_profile_req.sort_by,
+        users_profile_req.sort_order,
+        users_profile_req.page_no,
+        users_profile_req.limit
+    )
+    response = user_details
+    return response 
+
+@app.post("/all_loan_history_pg")
+async def all_loan_history_pg(
+    loan_history_req: rqm.LoanHistoryReq,
+    current_user_email = Depends(su.get_current_user),
+    db: DBSession = Depends(get_db)
+):
+    response = {}
+    user = db.get_user_by_email(current_user_email)
+    if not user.is_admin:
+        raise HTTPException(status_code=401, detail="User not found")
+    loan_history = db.get_loan_history_with_pagination(
+        loan_history_req.sort_by,
+        loan_history_req.sort_order,
+        loan_history_req.page_no,
+        loan_history_req.limit
+    )
+    response = loan_history
+    return response
+
+
+@app.get("/user_loan_history/{user_id}")
+async def get_loan_application_history(
+    user_id: int,
+    current_user_email=Depends(su.get_current_user),
+    db: DBSession = Depends(get_db)
+):
+    response = {}
+    user = db.get_user_by_id(user_id)
+    admin = db.get_user_by_email(current_user_email)
+    if not admin.is_admin:
+        raise HTTPException(status_code=401, detail="User not found")
+    loan_history = db.get_loan_history_by_user(user.id)
+    if loan_history:
+        return [
+            {
+                "loan_id": loan.id,                  
+                "user_id": loan.user_id,
+                "name": loan.user.name,
+                "phone": loan.user.phone,
+                "email": loan.user.email,
+                "loan_amount": loan.loan_amount,
+                "loan_type": loan.loan_type,
+                "annual_interest_rate" : loan.annual_interest_rate,
+                "loan_term": loan.loan_term, 
+                "employment_details": loan.employment_details,
+                "status": loan.status,
+            }
+            for loan in loan_history
+        ]
+    else:
+        raise HTTPException(status_code=401, detail="User not found")
+
+
+    

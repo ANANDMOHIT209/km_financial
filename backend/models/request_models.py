@@ -75,5 +75,17 @@ class LoanData(BaseModel):
     Urban: int
 
 
+class UsersProfileReq(BaseModel):
+    sort_by: str
+    sort_order: str
+    page_no: int
+    limit: int
+
+class LoanHistoryReq(BaseModel):
+    sort_by: str
+    sort_order: str
+    page_no: int
+    limit: int
+
 
     

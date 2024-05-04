@@ -9,7 +9,7 @@
     pip install passlib
     pip install python-multipart
     pip install timedelta
-    pip install -U scikit-learn
+    pip install scikit-learn==1.3.2
     python.exe -m pip install --upgrade pip
     npm install axiom
     npm install axios

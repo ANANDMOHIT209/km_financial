@@ -63,6 +63,7 @@ import UpdateProfile from "./components/profile/UpdateProfile";
 import EmiCalculator from "./components/calculator/emi";
 import FDCalculator from "./components/calculator/fd";
 import SIPCalculator from "./components/calculator/sip";
+import Admin from "./components/admin/Admin";
 import { AuthProvider, useAuth } from './AuthContext'; // Import the context
 
 function App() {
@@ -89,6 +90,8 @@ function App() {
           <Route exact path="/emicalculator" component={EmiCalculator} />
           <Route exact path="/fdcalculator" component={FDCalculator} />
           <Route exact path="/sipcalculator" component={SIPCalculator} />
+          <Route exact path="/admin" component={Admin} />
+          {/* <Route path="/alluserdetail" component={allUserDetail} /> */}
         </Switch>
         <Footer />
       </Router>

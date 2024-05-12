@@ -46,7 +46,7 @@ const SignUp = () => {
         <h2>Sign Up</h2>
         <form onSubmit={handleSubmit}>
           <div className="input-group">
-            <label>Name</label>
+            
             <input
               type="text"
               name="name"
@@ -55,8 +55,17 @@ const SignUp = () => {
               required
             />
           </div>
+          <div className="input-group gender">
+            
+            <select name="gender" id="gender" onChange={handleChange} required>
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
           <div className="input-group phone">
-            <label htmlFor="phone">Phone</label>
+            
             <input
               type="text"
               name="phone"
@@ -65,17 +74,9 @@ const SignUp = () => {
               required
             />
           </div>
-          <div className="input-group gender">
-            <label htmlFor="gender">Gender</label>
-            <select name="gender" id="gender" onChange={handleChange} required>
-              <option value="">Select Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
+          
           <div className="input-group email">
-            <label>Email</label>
+            
             <input
               type="email"
               name="email"
@@ -85,7 +86,7 @@ const SignUp = () => {
             />
           </div>
           <div className="input-group state">
-            <label htmlFor="state">State</label>
+            
             <select name="state" id="state" onChange={handleChange} required>
               <option value="">Select State</option>
               <option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -131,7 +132,7 @@ const SignUp = () => {
             </select>
           </div>
           <div className="input-group pincode">
-            <label>Pincode</label>
+           
             <input
               type="text"
               name="pincode"
@@ -141,7 +142,7 @@ const SignUp = () => {
             />
           </div>
           <div className="input-group address">
-            <label>Address</label>
+            
             <input
               type="text"
               name="address_detail"
@@ -152,7 +153,7 @@ const SignUp = () => {
           </div>
 
           <div className="input-group">
-            <label>Password</label>
+            
             <input
               type="password"
               name="password"

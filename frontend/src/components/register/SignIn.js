@@ -40,25 +40,33 @@ const SignIn = () => {
         <h2>Sign In</h2>
         <form onSubmit={handleSubmit}>
           <div className="input-group">
-            <label>Email</label>
             <input
               type="email"
               name="email"
-              placeholder="Enter your email"
+              placeholder="Email Address"
               onChange={handleChange}
               required
             />
           </div>
           <div className="input-group">
-            <label>Password</label>
             <input
               type="password"
               name="password"
-              placeholder="Enter your password"
+              placeholder="Password"
               onChange={handleChange}
               required
             />
           </div>
+
+          <div className="my-container">
+          <div className="my-checkbox-group">
+  <div>
+    <input type="checkbox" id="flexCheckDefault" className="my-checkbox" />
+    <label htmlFor="flexCheckDefault" className="my-label">Remember me</label>
+  </div>
+  <a href="!#" className="my-forgot-password">Forgot password?</a>
+</div>
+    </div>
 
           <div className="signin-footer">
             <p>

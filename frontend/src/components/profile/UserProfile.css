@@ -1,118 +1,152 @@
-.profile-container {
-  margin: 20px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  max-width: 400px;
-  text-align: center;
-  /* Remove flexbox properties */
+/* ProfileCard.css */
+
+/* Profile Card Container */
+.profile-card {
+  width: 100%;
+  min-height: 460px;
+  margin: 50px auto; /* Add margin */
+  padding-top: 15px; /* Add padding */
+  background-color: rgba(255, 255, 255, 1);
+  background: #fff;
+  border-radius: 12px;
+  max-width: 700px;
+  position: relative;
 }
 
-.profile-heading {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-.profile-data{
+/* Profile Card Content */
+.profile-card__cnt {
+  display: grid;
+  margin-top: 20px; /* Adjust margin-top */
+  text-align:start;
+  padding: 20px; /* Adjust padding */
+  transition: all .3s;
   justify-content: center;
 }
-.profile-data-div {
-  text-align: left;
-  margin-bottom: 20px;
-}
 
-.profile-data-div p {
-  margin-top: 10px;
-  margin-bottom: 10px;
- 
-  /* Align text within the container */
-}
-
-.profile-button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  margin-right: 10px;
-  cursor: pointer;
-}
-
-.profile-button:hover {
-  background-color: #0056b3;
-}
-
-.profile-button-container {
-  text-align: center;
-  margin-top: 20px;
-  /* Adjust margin as needed */
-}
-
-.profile-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin: 0 auto 20px;
-  display: block;
-}
-
-/* Loan Profile CSS */
-
-.loan-history-container {
-  margin: 20px;
-}
-
-.loan-history-container {
-  text-align: center;
-}
-
-.loan-history-message {
-  background-color: #f8f9fa;
-  /* Example background color */
+.profile-card__box {
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* Example box shadow */
-  border-radius: 8px;
-  margin: 0 auto;
-  /* Center the message horizontally */
-  width: 60%;
-  /* Adjust width as needed */
 }
 
-.loan-history-heading {
+.profile-card__container {
+  display: flex;
+  justify-content: center;
+}
+
+
+.profile-card__name {
+  font-weight: 700;
   font-size: 24px;
-  color: #333;
-  padding: 25px 0;
+  color: #6944ff;
+  margin-bottom: 15px;
 }
 
-.loan-history-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.loan-history-table th,
-.loan-history-table td {
-  border: 1px solid #ccc;
+.profile-card__txt {
   padding: 8px;
-  text-align: center;
-  /* Center align text */
+  font-size: 18px;
+  font-weight: 500;
+  color: #324e63;
+  margin-bottom: 15px;
 }
 
-.view-details-btn,
-.update-details-btn {
-  background-color: #007bff;
-  color: #fff;
+.profile-card-ctr{
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+  padding-bottom: 20px;
+
+}
+
+/* Profile Card Image */
+.profile-card__img {
+  width: 150px;
+  height: 150px;
+  margin: 20px auto 0; /* Add margin and remove margin-top */
+  border-radius: 50%;
+  overflow: hidden;
+  }
+
+/* Profile Card Info */
+.profile-card-inf {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-top: 35px;
+}
+
+/* Message Form */
+.profile-card-message {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 130px;
+  padding-bottom: 100px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all .3s;
+}
+
+.profile-card-form {
+  box-shadow: 0 4px 30px rgba(15, 22, 56, 0.35);
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  background: #fff;
+  border-radius: 10px;
+  padding: 35px;
+  transform: scale(.8);
+  position: relative;
+  z-index: 3;
+  transition: all .3s;
+}
+
+.profile-card-form__bottom {
+  justify-content: space-between;
+  display: flex;
+}
+
+/* Profile Card Buttons */
+.profile-card__button {
+  background: none;
   border: none;
-  padding: 8px 16px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  margin: 15px 35px;
+  padding: 15px 40px;
+  min-width: 201px;
+  border-radius: 50px;
+  min-height: 55px;
+  color: #fff;
   cursor: pointer;
-  border-radius: 4px;
-  font-size: 14px;
-  display: block;
-  /* Convert buttons to block-level elements */
-  margin: 0 auto;
-  /* Center buttons horizontally */
+  backface-visibility: hidden;
+  transition: all .3s;
 }
 
-.view-details-btn:hover,
-.update-details-btn:hover {
-  background-color: #0056b3;
+/* Button Modifications */
+.button--blue {
+  background: linear-gradient(45deg, #1da1f2, #0e71c8);
+  box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.4);
+
+  &:hover {
+    box-shadow: 0px 7px 30px rgba(19, 127, 212, 0.75);
+  }
+}
+
+.button--orange {
+  background: linear-gradient(45deg, #d5135a, #f05924);
+  box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.35);
+
+  &:hover {
+    box-shadow: 0px 7px 30px rgba(223, 45, 70, 0.75);
+  }
+}
+
+.button--gray {
+  box-shadow: none;
+  background: #dcdcdc;
+  color: #142029;
 }

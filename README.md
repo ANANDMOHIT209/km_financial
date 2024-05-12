@@ -4,15 +4,11 @@
 
 ```
     pip install fastapi uvicorn sqlalchemy
-    pip install PyJWT
-    pip install pandas
-    pip install passlib
+    pip install PyJWT pandas passlib timedelta
     pip install python-multipart
-    pip install timedelta
     pip install scikit-learn==1.3.2
     python.exe -m pip install --upgrade pip
-    npm install axiom
-    npm install axios
+    npm install axiom axios
     npm install path-browserify browserify-fs
 ```
 

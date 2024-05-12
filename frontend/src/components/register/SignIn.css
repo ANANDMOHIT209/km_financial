@@ -2,61 +2,114 @@
 .signin-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;    /* Align the form container to the center */
-    align-items: center;    /* To vertically center the items */
-}
-.signin-footer {
-    margin-top: 0px;
-    /* Adjust the margin between the form and the footer */
-}
-
-.signin-footer p {
-    font-size: 14px;
-    /* Set the font size of the text to be smaller */
-}
-.signin-form {
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .signin-form {
     width: 400px;
-    padding: 20px;
+    padding: 40px;
     margin: 50px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    /* Add box shadow */
-    background-color:#FFF1EB;
-    /* Add a background color to the form container */
-}
-
-.signin-form h2 {
-    margin-bottom: 20px;
-}
-
-.input-group {
-    margin-bottom: 20px;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.input-group input {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #ffffff;
+  }
+  
+  .signin-form h2 {
+    margin-bottom: 30px;
+    text-align: center;
+    color: #333333;
+  }
+  
+  .input-group input{
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
+    padding: 15px;
+    border: 1px solid #cccccc;
     border-radius: 5px;
     font-size: 16px;
-    padding-left: 10px;
-    /* Add space on the left side of the input fields */
-}
+    transition: border-color 0.3s ease;
+  }
 
-.input-group input::placeholder {
-    padding-left: 5px;
-    padding-bottom: 0px;
-    /* Add space between placeholders and text */
+  .input-group {
+    margin-bottom: 15x;
+  }
+   
+  .input-group input[type="password"] {
+    width: 100%; /* padding: 8px; */
+    padding: 15px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
+  
+  
+  .input-group input:focus {
+    border-color: #007bff;
+  }
+  
+  .signin-footer {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .signin-footer p {
+    font-size: 14px;
+    color: #666666;
+  }
+  
+  .signin-footer a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .signin-footer a:hover {
+    text-decoration: underline;
+  }
+  
+  button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
 
-.signin-image {
-    padding: 20px;
-}
 
+  .my-checkbox-group {
+    display: flex;
+    justify-content: space-between; /* Add this line to push the "Forgot password?" link to the right */
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .my-checkbox {
+    margin-right: 10px;
+  }
+  
+  .my-forgot-password {
+    display: block;
+    color: #070000; /* original text color */
+    text-decoration: none;
+  }
+  
+  
+  .my-label {
+    align-items: start;
+    color: #0a14cb;
+  }
+  
+  .my-forgot-password {
+    align-items: end;
+  }
+  
 @media screen and (max-width: 768px) {
     .signin-container {
         flex-direction: column;

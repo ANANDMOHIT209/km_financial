@@ -6,6 +6,13 @@ import maleProfileImage from "./maleImg.svg"; // Import the male profile image
 import femaleProfileImage from "./femaleImg.svg"; // Import the female profile image
 
 const ProfilePage = () => {
+
+  const [isActive, setIsActive] = useState(false);
+
+  const toggleMessage = () => {
+    setIsActive(!isActive);
+  };
+
   const [profileData, setProfileData] = useState({});
   const [profileImage, setProfileImage] = useState(null); // State to store the profile image
   const history = useHistory();
@@ -48,49 +55,94 @@ const ProfilePage = () => {
     fetchProfileData();
   }, [history]); // Depend on history to refetch if it changes
 
+
+//             <p>Gender: {profileData.gender}</p>
+//             <p>Email: {profileData.email}</p>
+//             <p>Phone: {profileData.phone}</p>
+//             <p>State: {profileData.state}</p>
+//             <p>Pincode: {profileData.pincode}</p>
+//             <p>Address: {profileData.address_detail}</p>
+//           </div>
+//         </div>
+//       </div>
+//       <div className="profile-button-container">
+//         <button
+//           className="profile-button"
+//           onClick={() => history.push("/loan-history")}
+//         >
+//           View Loan History
+//         </button>{" "}
+//         {/* Apply button styles */}
+//         <button
+//           className="profile-button"
+//           onClick={() => history.push("/update_profile")}
+//         >
+//           Update User Profile
+//         </button>{" "}
+//         {/* Apply button styles */}
+//       </div>
+//     </div>
+//   );
+// };
+ 
+
   return (
-    <div>
-      <div className="profile-container">
-        {" "}
-        {/* Apply container styles */}
-        <h2 className="profile-heading">Profile</h2>{" "}
-        {/* Apply heading styles */}
+    <div className={`wrapper ${isActive ? 'active' : ''}`}>
+      <div className="profile-card js-profile-card">
+        <div className="profile-card__img">
         {profileImage && (
           <img src={profileImage} alt="Profile" className="profile-image" />
         )}{" "}
-        {/* Display profile image if available */}
-        <div className="profile-data">
-          <div className="profile-data-div" >
-            {" "}
-            {/* Apply profile data styles */}
-            <p>Name: {profileData.name}</p>
-            <p>Gender: {profileData.gender}</p>
-            <p>Email: {profileData.email}</p>
-            <p>Phone: {profileData.phone}</p>
-            <p>State: {profileData.state}</p>
-            <p>Pincode: {profileData.pincode}</p>
-            <p>Address: {profileData.address_detail}</p>
+        </div>
+
+        <div className="profile-card__cnt js-profile-cnt">
+          <div className="profile-card__name">{profileData.name}</div>
+        </div>
+
+        <div className="profile-card__container">
+         
+         <tbody>
+            <tr>
+              <td className="profile-card__txt">Gender : </td>
+              <td className="profile-card__txt">{profileData.gender}</td>
+            </tr>
+            <tr>
+              <td className="profile-card__txt">Mobile : </td>
+              <td className="profile-card__txt">{profileData.phone}</td>
+            </tr>
+            <tr>
+              <td className="profile-card__txt">Email : </td>
+              <td className="profile-card__txt">{profileData.email}</td>
+            </tr>
+            <tr>
+              <td className="profile-card__txt">Pincode : </td>
+              <td className="profile-card__txt">{profileData.pincode}</td>
+            </tr>
+            <tr>
+              <td className="profile-card__txt">State : </td>
+              <td className="profile-card__txt">{profileData.state}</td>
+            </tr>
+            <tr>
+              <td className="profile-card__txt">Address : </td>
+              <td className="profile-card__txt">{profileData.address_detail}</td>
+            </tr>
+          </tbody>
+        </div>
+        
+        <div>
+          {/* Profile Card Controls */}
+          <div className="profile-card-ctr">
+            <button className="profile-card__button button--orange" onClick={() => history.push("/update_profile")}>Update User Profile</button>
+            <button className="profile-card__button button--blue" onClick={() => history.push("/loan-history")}> View Loan History </button>{" "}
           </div>
         </div>
-      </div>
-      <div className="profile-button-container">
-        <button
-          className="profile-button"
-          onClick={() => history.push("/loan-history")}
-        >
-          View Loan History
-        </button>{" "}
-        {/* Apply button styles */}
-        <button
-          className="profile-button"
-          onClick={() => history.push("/update_profile")}
-        >
-          Update User Profile
-        </button>{" "}
-        {/* Apply button styles */}
+
+        
+
       </div>
     </div>
   );
-};
+}
+
 
 export default ProfilePage;

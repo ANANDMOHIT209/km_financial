@@ -29,6 +29,9 @@ class DBSession:
             self.session.commit()
         self.session.close()
 
+    def update(self, item):
+        self.refresh(item)
+
     def close(self):
         self.session.close()
 
@@ -40,6 +43,11 @@ class DBSession:
     
     def get_user_by_id(self, id: int):
         return self.session.query(User).filter(User.id == id).first()
+    
+    def delete_user_by_id(self, id: int):
+        query = self.session.query(User).filter(User.id == id).delete()
+        self.commit()
+        return query
 
     def get_user_by_phone_or_email(self, phone: str, email: str):
         return (
@@ -57,6 +65,11 @@ class DBSession:
             .filter((Loan.id == loan_id))
             .first()
         )
+    
+    def delete_loan_by_id(self, id: int):
+        query = self.session.query(Loan).filter(Loan.id == id).delete()
+        self.commit()
+        return query
     
     def get_loan_history_by_user(self, user_id: int):
         return (

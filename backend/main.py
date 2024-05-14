@@ -264,7 +264,7 @@ async def get_loan_details(
     current_user = db.get_user_by_email(current_user_email)
     loan = db.get_loan_by_id(loan_id)
     if loan: 
-        if loan.user_id == current_user.id:
+        if loan.user_id == current_user.id or current_user.is_admin:
             response = {
                 "message": { 
                 "loan_id": loan.id,
@@ -678,7 +678,7 @@ async def update_user_profile(
         raise HTTPException(status_code=404, detail="User not found")
 
 @app.delete("/delete_user/{user_id}")
-async def delete_loan(
+async def delete_user(
     user_id: int,
     current_user_email=Depends(su.get_current_user),
     db: DBSession = Depends(get_db)
@@ -704,9 +704,34 @@ async def delete_loan(
     if not current_user.is_admin:
         raise HTTPException(status_code=401, detail="User not found") 
 
-    loan_to_delete = db.get_loan_by_id(user_id)
+    loan_to_delete = db.get_loan_by_id(loan_id)
     if loan_to_delete:
-        db.delete_loan_by_id(user_id)
+        db.delete_loan_by_id(loan_id)
+    return response
+
+@app.get("/user_profile_by_admin/{user_id}")
+async def get_user_profile(
+    user_id:int,
+    current_user_email = Depends(su.get_current_user),
+    db: DBSession = Depends(get_db)
+    ):
+    response = {}
+    current_user = db.get_user_by_email(current_user_email)
+    if not current_user.is_admin:
+        raise HTTPException(status_code=401, detail="User not found")
+    user = db.get_user_by_id(user_id)
+    response = {
+        "message": {
+        "user_id": user.id,
+        "name": user.name, 
+        "email": user.email, 
+        "phone": current_user.phone,
+        "gender": user.gender,
+        "pincode": user.pincode,
+        "state": user.state,
+        "address_detail": user.address_detail,
+        }
+    }
     return response
     
     

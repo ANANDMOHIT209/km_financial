@@ -66,6 +66,8 @@ import SIPCalculator from "./components/calculator/sip";
 import Admin from "./components/admin/Admin";
 import AllUsersProfile from "./components/admin/AllUsersProfile";
 import AllLoanHistory from "./components/admin/AllLoansDetails"
+import UserProfileByAdmin from "./components/admin/UserProfileByAdmin";
+import LoanDetailsByAdmin from "./components/admin/LoanDetailsByAdmin"
 import { AuthProvider, useAuth } from './AuthContext'; // Import the context
 
 function App() {
@@ -95,6 +97,8 @@ function App() {
           <Route exact path="/admin" component={Admin} />
           <Route exact path="/all_users_profile_pg" component={AllUsersProfile} />
           <Route exact path ="/all_loan_history_pg" component={AllLoanHistory} />
+          <Route path="/userprofilebyadmin/:userId" component={UserProfileByAdmin} />
+          <Route path="/loandetailsbyadmin/:loanId" component={LoanDetailsByAdmin} />
           {/* <Route path="/alluserdetail" component={allUserDetail} /> */}
         </Switch>
         <Footer />

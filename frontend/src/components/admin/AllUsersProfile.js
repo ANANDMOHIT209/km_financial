@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import "./AllUsersProfile.css";
 
@@ -10,6 +11,7 @@ const AllUsersProfile = () => {
     page_no: 0,
     limit: 5,
   });
+  const history = useHistory();
 
   const handleSortChange = (e) => {
     setPagination({ ...pagination, sort_by: e.target.value });
@@ -74,7 +76,7 @@ const AllUsersProfile = () => {
             <td className="table-cell value">{item.address_detail}</td>
             <td className="table-cell value">{item.state}</td>
             <td className="table-cell value">
-              <button className="profile-card__button button--blue">
+              <button className="profile-card__button button--blue" onClick={() => history.push(`/userprofilebyadmin/${item.id}`)}>
                 View Details
               </button>
             </td>

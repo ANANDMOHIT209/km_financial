@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams, useHistory } from "react-router-dom";
 import axios from 'axios'; // Assuming you're using Axios for HTTP requests
 import "./AllLoansDetails.css";
 
@@ -10,6 +11,7 @@ const AllLoanHistory = () => {
     page_no: 0,
     limit: 5,
   });
+  const history = useHistory();
 
   const handleSortChange = (e) => {
     setPagination({ ...pagination, sort_by: e.target.value });
@@ -75,7 +77,7 @@ const AllLoanHistory = () => {
                 <td className="table-cell value">{item.loan_amount}</td>
                 <td className="table-cell value">{item.status}</td>
                 <td className="table-cell value">
-                <button className="profile-card__button button--blue">
+                <button className="profile-card__button button--blue" onClick={() => history.push(`/loandetailsbyadmin/${item.id}`)}>
                       View Details
                 </button>
                 </td>

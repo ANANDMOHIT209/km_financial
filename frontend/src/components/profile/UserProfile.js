@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import "./UserProfile.css"; // Import the CSS file
-import maleProfileImage from "./maleImg.svg"; // Import the male profile image
-import femaleProfileImage from "./femaleImg.svg"; // Import the female profile image
+import ProfileImage from "./next.png"; // Import the male profile image
 
 const ProfilePage = () => {
 
@@ -34,17 +33,7 @@ const ProfilePage = () => {
         setProfileData(response.data.message);
 
         // Determine the profile image based on gender
-        if (
-          response.data.message.gender === "male" ||
-          response.data.message.gender === "Male"
-        ) {
-          setProfileImage(maleProfileImage); // Set the male profile image
-        } else if (
-          response.data.message.gender === "female" ||
-          response.data.message.gender === "Female"
-        ) {
-          setProfileImage(femaleProfileImage); // Set the female profile image
-        } 
+        
       } catch (error) {
         alert("Error fetching profile data:", error);
         // Handle error, e.g., redirect to login if not authenticated

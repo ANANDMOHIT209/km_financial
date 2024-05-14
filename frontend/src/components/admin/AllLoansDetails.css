@@ -4,62 +4,67 @@
     align-items: center;
     margin-top: 3rem;
   }
-
+.loan-history-header{
+  font-size: 40px;
+  text-align: center;
+  color: #ff5107;
+}
 /* Styles for loan history */
-.loan-history-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 2rem;
-  }
-  
-  .loan-history-item {
-    width: 30rem;
-    border: 1px solid #ccc;
-    background-color: aliceblue;
-    border-radius: 5px;
-    padding: 1rem;
-    margin: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  td {
-    padding: 0.5rem;
-  }
-  
-  .key {
-    font-weight: bold;
-    margin-right: 5px;
-    color: #333; /* Text color for keys */
-  }
-  
-  .value {
-    color: #555; /* Text color for values */
-  }
 
-  /* Optional: To make sure there are no extra margins in case of less than 2 items */
-@media (max-width: 768px) {
-    .loan-history-item {
-      flex: 1 0 calc(100% - 20px); /* One item per row */
-      max-width: calc(100% - 20px); /* One item per row */
-    }
-  } 
-  
+
+.loan-history-item {
+  width: 110%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  padding: 2.5rem 2rem;
+}
+
+.loan-history-item table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.loan-history-item td {
+  padding: 8px;
+  border: 1px solid #dddddd;
+  text-align: center;
+}
+
+.loan-history-item td.value {
+  font-weight: bold;
+}
+
+.loan-history-item tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.loan-history-item tr:hover {
+  background-color: #ddd;
+}
+
+.table-header {
+  padding: 8px;
+  border: 1px solid #dddddd;
+  background-color: #bfbdbd;
+  font-weight: bold;
+}
+
+
+.loan-history-item tbody:last-child tr td.value {
+  background-color: #ffffff;
+}
+
+
   
 /* lower Part */
 
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 20px; /* Adjust top margin as needed */
-  }
+.usercontainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Change from space-between to flex-start */
+  margin-top: 20px;
+}
   
   .select-box {
     padding: 8px 12px;

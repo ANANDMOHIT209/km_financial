@@ -295,51 +295,6 @@ async def get_loan_details(
 
     raise HTTPException(status_code=404, detail="Loan not found")
 
-@app.put("/loan/update/{loan_id}")
-async def update_loan_application(
-    update_data: rqm.UpdateLoanApplication,
-    loan_id: int,
-    current_user_email=Depends(su.get_current_user),
-    db: DBSession = Depends(get_db)
-):
-    current_user = db.get_user_by_email(current_user_email)
-
-    if not current_user:
-        raise HTTPException(status_code=401, detail="User not found")
-
-    loan_to_update = db.get_loan_by_id(loan_id)
-
-    if loan_to_update:
-        if update_data.loan_amount is not None:
-            loan_to_update.loan_amount = update_data.loan_amount
-        if update_data.loan_type is not None:
-            loan_to_update.loan_type = update_data.loan_type
-        if update_data.employment_details is not None:
-            loan_to_update.employment_details = update_data.employment_details
-        if update_data.aadhar_no is not None:
-            loan_to_update.aadhar_no = update_data.aadhar_no
-        if update_data.pan_no is not None:
-            loan_to_update.pan_no = update_data.pan_no
-        if update_data.bank_details is not None:
-            loan_to_update.bank_details = update_data.bank_details
-        if update_data.account_no is not None:
-            loan_to_update.account_no = update_data.account_no
-        db.session.commit()
-        db.session.refresh(loan_to_update)
-
-        
-        return {
-            "loan_id": loan_to_update.id,
-            "user_id": loan_to_update.user_id,
-            "loan_amount": loan_to_update.loan_amount,
-            "loan_type": loan_to_update.loan_type,
-            "loan_term": loan_to_update.loan_term, 
-            "employment_details": loan_to_update.employment_details,
-        }
-    else:
-        raise HTTPException(status_code=404, detail="Loan not found")
-
-
 def calculate_total_repayment(monthly_payment, loan_term):
     return monthly_payment * loan_term
 
@@ -637,4 +592,121 @@ async def get_loan_application_history(
         raise HTTPException(status_code=401, detail="User not found")
 
 
+@app.put("/loan/update/{loan_id}")
+async def update_loan_application(
+    update_data: rqm.UpdateLoanApplication,
+    loan_id: int,
+    current_user_email=Depends(su.get_current_user),
+    db: DBSession = Depends(get_db)
+):
+    current_user = db.get_user_by_email(current_user_email)
+
+    if not current_user or not current_user.is_admin:
+        raise HTTPException(status_code=401, detail="User not found")
+
+    loan_to_update = db.get_loan_by_id(loan_id)
+
+    if loan_to_update:
+        if update_data.loan_amount is not None:
+            loan_to_update.loan_amount = update_data.loan_amount
+        if update_data.loan_type is not None:
+            loan_to_update.loan_type = update_data.loan_type
+        if update_data.employment_details is not None:
+            loan_to_update.employment_details = update_data.employment_details
+        if update_data.aadhar_no is not None:
+            loan_to_update.aadhar_no = update_data.aadhar_no
+        if update_data.pan_no is not None:
+            loan_to_update.pan_no = update_data.pan_no
+        if update_data.bank_details is not None:
+            loan_to_update.bank_details = update_data.bank_details
+        if update_data.account_no is not None:
+            loan_to_update.account_no = update_data.account_no
+        db.session.commit()
+        db.session.refresh(loan_to_update)
+
+        
+        return {
+            "loan_id": loan_to_update.id,
+            "user_id": loan_to_update.user_id,
+            "loan_amount": loan_to_update.loan_amount,
+            "loan_type": loan_to_update.loan_type,
+            "loan_term": loan_to_update.loan_term, 
+            "employment_details": loan_to_update.employment_details,
+        }
+    else:
+        raise HTTPException(status_code=404, detail="Loan not found")
+    
+
+@app.put("/update_profile_by_admin/{id}")
+async def update_user_profile(
+    id: int,
+    profile_data: rqm.UpdateUserProfile,
+    current_user_email=Depends(su.get_current_user),
+    db: DBSession = Depends(get_db)
+):
+    response = {}
+    current_user = db.get_user_by_email(current_user_email)
+    if not current_user:
+        raise HTTPException(status_code=401, detail="User not found")
+    if current_user:
+        if current_user.name is not None:
+            current_user.name = profile_data.name
+        if current_user.gender is not None:
+            current_user.gender = profile_data.gender
+        if current_user.pincode is not None:
+            current_user.pincode = profile_data.pincode
+        if current_user.state is not None:
+            current_user.state = profile_data.state
+        if current_user.address_detail is not None:
+            current_user.address_detail = profile_data.address_detail
+        db.session.commit()
+        db.session.refresh(current_user)
+        response = {
+            "message": {
+            "user_id": current_user.id,
+            "email": current_user.email,
+            "name": current_user.name,
+            "phone": current_user.phone,
+            "gender": current_user.gender,
+            "pincode": current_user.pincode,
+            "state" : current_user.state,
+            "address_detail": current_user.address_detail,
+            }
+        }
+        return response
+    else:
+        raise HTTPException(status_code=404, detail="User not found")
+
+@app.delete("/delete_user/{user_id}")
+async def delete_loan(
+    user_id: int,
+    current_user_email=Depends(su.get_current_user),
+    db: DBSession = Depends(get_db)
+):
+    response = {}
+    current_user = db.get_user_by_email(current_user_email)
+    if not current_user.is_admin:
+        raise HTTPException(status_code=401, detail="User not found") 
+
+    user_to_delete = db.get_user_by_id(user_id)
+    if user_to_delete:
+        db.delete_user_by_id(user_id)
+    return response
+
+@app.delete("/delete_loan/{loan_id}")
+async def delete_loan(
+    loan_id: int,
+    current_user_email=Depends(su.get_current_user),
+    db: DBSession = Depends(get_db)
+):
+    response = {}
+    current_user = db.get_user_by_email(current_user_email)
+    if not current_user.is_admin:
+        raise HTTPException(status_code=401, detail="User not found") 
+
+    loan_to_delete = db.get_loan_by_id(user_id)
+    if loan_to_delete:
+        db.delete_loan_by_id(user_id)
+    return response
+    
     

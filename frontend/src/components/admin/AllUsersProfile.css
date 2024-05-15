@@ -157,3 +157,11 @@
     box-shadow: 0px 7px 30px rgba(19, 127, 212, 0.75);
   }
   
+  .button--orange {
+    background: linear-gradient(45deg, #d5135a, #f05924);
+    box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.35);
+  
+    &:hover {
+      box-shadow: 0px 7px 30px rgba(223, 45, 70, 0.75);
+    }
+  }

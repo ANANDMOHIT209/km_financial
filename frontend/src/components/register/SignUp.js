@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import "./SignUp.css";
 import signupImg from "./signup.png";
 import api from "../../api";
+import CustomAlert from "../common/customAlert"; // Import the custom alert component
 
 const SignUp = () => {
   const history = useHistory();
@@ -19,8 +20,7 @@ const SignUp = () => {
 
   const handleChange = (e) => {
     // If the phone field, only allow numbers and limit to 10 characters
-    const value =   e.target.name === "phone"  ? e.target.value.replace(/\D/g, "").slice(0, 10)
-        : e.target.value;
+    const value = e.target.name === "phone" ? e.target.value.replace(/\D/g, "").slice(0, 10) : e.target.value;
     setFormData({ ...formData, [e.target.name]: value });
   };
 
@@ -28,7 +28,8 @@ const SignUp = () => {
     e.preventDefault();
     try {
       const response = await api.post("/signup/", formData);
-      alert(response.data.message); // Log the response message
+      setAlertMessage(`${response.data.message}`); // Set the alert message
+      setShowAlert(true); // Show the alert
       // Optionally, you can redirect the user to another page or show a success message
       history.push("/signin");
     } catch (error) {
@@ -37,8 +38,14 @@ const SignUp = () => {
     }
   };
 
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
   return (
     <div className="signup-container">
+      {showAlert && (
+        <CustomAlert message={alertMessage} onClose={() => setShowAlert(false)} />
+      )} {/* Render the custom alert */}
       <div className="signUp-image">
         <img src={signupImg} alt="Sign Up Image" />
       </div>
@@ -46,7 +53,6 @@ const SignUp = () => {
         <h2 className="title-Signup">Sign Up</h2>
         <form onSubmit={handleSubmit}>
           <div className="input-group-Signup">
-            
             <input
               type="text"
               name="name"
@@ -164,7 +170,7 @@ const SignUp = () => {
           </div>
           <div className="signup-footer">
             <p>
-              Already have an account? <Link to="/signin/">Sign In</Link>
+              Already have an account? <Link to="/signin/">Log In</Link>
             </p>
           </div>
           <button type="submit">Sign Up</button>

@@ -171,7 +171,7 @@ header ul li a:hover {
 
   header {
     margin: 10px;
-    background-color: rgba(202, 240, 237, 0.2);
+    background-color: rgba(227, 225, 218, 0.2);
     position: relative;
   }
 
@@ -198,6 +198,7 @@ header ul li a:hover {
     top: 7vh;
     left: 0;
     width: 100%;
-    background-color: #a8f3ed;
+    background-color: #f1f1f1;
   }
 }
+

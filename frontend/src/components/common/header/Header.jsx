@@ -69,7 +69,7 @@ const Header = () => {
                  <div className='profile-card__buton button--blue' onClick={() => handleRedirect('signup')}>SIGN UP</div>
                 </div>
                 <div className='start'>
-                 <div className='profile-card__buton button--orange' onClick={() => handleRedirect('signin')}>SIGN IN</div>
+                 <div className='profile-card__buton button--orange' onClick={() => handleRedirect('signin')}>Log In</div>
                 </div>
               </>
             ) : (

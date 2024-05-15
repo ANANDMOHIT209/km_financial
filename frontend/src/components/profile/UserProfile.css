@@ -150,3 +150,85 @@
   background: #dcdcdc;
   color: #142029;
 }
+
+
+/* Loan Profile.css */
+
+/* UserProfile.css */
+
+.loan-history-container {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 800px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.loan-history-heading {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.loan-history-message {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.loan-history-message p {
+  font-size: 16px;
+  color: #333;
+}
+
+.loan-history-message button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.loan-history-message button:hover {
+  background-color: #0056b3;
+}
+
+.loan-history-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.loan-history-table th,
+.loan-history-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.loan-history-table th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.loan-history-table td {
+  background-color: #fff;
+}
+
+.view-details-btn,
+.update-details-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-details-btn:hover,
+.update-details-btn:hover {
+  background-color: #0056b3;
+}

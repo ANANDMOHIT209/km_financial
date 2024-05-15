@@ -1,19 +1,17 @@
-import React from "react"
-import "../blog/blog.css"
-import { blog } from "../../dummydata"
-import Heading from "../common/heading/Heading"
-
-// copy code of blog => blogCard
+import React from "react";
+import "./hblog.css";
+import { blog } from "../../dummydata";
+import Heading from "../common/heading/Heading";
 
 const Hblog = () => {
   return (
     <>
-      <section className='blog'>
+      <section className='hblog'>
         <div className='container'>
           <Heading subtitle='OUR BLOGS' title='Recent Article' />
           <div className='grid2'>
-            {blog.slice(0, 3).map((val) => (
-              <div className='items shadow'>
+            {blog.slice(0, 3).map((val, index) => (
+              <div className='items shadow' key={index}>
                 <div className='img'>
                   <img src={val.cover} alt='' />
                 </div>
@@ -41,7 +39,7 @@ const Hblog = () => {
         </div>
       </section>
     </>
-  )
+  );
 }
 
-export default Hblog
+export default Hblog;

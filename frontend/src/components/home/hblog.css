@@ -1,0 +1,57 @@
+/* Styles for Hblog component */
+.hblog {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding-bottom: 50px;
+  }
+  
+  /* Additional styles for images inside Hblog */
+  .hblog .img img {
+    width: 100%;
+  }
+  
+  /* Additional styles for text inside Hblog */
+  .hblog .text {
+    padding: 40px 30px;
+  }
+  
+  /* Additional styles for titles inside Hblog */
+  .hblog h1 {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 30px;
+    margin: 20px 0;
+    transition: 0.5s;
+    color: #fff; /* Retaining color from previous style */
+  }
+  
+  /* Additional styles for hovered titles inside Hblog */
+  .hblog h1:hover {
+    color: #1997fc;
+    cursor: pointer;
+  }
+  
+  /* Additional styles for admin info inside Hblog */
+  .hblog .admin span {
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #1997fc;
+  }
+  
+  /* Additional styles for labels inside Hblog */
+  .hblog .admin label {
+    margin-left: 10px;
+    color: grey;
+    font-size: 14px;
+  }
+  
+  /* Additional styles for last label inside Hblog */
+  .hblog .admin span:last-child label {
+    color: #1eb2a6;
+  }
+  
+  /* Additional styles for description inside Hblog */
+  .hblog p {
+    color: grey;
+  }
+  

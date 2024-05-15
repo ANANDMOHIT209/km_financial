@@ -5,12 +5,13 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -2;
+  z-index: -1;
   width: 100%;
   height: 100vh;
   padding-top: 20%;
   padding-right: 50px;
-  color: #fff;
+  color: #fff;  
+  font-family: "PP Mori", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 /* Typing Animation */
 
@@ -72,22 +73,24 @@
 .txtSmallTitle {
   font-size: 48px;
   color: #37322f;
-  
-}
+  font-weight: 600;
+ }
+ /*
 .txtCompanyTitle{
   font-size: 48px;
   -webkit-text-fill-color: transparent;
   background: linear-gradient(90deg, rgb(229, 14, 60) 0.41%, rgb(18, 12, 203) 40.68%, rgb(231, 36, 104) 64.12%, rgb(10, 111, 134) 97.82%) text, rgba(0, 0, 0, 0);
-}
+} */
 .txtTitle {
   font-size: 48px;
+  font-weight: 700;
   -webkit-text-fill-color: transparent;
   background: -webkit-linear-gradient(90deg, rgb(179, 174, 245) 0.41%, rgb(215, 203, 231) 40.68%, rgb(229, 200, 200) 64.12%, rgb(234, 168, 121) 97.82%) text, rgba(0, 0, 0, 0);
   background: linear-gradient(90deg, rgb(87, 78, 219) 0.41%, rgb(79, 9, 170) 40.68%, rgb(220, 56, 56) 64.12%, rgb(227, 125, 52) 97.82%) text, rgba(0, 0, 0, 0);
 }
 
 .gap {
-  margin-bottom: 8px;
+  margin-bottom: 15px;
 }
 /* primary-btn-hero */
 

@@ -1,34 +1,61 @@
-.blog img {
-  width: 100%;
-  height: 100%;
+/* New styles for Blog component */
+.blog-container {
+  background-color: #333;
+  color: #fff;
 }
-.blog .text {
+
+/* New styles for BlogCard component */
+.blog-card {
+  background-color: #222;
+  color: #fff;
+}
+
+/* Additional styles for images inside BlogCard */
+.blog-card .img img {
+  width: 100%;
+}
+
+/* Additional styles for text inside BlogCard */
+.blog-card .text {
   padding: 40px 30px;
 }
-.blog h1 {
+
+/* Additional styles for titles inside BlogCard */
+.blog-card h1 {
   font-weight: 500;
   font-size: 22px;
   line-height: 30px;
   margin: 20px 0;
   transition: 0.5s;
+  color: #fff; /* Retaining color from previous style */
 }
-.blog h1:hover {
+
+/* Additional styles for hovered titles inside BlogCard */
+.blog-card h1:hover {
   color: #1eb2a6;
   cursor: pointer;
 }
-.blog span {
+
+/* Additional styles for admin info inside BlogCard */
+.blog-card span {
   text-transform: uppercase;
   font-weight: 500;
   color: #1eb2a6;
 }
-.blog span label {
+
+/* Additional styles for labels inside BlogCard */
+.blog-card span label {
   margin-left: 10px;
   color: grey;
   font-size: 14px;
 }
-.blog span:nth-last-child(1) label {
+
+/* Additional styles for last label inside BlogCard */
+.blog-card span:last-child label {
   color: #1eb2a6;
 }
-.blog p {
+
+/* Additional styles for description inside BlogCard */
+.blog-card p {
   color: grey;
 }

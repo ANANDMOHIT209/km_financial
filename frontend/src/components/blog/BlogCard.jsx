@@ -1,11 +1,12 @@
-import React from "react"
-import { blog } from "../../dummydata"
+import React from "react";
+import { blog } from "../../dummydata";
+import "./blog.css";
 
 const BlogCard = () => {
   return (
     <>
-      {blog.map((val) => (
-        <div className='items shadow'>
+      {blog.map((val, index) => (
+        <div className='blog-card items shadow' key={index}>
           <div className='img'>
             <img src={val.cover} alt='' />
           </div>
@@ -30,7 +31,7 @@ const BlogCard = () => {
         </div>
       ))}
     </>
-  )
+  );
 }
 
-export default BlogCard
+export default BlogCard;

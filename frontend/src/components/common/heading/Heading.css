@@ -1,0 +1,17 @@
+/* Heading.css */
+
+#heading {
+    text-align: center;
+  }
+  
+  .title {
+    color: #f1f1f1;
+    font-size: 72px;
+  }
+  
+  .subtitle {
+    color: #1997fc;
+    font-size: 20px;
+    margin-top: 1.2rem;
+  }
+  

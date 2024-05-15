@@ -59,7 +59,7 @@ function Hero() {
               </h4>
             </div>
             <div className="gap"></div>
-            <h4 style={{ fontSize: '20px', color: '#37322f', textAlign: 'right', marginRight: '55px' }}>Your Gateway To</h4>
+            <h4 style={{ fontSize: '20px', color: '#37322f' }}>Your Gateway To</h4>
             <div className="gap"></div>
             <h2><p className={`txtTitle ${isInViewport ? 'typing-text' : ''} ${animationCompleted ? 'finished' : ''}`}>Fast Loans, Easy Approval</p></h2>
             <div className="gap"></div>

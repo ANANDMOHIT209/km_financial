@@ -66,19 +66,19 @@ const Header = () => {
             {!isAuthenticated ? (
               <>
                 <div className='start'>
-                 <div className='button' onClick={() => handleRedirect('signup')}>SIGN UP</div>
+                 <div className='profile-card__buton button--blue' onClick={() => handleRedirect('signup')}>SIGN UP</div>
                 </div>
                 <div className='start'>
-                 <div className='button' onClick={() => handleRedirect('signin')}>SIGN IN</div>
+                 <div className='profile-card__buton button--orange' onClick={() => handleRedirect('signin')}>SIGN IN</div>
                 </div>
               </>
             ) : (
               <>
                 <div className='start'>
-                 <div className='button' onClick={() => handleRedirect('profile')}>Profile</div>
+                 <div className='profile-card__buton button--profile' onClick={() => handleRedirect('profile')}>Profile</div>
                 </div>
                 <div className='start'>
-                 <div className='button' onClick={logout}>Logout</div>
+                 <div className='profile-card__buton button--logout' onClick={logout}>Logout</div>
                 </div>
               </>
             )}

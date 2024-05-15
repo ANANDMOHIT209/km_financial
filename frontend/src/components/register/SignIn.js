@@ -37,7 +37,7 @@ const SignIn = () => {
         <img src={loginImg} alt="Sign Up Image" width="600" height="400" />
       </div>
       <div className="signin-form">
-        <h2>Sign In</h2>
+        <h2 className="title-Login">Log In</h2>
         <form onSubmit={handleSubmit}>
           <div className="input-group">
             <input

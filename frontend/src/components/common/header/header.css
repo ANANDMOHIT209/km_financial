@@ -98,17 +98,65 @@ header ul li a:hover {
   color: #fff;  /* Add margin between buttons */
 }
 
-.button {
-  background-color: #226af0c9;
-  padding: 12px 24px;
-  color: #ede7e4; /* Updated text color */
-  cursor: pointer;
-  /* Ensure cursor changes to pointer on hover */
+.profile-card__buton {
+  background: none;
   border: none;
-  outline: none;
-  border-radius: 5px;
-  font-weight: bold;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  min-width: 80px;
+  color: #fff;
+  cursor: pointer;
+  backface-visibility: hidden;
+  transition: all .3s;
 }
+
+.button--blue {
+  background: linear-gradient(45deg, #1da1f2, #0e71c8);
+  box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.4);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0px 7px 30px rgba(19, 127, 212, 0.75);
+  }
+}
+
+.button--orange {
+  background: linear-gradient(45deg, #d5135a, #f05924);
+  box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.35);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0px 7px 30px rgba(223, 45, 70, 0.75);
+  }
+}
+.button--logout {
+  background: linear-gradient(45deg, #b20000, #ff4d4d);
+  box-shadow: 0px 4px 30px rgba(178, 0, 0, 0.35);
+  color: #fff; /* Ensures text color is readable */
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(45deg, #ff1a1a, #ff6666);
+    box-shadow: 0px 7px 30px rgba(178, 0, 0, 0.75);
+  }
+}
+
+.button--profile {
+  background: linear-gradient(45deg, #4e54c8, #8f94fb); /* Gradient from deep purple to light blue */
+  box-shadow: 0px 4px 30px rgba(78, 84, 200, 0.35);
+  color: #fff; /* Ensures text color is readable */
+  border: none;  
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(45deg, #6a6ff8, #a0a3ff); /* Slightly lighter gradient on hover */
+    box-shadow: 0px 7px 30px rgba(78, 84, 200, 0.75);
+  }
+}
+
 
 .toggle {
   display: none;

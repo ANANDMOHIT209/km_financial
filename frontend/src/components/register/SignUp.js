@@ -43,9 +43,9 @@ const SignUp = () => {
         <img src={signupImg} alt="Sign Up Image" />
       </div>
       <div className="signup-form">
-        <h2>Sign Up</h2>
+        <h2 className="title-Signup">Sign Up</h2>
         <form onSubmit={handleSubmit}>
-          <div className="input-group">
+          <div className="input-group-Signup">
             
             <input
               type="text"
@@ -55,7 +55,7 @@ const SignUp = () => {
               required
             />
           </div>
-          <div className="input-group gender">
+          <div className="input-group-Signup gender">
             
             <select name="gender" id="gender" onChange={handleChange} required>
               <option value="">Select Gender</option>
@@ -64,7 +64,7 @@ const SignUp = () => {
               <option value="other">Other</option>
             </select>
           </div>
-          <div className="input-group phone">
+          <div className="input-group-Signup phone">
             
             <input
               type="text"
@@ -75,7 +75,7 @@ const SignUp = () => {
             />
           </div>
           
-          <div className="input-group email">
+          <div className="input-group-Signup email">
             
             <input
               type="email"
@@ -85,7 +85,7 @@ const SignUp = () => {
               required
             />
           </div>
-          <div className="input-group state">
+          <div className="input-group-Signup state">
             
             <select name="state" id="state" onChange={handleChange} required>
               <option value="">Select State</option>
@@ -131,7 +131,7 @@ const SignUp = () => {
               <option value="Puducherry">Puducherry</option>
             </select>
           </div>
-          <div className="input-group pincode">
+          <div className="input-group-Signup pincode">
            
             <input
               type="text"
@@ -141,7 +141,7 @@ const SignUp = () => {
               required
             />
           </div>
-          <div className="input-group address">
+          <div className="input-group-Signup address">
             
             <input
               type="text"
@@ -152,7 +152,7 @@ const SignUp = () => {
             />
           </div>
 
-          <div className="input-group">
+          <div className="input-group-Signup">
             
             <input
               type="password"

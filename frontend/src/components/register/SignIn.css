@@ -1,122 +1,120 @@
 /* SignIn.css */
 .signin-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .signin-form {
-    width: 400px;
-    padding: 40px;
-    margin: 50px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    background-color: #ffffff;
-  }
-  
-  .signin-form h2 {
-    margin-bottom: 30px;
-    text-align: center;
-    color: #333333;
-  }
-  
-  .input-group input{
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
-  }
-
-  .input-group {
-    margin-bottom: 15x;
-  }
-   
-  .input-group input[type="password"] {
-    width: 100%; /* padding: 8px; */
-    padding: 15px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
-  
-  
-  .input-group input:focus {
-    border-color: #007bff;
-  }
-  
-  .signin-footer {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .signin-footer p {
-    font-size: 14px;
-    color: #666666;
-  }
-  
-  .signin-footer a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .signin-footer a:hover {
-    text-decoration: underline;
-  }
-  
-  button[type="submit"] {
-    width: 100%;
-    padding: 15px;
-    background-color: #007bff;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #0056b3;
-  }
 
+.signin-form {
+  width: 400px;
+  padding: 40px;
+  margin: 50px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: #ffffff;
+}
 
-  .my-checkbox-group {
-    display: flex;
-    justify-content: space-between; /* Add this line to push the "Forgot password?" link to the right */
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .my-checkbox {
-    margin-right: 10px;
-  }
-  
-  .my-forgot-password {
-    display: block;
-    color: #070000; /* original text color */
-    text-decoration: none;
-  }
-  
-  
-  .my-label {
-    align-items: start;
-    color: #0a14cb;
-  }
-  
-  .my-forgot-password {
-    align-items: end;
-  }
-  
+.signin-form h2 {
+  margin-bottom: 30px;
+  text-align: center;
+  color: #333333;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.title-Login {
+  text-align: center;
+  color: #e16741;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.input-group input:focus {
+  border-color: #007bff;
+}
+
+.signin-footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.signin-footer p {
+  font-size: 14px;
+  color: #666666;
+}
+
+.signin-footer a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.signin-footer a:hover {
+  text-decoration: underline;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.my-checkbox-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.my-checkbox {
+  margin-right: 10px;
+}
+
+.my-forgot-password {
+  color: #070000;
+  text-decoration: none;
+}
+
+.my-label {
+  color: #0a14cb;
+}
+
 @media screen and (max-width: 768px) {
-    .signin-container {
-        flex-direction: column;
-    }
+  .signin-container {
+    flex-direction: column;
+  }
 
-    .signin-image {
-        order: 1;
-        /* Place the image below the form in mobile view */
-    }
+  .signin-image {
+    order: 1;
+    /* Place the image below the form in mobile view */
+  }
 }

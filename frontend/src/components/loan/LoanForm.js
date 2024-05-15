@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-
+import "./LoanForm.css";
 // #F5DD61
 // #FAA300
 
@@ -20,15 +20,15 @@ const LoanForm = () => {
   const history = useHistory();
   const [formData, setFormData] = useState({
     applicant_name: "Yash Anand",
-    aadhar_no: "250825082508",
-    pan_no: "DDKLT5840M",
+    aadhar_no: "400832569462",
+    pan_no: "SD0947LK0M",
     bank_details: "Axis Bank, Patna",
-    account_no: "1234567890",
-    ifsc_code: "AXIS0002541",
-    loan_amount: "50000.00",
+    account_no: "99900025648",
+    ifsc_code: "HDFC0009990",
+    loan_amount: "100000.00",
     loan_type: "Other Loans",
-    annual_interest_rate: "5.0",
-    loan_term: "12",
+    annual_interest_rate: "7.5",
+    loan_term: "36",
     employment_details: "Others",
   });
   const [agree, setAgree] = useState(false);
@@ -99,14 +99,13 @@ const LoanForm = () => {
         marginTop: "50px",
         paddingTop: "30px",
         backgroundColor: "#f0f0f0",
+        marginBottom: "25px",
       }}
     >
       <form onSubmit={handleSubmit}>
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <Typography variant="h5" gutterBottom>
-              Loan Application Form
-            </Typography>
+            <h1 className="title">  Loan Application Form </h1>            
           </Grid>
           <Grid item xs={12}>
             <FormControl fullWidth>

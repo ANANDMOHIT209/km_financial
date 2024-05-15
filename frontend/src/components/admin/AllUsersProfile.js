@@ -52,43 +52,43 @@ const AllUsersProfile = () => {
   }, [pagination]); // Watch for changes in pagination state
 
   return (
-    <div className="main-container">
-      <div className="loan-history-container">        
-  <h1 className="loan-history-header">Users</h1>
-  <div className="loan-history-item">
-    <table>
-      <thead>
-        <tr>
-          <th className="table-header">Name</th>
-          <th className="table-header">Email ID</th>
-          <th className="table-header">Phone Number</th>
-          <th className="table-header">Address</th>
-          <th className="table-header">State</th>
-          <th className="table-header">Details</th>
-        </tr>
-      </thead>
-      <tbody>
-        {usersProfile.map((item, index) => (
-          <tr key={index}>
-            <td className="table-cell value">{item.name}</td>
-            <td className="table-cell value">{item.email}</td>
-            <td className="table-cell value">{item.phone}</td>
-            <td className="table-cell value">{item.address_detail}</td>
-            <td className="table-cell value">{item.state}</td>
-            <td className="table-cell value">
-              <button className="profile-card__button button--blue" onClick={() => history.push(`/userprofilebyadmin/${item.id}`)}>
-                View Details
-              </button>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-</div>
-      <div className="usercontainer">
-        <button className="profile-card__button button--blue" onClick={() => handlePageChange(pagination.page_no - 1)}>Previous Page</button>
-        <button className="profile-card__button button--blue" onClick={() => handlePageChange(pagination.page_no + 1)}>Next Page</button>
+    <div className="aup-main-container">
+      <div className="aup-loan-history-container">        
+        <h1 className="aup-loan-history-header">All Registered Users</h1>
+        <div className="aup-loan-history-item">
+          <table>
+            <thead>
+              <tr>
+                <th className="aup-table-header">Name</th>
+                <th className="aup-table-header">Email ID</th>
+                <th className="aup-table-header">Phone Number</th>
+                <th className="aup-table-header">Address</th>
+                <th className="aup-table-header">State</th>
+                <th className="aup-table-header">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              {usersProfile.map((item, index) => (
+                <tr key={index}>
+                  <td className="aup-table-cell aup-value">{item.name}</td>
+                  <td className="aup-table-cell aup-value">{item.email}</td>
+                  <td className="aup-table-cell aup-value">{item.phone}</td>
+                  <td className="aup-table-cell aup-value">{item.address_detail}</td>
+                  <td className="aup-table-cell aup-value">{item.state}</td>
+                  <td className="aup-table-cell aup-value">
+                    <button className="aup-profile-card__button aup-button-view-detail-blue" onClick={() => history.push(`/userprofilebyadmin/${item.id}`)}>
+                      View Details
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div className="aup-user-container">
+        <button className="aup-profile-card__button aup-button--blue" onClick={() => handlePageChange(pagination.page_no - 1)}>Previous Page</button>
+        <button className="aup-profile-card__button aup-button--blue" onClick={() => handlePageChange(pagination.page_no + 1)}>Next Page</button>
         <input
           type="number"
           value={pagination.limit}

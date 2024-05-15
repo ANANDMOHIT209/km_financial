@@ -1,0 +1,72 @@
+.loan-details-admin-container {
+    padding: 20px;
+    margin: 1.5 rem 0;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .loan-details-admin-heading {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .loan-details-admin-table-container {
+    overflow-x: auto;
+  }
+  
+  .loan-details-admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .loan-details-admin-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+  }
+  
+  .loan-details-admin-label {
+    font-weight: bold;
+    background-color: #f9f9f9;
+  }
+  
+  .loan-details-admin-value {
+    background-color: #fff;
+  }
+  
+  .loan-details-admin-actions {
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .loan-details-admin-button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .loan-details-admin-button-approve {
+    background-color: #4caf50;
+  }
+  
+  .loan-details-admin-button-reject {
+    background-color: #f44336;
+  }
+  
+  .loan-details-admin-button-delete {
+    background-color: #ff9800;
+  }
+  
+  .loan-details-admin-button:hover {
+    opacity: 0.9;
+  }
+  

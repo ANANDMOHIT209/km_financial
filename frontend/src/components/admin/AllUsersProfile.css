@@ -1,167 +1,153 @@
-.main-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 3rem;
-  }
-  .loan-history-header{
-    font-size: 40px;
-    text-align: center;
-    color: #ff5107;
-  }
-  
-  /* Styles for loan history */
-
-  
-.loan-history-item {
-  width: 110%;
-  margin-top: 20px;
-  border-collapse: collapse;
-  padding: 2.5rem 2rem;
-  background-color: #f0f0f0;
+.aup-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+  background-color: #fdfdfd;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.loan-history-item table {
+.aup-loan-history-header {
+  font-size: 60px;
+  text-align: center;
+  margin: 20px;
+  color: #1997fc;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Styles for loan history */
+
+.aup-loan-history-item {
+  width: 100%;
+  margin-top: 20px;
+  padding: 2.5rem 2rem;
+  background-color: #2c2c2c;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.aup-loan-history-item table {
   width: 100%;
   border-collapse: collapse;
   text-align: center;
 }
 
-.loan-history-item td {
-  padding: 8px;
-  border: 1px solid #dddddd;
-  text-align: center;
+.aup-loan-history-item td,
+.aup-loan-history-item th {
+  padding: 12px;
+  border: 1px solid #444;
+  color: #fff;
 }
 
-.loan-history-item td.value {
+.aup-loan-history-item td.aup-value {
   font-weight: bold;
 }
 
-.loan-history-item tr:nth-child(even) {
-  background-color: #f2f2f2;
+.aup-loan-history-item tr:nth-child(even) {
+  background-color: #3b3b3b;
 }
 
-.loan-history-item tr:hover {
-  background-color: #ddd;
+.aup-loan-history-item tr:hover {
+  background-color: #555;
 }
 
-.table-header {
-  padding: 8px;
-  border: 1px solid #dddddd;
-  background-color: #f0f0f0;
+.aup-table-header {
+  padding: 12px;
+  background-color: #1997fc;
+  color: #fff;
   font-weight: bold;
+  border-radius: 4px;
 }
 
-
-.loan-history-item tbody:last-child tr td.value {
-  background-color: #ffffff;
+@media (max-width: 768px) {
+  .aup-loan-history-item {
+    padding: 1.5rem;
+  }
 }
 
-  /* .user-history-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 2rem;
-  }
-  
-  .loan-history-item {
-    width: 30rem;
-    border: 1px solid #ccc;
-    background-color: aliceblue;
-    border-radius: 5px;
-    padding: 1rem;
-    margin: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  td {
-    padding: 0.5rem;
-  }
-  
-  .key {
-    font-weight: bold;
-    margin-right: 5px;
-    color: #333; 
-  
-  .value {
-    color: #555; 
-  }*/
-  
-  /* Optional: To make sure there are no extra margins in case of less than 2 items */
-  @media (max-width: 768px) {
-    .loan-history-item {
-      flex: 1 0 calc(100% - 20px); /* One item per row */
-      max-width: calc(100% - 20px); /* One item per row */
-    }
-  } 
-  
-  /* lower Part */
-  
-  .usercontainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Change from space-between to flex-start */
-    margin-top: 20px;
-  }
-  
-  .select-box {
-    padding: 8px 12px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #fff;
-    color: #333;
-  }
-  
-  input[type="number"] {
-    padding: 8px 12px;
-    font-weight: 500;
-    font-size: 19px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    min-height: 55px;
-    width: 80px; /* Adjust width as needed */
-  }
-  
-  /* Buttons */
-  .profile-card__button {
-    background: none;
-    border: none;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 600;
-    font-size: 19px;
-    margin: 15px 25px;
-    padding: 15px 20px;
-    min-width: 170px;
-    border-radius: 10px;
-    min-height: 55px;
-    color: #fff;
-    cursor: pointer;
-    backface-visibility: hidden;
-    transition: all .3s;
-  }
-  
-  /* Button Modifications */
-  .button--blue {
-    background: linear-gradient(45deg, #1da1f2, #0e71c8);
-    box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.4);
+.aup-user-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 60px 0;
+}
+.aup-select-box,
+input[type="number"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  transition: border-color 0.3s ease;
+}
 
-    &:hover {
-      box-shadow: 0px 7px 30px rgba(19, 127, 212, 0.75);
-    }
-  }
-  
-  .button--orange {
-    background: linear-gradient(45deg, #d5135a, #f05924);
-    box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.35);
-  
-    &:hover {
-      box-shadow: 0px 7px 30px rgba(223, 45, 70, 0.75);
-    }
-  }
+input[type="number"]:focus,
+.aup-select-box:focus {
+  border-color: #1997fc;
+  outline: none;
+}
+
+input[type="number"] {
+  width: 80px; /* Adjust width as needed */
+}
+
+.aup-profile-card__button {
+  background: none;
+  border: none;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 19px;
+  margin: 15px 25px;
+  padding: 15px 20px;
+  min-width: 170px;
+  border-radius: 10px;
+  min-height: 55px;
+  color: #fff;
+  cursor: pointer;
+  backface-visibility: hidden;
+  transition: all .3s;
+}
+
+.aup-button-view-detail-blue {
+  font-family: 'Quicksand', sans-serif;
+  margin: 10px;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  backface-visibility: hidden;
+  transition: all .3s;
+  background: linear-gradient(45deg, #1da1f2, #0e71c8);
+  box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.4);
+}
+
+.aup-button-view-detail-blue:hover {
+  box-shadow: 0px 7px 30px rgba(19, 127, 212, 0.75);
+  transform: scale(1.05);
+}
+
+.aup-button--blue {
+  background: linear-gradient(45deg, #1da1f2, #0e71c8);
+  box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.4);
+}
+
+.aup-button--blue:hover {
+  box-shadow: 0px 7px 30px rgba(19, 127, 212, 0.75);
+  transform: scale(1.05);
+}
+
+.aup-button--orange {
+  background: linear-gradient(45deg, #d5135a, #f05924);
+  box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.35);
+}
+
+.aup-button--orange:hover {
+  box-shadow: 0px 7px 30px rgba(223, 45, 70, 0.75);
+  transform: scale(1.05);
+}

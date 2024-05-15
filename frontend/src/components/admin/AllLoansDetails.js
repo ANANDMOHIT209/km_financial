@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from "react-router-dom";
-import axios from 'axios'; // Assuming you're using Axios for HTTP requests
+import { useHistory } from "react-router-dom";
+import axios from 'axios';
 import "./AllLoansDetails.css";
 
-const AllLoanHistory = () => {
+const UpdatedLoanHistory = () => {
   const [loanHistory, setLoanHistory] = useState([]);
   const [pagination, setPagination] = useState({
     sort_by: 'id',
@@ -49,70 +49,129 @@ const AllLoanHistory = () => {
 
   useEffect(() => {
     fetchLoanHistory();
-  }, [pagination]); // Fetch data whenever pagination changes
+  }, [pagination]);
+
+  const deleteLoanAndRedirect = async (loanId) => {
+    try {
+      const accessToken = localStorage.getItem("accessToken");
+      const headers = {
+        token: `${accessToken}`,
+        "Content-Type": "application/json",
+      };
+      await axios.delete(`http://127.0.0.1:8000/delete_loan/${loanId}`, { headers });
+      history.push('/all_loan_history_pg');
+    } catch (error) {
+      console.error('Failed to delete loan:', error);
+    }
+  };
+
+  const approveLoanAndRedirect = async (loanId) => {
+    try {
+      const accessToken = localStorage.getItem("accessToken");
+      const headers = {
+        token: `${accessToken}`,
+        "Content-Type": "application/json",
+      };
+      await axios.put(`http://127.0.0.1:8000/approve_loan/${loanId}`, null, { headers });
+      history.push('/all_loan_history_pg');
+    } catch (error) {
+      console.error('Failed to approve loan:', error);
+    }
+  };
+
+  const rejectLoanAndRedirect = async (loanId) => {
+    try {
+      const accessToken = localStorage.getItem("accessToken");
+      const headers = {
+        token: `${accessToken}`,
+        "Content-Type": "application/json",
+      };
+      await axios.put(`http://127.0.0.1:8000/loan/${loanId}/reject`, null, { headers });
+      history.push('/all_loan_history_pg');
+    } catch (error) {
+      console.error('Failed to reject loan:', error);
+    }
+  };
 
   return (
-    <div className="main-container">
-   <div className="loan-history-container">
-   <h1 className="loan-history-header">Loan History</h1>
-      <div className="loan-history-item">
-        
-        <table>
-          <thead>
-            <tr>
-              <th className="table-header">Loan Id</th>
-              <th className="table-header">PAN Number</th>
-              <th className="table-header">Aadhar Number</th>
-              <th className="table-header">Loan Amount</th>
-              <th className="table-header">Loan Status</th>
-              <th className="table-header"> Details </th>
-            </tr>
-          </thead>
-          <tbody>
-            {loanHistory.map((item, index) => (
-              <tr key={index}>
-                <td className="table-cell value">{item.id}</td>
-                <td className="table-cell value">{item.pan_no}</td>
-                <td className="table-cell value">{item.aadhar_no}</td>
-                <td className="table-cell value">{item.loan_amount}</td>
-                <td className="table-cell value">{item.status}</td>
-                <td className="table-cell value">
-                <button className="profile-card__button button--blue" onClick={() => history.push(`/loandetailsbyadmin/${item.id}`)}>
-                      View Details
-                </button>
-                </td>
+    <div className="updated-main-container">
+      <div className="updated-loan-history-container">
+        <h1 className="updated-loan-history-header">Loan History</h1>
+        <div className="updated-loan-history-item">
+          <table>
+            <thead>
+              <tr>
+                <th className="updated-table-header">Loan Id</th>
+                <th className="updated-table-header">PAN Number</th>
+                <th className="updated-table-header">Aadhar Number</th>
+                <th className="updated-table-header">Loan Amount</th>
+                <th className="updated-table-header">Loan Status</th>
+                <th className="updated-table-header">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {loanHistory.map((item, index) => (
+                <tr key={index}>
+                  <td className="updated-value">{item.id}</td>
+                  <td className="updated-value">{item.pan_no}</td>
+                  <td className="updated-value">{item.aadhar_no}</td>
+                  <td className="updated-value">{item.loan_amount}</td>
+                  <td className="updated-value">{item.status}</td>
+                  <td className="updated-value">
+                    <button
+                      className="updated-profile-card__button updated-button--blue"
+                      onClick={() => history.push(`/loandetailsbyadmin/${item.id}`)}
+                    >
+                      View Details
+                    </button>
+                    <button
+                      className="updated-profile-card__button updated-button--green"
+                      onClick={() => approveLoanAndRedirect(item.id)}
+                    >
+                      Approved
+                    </button>
+                    <button
+                      className="updated-profile-card__button updated-button--red"
+                      onClick={() => rejectLoanAndRedirect(item.id)}
+                    >
+                      Rejected
+                    </button>
+                    <button
+                      className="updated-profile-card__button updated-button--orange"
+                      onClick={() => deleteLoanAndRedirect(item.id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
 
-
-
-
-
-      <div className="usercontainer">
-        {/* <select className="select-box" onChange={handleSortChange}>
-          <option value="id">ID</option>
-          <option value="loan_amount">Loan Amount</option>          
-        </select>
-        <select className="select-box" onChange={handleOrderChange}>
-          <option value="asc">Ascending</option>
-          <option value="desc">Descending</option>
-        </select> */}
-        <button className="profile-card__button button--blue" onClick={() => handlePageChange(pagination.page_no - 1)}>Previous Page</button>
-        <button className="profile-card__button button--blue" onClick={() => handlePageChange(pagination.page_no + 1)}>Next Page</button>
+      <div className="updated-user-container">
+        <button
+          className="updated-profile-card__button updated-button--blue updated-nxt-btn"
+          onClick={() => handlePageChange(pagination.page_no - 1)}
+        >
+          Previous Page
+        </button>
+        <button
+          className="updated-profile-card__button updated-button--blue updated-nxt-btn"
+          onClick={() => handlePageChange(pagination.page_no + 1)}
+        >
+          Next Page
+        </button>
         <input
           type="number"
           value={pagination.limit}
           onChange={(e) => handleLimitChange(parseInt(e.target.value))}
           onWheel={(e) => e.currentTarget.blur()} // Prevent scroll behavior on mouse wheel
         />
-        {/* <button onClick={fetchLoanHistory}>Fetch Loan History</button> */}
       </div>
     </div>
   );
 };
 
-export default AllLoanHistory;
+export default UpdatedLoanHistory;

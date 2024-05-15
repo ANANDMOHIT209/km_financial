@@ -1,126 +1,171 @@
-.main-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 3rem;
-  }
-.loan-history-header{
-  font-size: 40px;
+.updated-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1.5rem 0;
+  background-color: #fdfdfd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.updated-loan-history-header {
+  font-size: 60px;
   text-align: center;
-  color: #ff5107;
+  margin: 20px;
+  color: #1997fc;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
-/* Styles for loan history */
 
+/* .updated-loan-history-container {
+  width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fdfdfd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+} */
 
-.loan-history-item {
-  width: 110%;
+.updated-loan-history-item {
+  width: 100%;
   margin-top: 20px;
-  border-collapse: collapse;
   padding: 2.5rem 2rem;
+  background-color: #333;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.loan-history-item table {
+.updated-loan-history-item table {
   width: 100%;
   border-collapse: collapse;
   text-align: center;
 }
 
-.loan-history-item td {
-  padding: 8px;
-  border: 1px solid #dddddd;
-  text-align: center;
+.updated-loan-history-item td,
+.updated-loan-history-item th {
+  padding: 12px;
+  border: 1px solid #444;
+  color: #fff;
 }
 
-.loan-history-item td.value {
+.updated-loan-history-item td.updated-value {
   font-weight: bold;
 }
 
-.loan-history-item tr:nth-child(even) {
-  background-color: #f2f2f2;
+.updated-loan-history-item tr:nth-child(even) {
+  background-color: #3b3b3b;
 }
 
-.loan-history-item tr:hover {
-  background-color: #ddd;
+.updated-loan-history-item tr:hover {
+  background-color: #555;
 }
 
-.table-header {
-  padding: 8px;
-  border: 1px solid #dddddd;
-  background-color: #bfbdbd;
+.updated-table-header {
+  padding: 12px;
+  background-color: #1997fc;
+  color: #fff;
   font-weight: bold;
+  border-radius: 4px;
 }
 
-
-.loan-history-item tbody:last-child tr td.value {
-  background-color: #ffffff;
-}
-
-
-  
-/* lower Part */
-
-.usercontainer {
+.updated-user-container {  
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Change from space-between to flex-start */
-  margin-top: 20px;
+  justify-content: space-between;
+  margin: 20px 10px;
 }
-  
-  .select-box {
-    padding: 8px 12px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #fff;
-    color: #333;
-  }
-    
-  input[type="number"] {
-    padding: 8px 12px;
-    font-weight: 500;
-    font-size: 19px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    min-height: 55px;
-    width: 60px; /* Adjust width as needed */
-  }
 
-  /* Buttons */
-  .profile-card__button {
-    background: none;
-    border: none;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 600;
-    font-size: 19px;
-    margin: 15px 25px;
-    padding: 15px 20px;
-    min-width: 170px;
-    border-radius: 10px;
-    min-height: 55px;
-    color: #fff;
-    cursor: pointer;
-    backface-visibility: hidden;
-    transition: all .3s;
-  }
-  
-  /* Button Modifications */
-  .button--blue {
-    background: linear-gradient(45deg, #1da1f2, #0e71c8);
-    box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.4);
-    
-    &:hover {
-    box-shadow: 0px 7px 30px rgba(19, 127, 212, 0.75);
-    }
-  }
-  
-    
+input[type="number"],
+.updated-select-box {
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  padding-left: 15px;
+  margin-left: 15px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  transition: border-color 0.3s ease;
+}
 
-  .button--orange {
-    background: linear-gradient(45deg, #d5135a, #f05924);
-    box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.35);
-  
-    &:hover {
-      box-shadow: 0px 7px 30px rgba(223, 45, 70, 0.75);
-    }
-  }
-  
+input[type="number"]:focus,
+.updated-select-box:focus {
+  border-color: #ff5107;
+  outline: none;
+}
+
+input[type="number"] {
+  width: 60px;
+}
+
+.updated-profile-card__button {
+  background: none;
+  border: none;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 5px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.updated-button--blue {
+  background-color: #007bff;
+  color: white;
+}
+
+.updated-button--green {
+  background-color: #28a745;
+  color: white;
+}
+
+.updated-button--red {
+  background-color: #dc3545;
+  color: white;
+}
+
+.updated-button--orange {
+  background-color: #fd7e14;
+  color: white;
+}
+
+.updated-profile-card__button:hover {
+  opacity: 0.8;
+}
+
+.updated-profile-card__button:focus {
+  outline: none;
+}
+
+.updated-nxt-btn {
+  min-height: 44px;
+  min-width: 150px;
+  margin: 15px;
+  font-size: 20px;
+  font-family: 'Quicksand', sans-serif;
+  margin: 10px;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  backface-visibility: hidden;
+  transition: all .3s;
+  background: linear-gradient(45deg, #1da1f2, #0e71c8);
+  box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.4);
+}
+
+.updated-nxt-btn {
+  background: linear-gradient(45deg, #1da1f2, #0e71c8);
+  box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.4);
+}
+
+.updated-nxt-btn:hover {
+  box-shadow: 0px 7px 30px rgba(19, 127, 212, 0.75);
+  transform: scale(1.05);
+}

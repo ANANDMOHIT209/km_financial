@@ -457,16 +457,17 @@ async def predict_loan_approval(data: rqm.LoanData):
         return {"prediction": "Loan will not be approved"}  
     
 
-@app.put("/loan/{loan_id}/approve")
+@app.put("/approve_loan/{loan_id}")
 async def approve_loan_application(
     loan_id: int,
     current_user_email = Depends(su.get_current_user),
     db: DBSession = Depends(get_db)
 ):
     response = {}
-    user = db.get_user_by_email(current_user_email)
-    if not user.is_admin:
-        raise HTTPException(status_code=401, detail="User not found")
+    print(current_user_email)
+    current_user = db.get_user_by_email(current_user_email)
+    if not current_user.is_admin:
+        raise HTTPException(status_code=401, detail="User not found") 
     loan_to_approve = db.get_loan_by_id(loan_id)
     if loan_to_approve:
         # if loan_to_approve not in db.session:

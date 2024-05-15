@@ -6,21 +6,22 @@ import "../loan/LoanDetails.css";
 
 const LoanDetailsByAdmin = () => {
   const { loanId } = useParams();
+  console.log(loanId)
   const [loan, setLoan] = useState({});
   const history = useHistory();
 
-  const deleteLoanAndRedirect = async (userId) => {
+  const deleteLoanAndRedirect = async (loanId) => {
     try {
       // Send a DELETE request to the server
       const accessToken = localStorage.getItem("accessToken");
-    const headers = {
-      token: `${accessToken}`,
-      "Content-Type": "application/json",
-    };
-    const response = await axios.delete(
-        `http://127.0.0.1:8000/delete_loan/${loanId}`,
-        { headers }
-      );
+      const headers = {
+        token: `${accessToken}`,
+        "Content-Type": "application/json",
+      };
+      const response = await axios.delete(
+          `http://127.0.0.1:8000/delete_loan/${loanId}`,
+          { headers }
+        );
      
 
       // Redirect to the all_user_profile page after successful deletion
@@ -30,28 +31,38 @@ const LoanDetailsByAdmin = () => {
       // Optionally, handle the error, e.g., show a message to the user
     }
   };
-  const approveLoanAndRedirect = async (userId) => {
+  const approveLoanAndRedirect = async (loanId) => {
     try {
-      // Send a DELETE request to the server
+      // Retrieve the access token from local storage
       const accessToken = localStorage.getItem("accessToken");
-    const headers = {
-      token: `${accessToken}`,
-      "Content-Type": "application/json",
-    };
-    const response = await axios.delete(
-        `http://127.0.0.1:8000/loan/${loanId}/approve`,
-        { headers }
-      );
-     
-
-      // Redirect to the all_user_profile page after successful deletion
+  
+      // Define the headers with the access token
+      const headers = {
+        token: `${accessToken}`,
+        "Content-Type": "application/json",
+      };
+  
+      // Construct the URL for the API endpoint
+      const url = `http://127.0.0.1:8000/approve_loan/${loanId}`;
+  
+      // Use the axios configuration object to send the PUT request
+      const response = await axios({
+        method: 'put',
+        url: url,
+        headers: headers,
+        // Include any additional parameters or data required by the API endpoint
+        // params: {}, // Uncomment and fill in if needed
+      });
+  
+      // Redirect to the all_user_profile page after successful approval
       history.push('/all_loan_history_pg');
     } catch (error) {
-      console.error('Failed to delete user:', error);
+      console.error('Failed to approve loan:', error);
       // Optionally, handle the error, e.g., show a message to the user
     }
   };
-  const rejectLoanAndRedirect = async (userId) => {
+  
+  const rejectLoanAndRedirect = async (loanId) => {
     try {
       // Send a DELETE request to the server
       const accessToken = localStorage.getItem("accessToken");
@@ -59,10 +70,16 @@ const LoanDetailsByAdmin = () => {
       token: `${accessToken}`,
       "Content-Type": "application/json",
     };
-    const response = await axios.delete(
-        `http://127.0.0.1:8000/loan/${loanId}/reject`,
-        { headers }
-      );
+      const url = `http://127.0.0.1:8000/loan/${loanId}/reject`;
+  
+      // Use the axios configuration object to send the PUT request
+      const response = await axios({
+        method: 'put',
+        url: url,
+        headers: headers,
+        // Include any additional parameters or data required by the API endpoint
+        // params: {}, // Uncomment and fill in if needed
+      });
      
 
       // Redirect to the all_user_profile page after successful deletion
@@ -182,13 +199,13 @@ const LoanDetailsByAdmin = () => {
             </tr>
             <tr>
             <td className="table-cell value">
-                <button className="profile-card__button button--blue" onClick={() => approveLoanAndRedirect(loan.id)}>
+                <button className="profile-card__button button--blue" onClick={() => approveLoanAndRedirect(loan.loan_id)}>
                       Approved
                 </button>
-                <button className="profile-card__button button--blue" onClick={() => rejectLoanAndRedirect(loan.id)}>
+                <button className="profile-card__button button--blue" onClick={() => rejectLoanAndRedirect(loan.loan_id)}>
                       Rejected
                 </button>
-                <button className="profile-card__button button--blue" onClick={() => deleteLoanAndRedirect(loan.id)}>
+                <button className="profile-card__button button--blue" onClick={() => deleteLoanAndRedirect(loan.loan_id)}>
                       Delete
                 </button>
             </td>

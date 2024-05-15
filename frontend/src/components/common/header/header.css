@@ -7,6 +7,7 @@
 .logo h1 {
   font-size: 35px;
   font-weight: 900;
+  color: #ffffff;
 }
 
 .head .icon {
@@ -98,9 +99,9 @@ header ul li a:hover {
 }
 
 .button {
-  background-color: #06308d;
-  padding: 15px 30px;
-  color: #F1F8F5;
+  background-color: #226af0c9;
+  padding: 12px 24px;
+  color: #ede7e4; /* Updated text color */
   cursor: pointer;
   /* Ensure cursor changes to pointer on hover */
   border: none;

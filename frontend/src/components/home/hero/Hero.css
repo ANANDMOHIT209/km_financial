@@ -5,22 +5,90 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: -2;
   width: 100%;
   height: 100vh;
   padding-top: 20%;
   padding-right: 50px;
   color: #fff;
 }
-.hero #heading h3 {
-  color: #ffffff;
-}
-.hero #heading {
-  text-align: left;
-  margin: 0;
-  padding: 0;
+/* Typing Animation */
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 
+/* Apply animation to text */
+.typing-text {
+  overflow: hidden; /* Hide overflowing text */
+  white-space: nowrap; /* Prevent text from wrapping */
+  animation: typing 2s steps(20) forwards; /* Adjust duration and steps as needed */
+  position: relative; /* Position relative to allow absolute positioning of cursor */
+}
+
+/* Cursor animation */
+.typing-text::after {
+  content: ''; /* Required for pseudo-elements */
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0.15em; /* Cursor width */
+  height: 1em; /* Cursor height */
+  background-color: transparent; /* Cursor color */
+  animation: cursor-blink 1s infinite step-start; /* Cursor blinking animation */
+}
+
+@keyframes cursor-blink {
+  50% {
+    background-color: transparent;
+  }
+}
+
+.typing-text {
+  opacity: 5;
+  transition: opacity 0.9s ease-in-out;
+}
+
+.start-typing {
+  opacity: 5;
+}
+
+/* Hide cursor when typing animation completes */
+.typing-text.finished::after {
+  display: none;
+}
+
+.gradient-text {
+  color: linear-gradient(90deg, rgb(87, 78, 219) 0.41%, rgb(79, 9, 170) 40.68%, rgb(220, 56, 56) 64.12%, rgb(227, 125, 52) 97.82%);
+}
+
+/* Part 2 */
+
+.txtSmallTitle {
+  font-size: 48px;
+  color: #37322f;
+  
+}
+.txtCompanyTitle{
+  font-size: 48px;
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(90deg, rgb(229, 14, 60) 0.41%, rgb(18, 12, 203) 40.68%, rgb(231, 36, 104) 64.12%, rgb(10, 111, 134) 97.82%) text, rgba(0, 0, 0, 0);
+}
+.txtTitle {
+  font-size: 48px;
+  -webkit-text-fill-color: transparent;
+  background: -webkit-linear-gradient(90deg, rgb(179, 174, 245) 0.41%, rgb(215, 203, 231) 40.68%, rgb(229, 200, 200) 64.12%, rgb(234, 168, 121) 97.82%) text, rgba(0, 0, 0, 0);
+  background: linear-gradient(90deg, rgb(87, 78, 219) 0.41%, rgb(79, 9, 170) 40.68%, rgb(220, 56, 56) 64.12%, rgb(227, 125, 52) 97.82%) text, rgba(0, 0, 0, 0);
+}
+
+.gap {
+  margin-bottom: 8px;
+}
 /* primary-btn-hero */
 
 .primary-btn-hero {

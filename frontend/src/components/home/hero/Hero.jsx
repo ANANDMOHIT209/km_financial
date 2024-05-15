@@ -1,21 +1,73 @@
-import React from "react"
+import React, { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Heading from "../../common/heading/Heading"
 import "./Hero.css"
 
-const Hero = () => {
+function Hero() {
+  const sectionRef = useRef(null);
+  const [isInViewport, setIsInViewport] = useState(false);
+  const [animationCompleted, setAnimationCompleted] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (sectionRef.current) {
+        const { top, bottom } = sectionRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const isVisible = (top > 0 && top < windowHeight) || (bottom > 0 && bottom < windowHeight);
+        setIsInViewport(isVisible);
+      }
+    };
+
+    const debounceScroll = debounce(handleScroll, 100);
+
+    window.addEventListener('scroll', debounceScroll);
+
+    // Trigger the animation and text color change when component mounts
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', debounceScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isInViewport && !animationCompleted) {
+      const textAnimation = setTimeout(() => {
+        setAnimationCompleted(true);
+      }, 2000); // Adjust duration to match your CSS animation duration
+      return () => clearTimeout(textAnimation);
+    }
+  }, [isInViewport, animationCompleted]);
+
+  const debounce = (func, delay) => {
+    let timeout;
+    return function () {
+      const context = this;
+      const args = arguments;
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(context, args), delay);
+    };
+  };
+
   return (
     <>
       <section className='hero'>
         <div className='container'>
           <div className='row'>
-            <Heading subtitle='WELCOME TO KM Financial' title='Fast Loans, Easy Approval' />
-            <p>Unlock funds effortlessly with our streamlined loan process.</p>
+            <div className="section" ref={sectionRef}>
+              <h4>
+                <p className={`txtSmallTitle ${isInViewport ? 'typing-text' : ''} ${animationCompleted ? 'finished' : ''}`}>Welcome to KM Financial</p>
+              </h4>
+            </div>
+            <div className="gap"></div>
+            <h4 style={{ fontSize: '20px', color: '#37322f', textAlign: 'right', marginRight: '55px' }}>Your Gateway To</h4>
+            <div className="gap"></div>
+            <h2><p className={`txtTitle ${isInViewport ? 'typing-text' : ''} ${animationCompleted ? 'finished' : ''}`}>Fast Loans, Easy Approval</p></h2>
+            <div className="gap"></div>
+            <h4 style={{ fontSize: '20px', color: '#37322f' }}>Unlock funds effortlessly with our streamlined loan process.</h4>
             <div>
-              {/* Wrapped button in Link component */}
-              <Link to="/apply" className='primary-btn-hero'>
+              <Link to="/applyloan" className='primary-btn-hero'>
                 GET LOAN NOW <i className='fa fa-long-arrow-alt-right'></i>
-              </Link>              
+              </Link>
             </div>
           </div>
         </div>
@@ -25,5 +77,4 @@ const Hero = () => {
   )
 }
 
-export default Hero
-
+export default Hero;

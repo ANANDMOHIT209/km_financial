@@ -166,8 +166,11 @@
 }
 
 .loan-history-heading {
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #1997fc;
+  font-weight: 600;
 }
 
 .loan-history-message {
@@ -227,8 +230,14 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
-.view-details-btn:hover,
+.update-details-btn{
+  background-color: #23CE6B;
+}
 .update-details-btn:hover {
+  background-color: #036016;
+}
+
+.view-details-btn:hover
+{
   background-color: #0056b3;
 }

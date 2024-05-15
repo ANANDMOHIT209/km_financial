@@ -18,7 +18,9 @@
 .signin-form h2 {
   margin-bottom: 30px;
   text-align: center;
-  color: #333333;
+  color: #1997fc;
+  font-size: 30px;
+  font-weight: 500;
 }
 
 .input-group input {

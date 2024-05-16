@@ -19,20 +19,27 @@ const SignIn = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post("/login", formData);
-      const { access_token } = response.data.message;
-      localStorage.setItem("accessToken", access_token);
-      setAlertMessage("Successfully Login"); // Set the alert message
-      setShowAlert(true); // Show the alert
-      history.push("/");
+        const response = await api.post("/login", formData);
+        const { access_token, email } = response.data.message;
+        localStorage.setItem("accessToken", access_token);
+        setAlertMessage("Successfully Login"); // Set the alert message
+        setShowAlert(true); // Show the alert
+        if (email=== "admin@admin.com") {
+            history.push("/admin"); // Redirect admin to /admin
+        } else {
+            history.push("/"); // Redirect normal user to /
+        }
     } catch (error) {
-      setAlertMessage(`Error login: ${error.response.data.detail}`); // Set the alert message
-      setShowAlert(true); // Show the alert
+        setAlertMessage(`Error login: ${error.response.data.detail}`); // Set the alert message
+        setShowAlert(true); // Show the alert
     }
-  };
+};
+
 
   return (
     <div className="signin-container">
@@ -80,7 +87,7 @@ const SignIn = () => {
               Don't have an account? <Link to="/signup/">Sign Up</Link>
             </p>
           </div>
-          <button type="submit">Log In</button>
+          <button className="signin-btn" type="submit">Log In</button>
         </form>
       </div>
     </div>

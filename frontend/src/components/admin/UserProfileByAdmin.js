@@ -88,7 +88,8 @@ const UserProfileByAdmin = () => {
 
   return (
     // <div className={`wrapper ${isActive ? 'active' : ''}`}>
-      <div className="profile-card js-profile-card">
+      <div className="profile-card-byAdmin js-profile-card">
+        <h2 className="loan-details-admin-heading">{profileData.name}'s Profile</h2>
         <div className="profile-card__img">
         {profileImage && (
           <img src={profileImage} alt="Profile" className="profile-image" />
@@ -132,9 +133,9 @@ const UserProfileByAdmin = () => {
         <div>
           {/* Profile Card Controls */}
           <div className="profile-card-ctr">
-            <button className="profile-card__button button--orange" onClick={() => history.push("/update_profile")}>Update User Profile</button>
-            <button className="profile-card__button button--blue" onClick={() => deleteUserAndRedirect(userId)}>Delete User</button>
-            <button className="profile-card__button button--blue" onClick={() => history.push("/loan-history")}> View Loan History </button>{" "}
+            <button className="profile-card__buttonByAdmin button--orange" onClick={() => history.push("/update_profile")}>Update User Profile</button>
+            <button className="profile-card__buttonByAdmin button--blue" onClick={() => deleteUserAndRedirect(userId)}>Delete User</button>
+            <button className="profile-card__buttonByAdmin button--blue" onClick={() => history.push("/loan-history")}> View Loan History </button>{" "}
           </div>
         </div>
 

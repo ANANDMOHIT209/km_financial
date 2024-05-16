@@ -7,7 +7,7 @@
   align-items: center;
   padding: 20px 100px;
   margin: 15px;
-  min-height: 100vh;
+  min-height: 500px;
 }
 
 
@@ -91,7 +91,7 @@
   text-decoration: underline;
 }
 
-button[type="submit"] {
+.signup-btn {
   width: 100%;
   padding: 10px;
   background-color: #007bff;
@@ -100,11 +100,14 @@ button[type="submit"] {
   border-radius: 4px;
   font-size: 18px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  max-width: 360px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-button[type="submit"]:hover {
-  background-color: #0056b3;
+.signup-btn:hover {
+  background-color: #06468b;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive Design */

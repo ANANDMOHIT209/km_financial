@@ -8,6 +8,7 @@ import {
   Grid,
   Select,
   MenuItem,
+  Box,
 } from "@mui/material";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
@@ -44,23 +45,23 @@ const UpdateProfile = () => {
     fetchUserProfile();
   }, []);
 
- const handleChange = (e) => {
-   const { name, value } = e.target;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
 
-   if (name === "gender" || name === "state") {
-     // Handle Select components separately
-     setProfile((prevProfile) => ({
-       ...prevProfile,
-       [name]: value,
-     }));
-   } else {
-     // Handle other input fields
-     setProfile({
-       ...profile,
-       [name]: value,
-     });
-   }
- };
+    if (name === "gender" || name === "state") {
+      // Handle Select components separately
+      setProfile((prevProfile) => ({
+        ...prevProfile,
+        [name]: value,
+      }));
+    } else {
+      // Handle other input fields
+      setProfile({
+        ...profile,
+        [name]: value,
+      });
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -84,9 +85,11 @@ const UpdateProfile = () => {
   };
 
   return (
+    <Box bgcolor="#1a1a1a" p={3} marginTop={2}>
     <Container maxWidth="md" className="update-profile-container">
-      <form onSubmit={handleSubmit} className="update-profile-form">
-        <Typography className="update-profile-title" variant="h5">
+      <form onSubmit={handleSubmit} className="update-profile-form" >
+
+        <Typography variant="h1" gutterBottom align="center" sx={{ fontWeight: 'bold', fontSize: '1.8rem', paddingBottom: '30px' }}>
           Update Profile
         </Typography>
         <Grid container spacing={2} style={{ marginBottom: "25px" }}>
@@ -223,6 +226,7 @@ const UpdateProfile = () => {
         </div>
       </form>
     </Container>
+    </Box>
   );
 };
 

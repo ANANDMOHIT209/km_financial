@@ -78,7 +78,9 @@ const ProfilePage = () => {
   return (
     <div className={`wrapper ${isActive ? 'active' : ''}`}>
       <div className="profile-card js-profile-card">
+      <h2 className="loan-details-admin-heading">{profileData.name} your profile</h2>
         <div className="profile-card__img">
+        
         {profileImage && (
           <img src={profileImage} alt="Profile" className="profile-image" />
         )}{" "}

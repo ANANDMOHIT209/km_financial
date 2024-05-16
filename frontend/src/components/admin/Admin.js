@@ -1,70 +1,102 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import './Admin.css';
+import adminImage from './/../../assets/images/admin.png';
 
 const Admin = () => {
-  const [usersData, setUsersData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const [sortBy, setSortBy] = useState("id");
-  const [sortOrder, setSortOrder] = useState("desc");
-  const [limit, setLimit] = useState(10);
+  const history = useHistory();
+  const [hoveredCard, setHoveredCard] = useState(null);
 
-  useEffect(() => {
-    fetchUsersData();
-  }, [currentPage, sortBy, sortOrder, limit]);
-
-  const fetchUsersData = async () => {
-    try {
-      const response = await axios.post('http://localhost:8000/all_users_profile_pg', {
-        params: {
-          sort_by: sortBy,
-          sort_order: sortOrder,
-          page_no: currentPage,
-          limit : limit
-        }
-      });
-      setUsersData(response.data.users);
-      setTotalPages(response.data.total_pages);
-    } catch (error) {
-      console.error('Error fetching users data:', error);
+  const handleCardClick = (cardNumber) => {
+    if (cardNumber === 1) {
+      history.push('/all_users_profile_pg');
+    } else if (cardNumber === 2) {
+      history.push('/all_loan_history_pg');
     }
   };
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
-
-  const handleSortChange = (e) => {
-    const { value } = e.target;
-    const [sortByValue, sortOrderValue] = value.split('_');
-    setSortBy(sortByValue);
-    setSortOrder(sortOrderValue);
-  };
-
   return (
-    <div>
-      <h1>All Users Profile Page</h1>
-      <select value={`${sortBy}_${sortOrder}`} onChange={handleSortChange}>
-        <option value="id_desc">ID (Descending)</option>
-        <option value="id_asc">ID (Ascending)</option>
-        {/* Add more options for other fields */}
-      </select>
-      <ul>
-        {usersData.map(user => (
-          <li key={user.id}>
-            <div>ID: {user.id}</div>
-            <div>Name: {user.name}</div>
-            {/* Add more user details as needed */}
-          </li>
-        ))}
-      </ul>
-      <div>
-        {Array.from({ length: totalPages }, (_, index) => index + 1).map(page => (
-          <button key={page} onClick={() => handlePageChange(page)}>{page}</button>
-        ))}
+    <div className="admin-container">
+      <h1 className="admin-heading">Admin Page</h1>
+      <div className="admin-content">
+      <div className="small-admin-heading">
+        <div className="admin-cards-container">
+          <div
+            className={`admin-card ${hoveredCard === 1 ? 'hover' : ''}`}
+            onClick={() => handleCardClick(1)}
+            onMouseEnter={() => setHoveredCard(1)}
+            onMouseLeave={() => setHoveredCard(null)}
+          >
+            <p>All Registered User</p>
+          </div>
+          <div
+            className={`admin-card ${hoveredCard === 2 ? 'hover' : ''}`}
+            onClick={() => handleCardClick(2)}
+            onMouseEnter={() => setHoveredCard(2)}
+            onMouseLeave={() => setHoveredCard(null)}
+          >
+            <p>Loan Applied History</p>
+          </div>
+        </div>
+        
+      </div>
+      <div className="admin-image" >
+            <img  src={adminImage} alt="Admin" />
+      </div>
       </div>
     </div>
   );
 };
 
 export default Admin;
+
+
+// import React, { useState } from 'react';
+// import { useHistory } from 'react-router-dom'; // Import useHistory from react-router-dom
+// import './Admin.css'; // Import the CSS file
+// import adminImage from './/../../assets/images/admin.svg';
+
+// const Admin = () => {
+//   const history = useHistory(); // Get history object from useHistory hook
+//   const [hoveredCard, setHoveredCard] = useState(null);
+
+//   const handleCardClick = (cardNumber) => {
+//     if (cardNumber === 1) {
+//       history.push('/all_users_profile_pg'); // Redirect to all_users_profile_pg component
+//     } else if (cardNumber === 2) {
+//       history.push('/all_loan_history_pg'); // Redirect to all_loan_history_pg component
+//     }
+//   };
+
+//   return (
+//     <div className="admin-container">
+//       <h1 className="admin-heading">Admin Page</h1>
+//       <div className="small-admin-heading">
+//         <div className="admin-cards-container">
+//           <div
+//             className={`admin-card ${hoveredCard === 1 ? 'hover' : ''}`}
+//             onClick={() => handleCardClick(1)}
+//             onMouseEnter={() => setHoveredCard(1)}
+//             onMouseLeave={() => setHoveredCard(null)}
+//           >
+//             <p>All Registered User</p>
+//           </div>
+//           <div
+//             className={`admin-card ${hoveredCard === 2 ? 'hover' : ''}`}
+//             onClick={() => handleCardClick(2)}
+//             onMouseEnter={() => setHoveredCard(2)}
+//             onMouseLeave={() => setHoveredCard(null)}
+//           >
+//             <p>Loan Applied History</p>
+//           </div>
+//         </div>
+        
+//       </div>
+//       <div >
+//             <img className="admin-image" src={adminImage} alt="Admin" />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Admin;

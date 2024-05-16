@@ -53,83 +53,73 @@ const LoanDetailsByAdmin = () => {
         <table className="loan-details-admin-table">
           <tbody>
             <tr>
-              <td className="loan-details-admin-label">Loan ID:</td>
+              <td className="loan-details-admin-label" colSpan="2.5">Loan ID:</td>
               <td className="loan-details-admin-value">{loan.loan_id}</td>
+              
             </tr>
-            <tr>
-              <td className="loan-details-admin-label">Name:</td>
-              <td className="loan-details-admin-value">{loan.name}</td>
+            <tr> 
+             <td className="loan-details-admin-label">Name:</td>
+              <td className="loan-details-admin-value">{loan.name}</td>             
+              <td className="loan-details-admin-label">Gender:</td>
+              <td className="loan-details-admin-value">{loan.gender}</td>              
             </tr>
             <tr>
               <td className="loan-details-admin-label">Phone:</td>
               <td className="loan-details-admin-value">{loan.phone}</td>
-            </tr>
-            <tr>
-              <td className="loan-details-admin-label">Email:</td>
+              <td className="loan-details-admin-label"  >Email:</td>
               <td className="loan-details-admin-value">{loan.email}</td>
             </tr>
             <tr>
-              <td className="loan-details-admin-label">Gender:</td>
-              <td className="loan-details-admin-value">{loan.gender}</td>
-            </tr>
-            <tr>
-              <td className="loan-details-admin-label">Pincode:</td>
-              <td className="loan-details-admin-value">{loan.pincode}</td>
+              
             </tr>
             <tr>
               <td className="loan-details-admin-label">State:</td>
               <td className="loan-details-admin-value">{loan.state}</td>
-            </tr>
-            <tr>
-              <td className="loan-details-admin-label">Address:</td>
-              <td className="loan-details-admin-value">{loan.address}</td>
+              <td className="loan-details-admin-label">Pincode:</td>
+              <td className="loan-details-admin-value">{loan.pincode}</td>
             </tr>
             <tr>
               <td className="loan-details-admin-label">Aadhar Number:</td>
               <td className="loan-details-admin-value">{loan.aadhar_no}</td>
-            </tr>
-            <tr>
               <td className="loan-details-admin-label">Pan Number:</td>
               <td className="loan-details-admin-value">{loan.pan_no}</td>
-            </tr>
+            </tr>            
             <tr>
+              <td className="loan-details-admin-label">Address:</td>
+              <td className="loan-details-admin-value">{loan.address}</td>
               <td className="loan-details-admin-label">Bank name:</td>
               <td className="loan-details-admin-value">{loan.bank_details}</td>
             </tr>
             <tr>
               <td className="loan-details-admin-label">Account Number:</td>
               <td className="loan-details-admin-value">{loan.account_no}</td>
-            </tr>
-            <tr>
-              <td className="loan-details-admin-label">IFSC code:</td>
-              <td className="loan-details-admin-value">{loan.ifsc_code}</td>
-            </tr>
-            <tr>
               <td className="loan-details-admin-label">Loan Amount:</td>
               <td className="loan-details-admin-value">{loan.loan_amount}</td>
             </tr>
             <tr>
+              <td className="loan-details-admin-label">IFSC code:</td>
+              <td className="loan-details-admin-value">{loan.ifsc_code}</td>
               <td className="loan-details-admin-label">Annual Interest rate:</td>
               <td className="loan-details-admin-value">{loan.annual_interest_rate}</td>
             </tr>
             <tr>
-              <td className="loan-details-admin-label">Loan Type:</td>
-              <td className="loan-details-admin-value">{loan.loan_type}</td>
+             
             </tr>
             <tr>
+              <td className="loan-details-admin-label">Loan Type:</td>
+              <td className="loan-details-admin-value">{loan.loan_type}</td>
               <td className="loan-details-admin-label">Loan Term: (in Months)</td>
               <td className="loan-details-admin-value">{loan.loan_term}</td>
             </tr>
             <tr>
               <td className="loan-details-admin-label">Employment Details:</td>
               <td className="loan-details-admin-value">{loan.employment_details}</td>
-            </tr>
-            <tr>
               <td className="loan-details-admin-label">Status:</td>
               <td className="loan-details-admin-value">{loan.status}</td>
             </tr>
+            
             <tr>
-              <td className="loan-details-admin-actions" colSpan="2">
+              <td className="loan-details-admin-actions" colSpan="4">
                 <button className="loan-details-admin-button loan-details-admin-button-approve" onClick={() => handleLoanAction('approve')}>
                   Approve
                 </button>

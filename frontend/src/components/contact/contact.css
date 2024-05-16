@@ -1,55 +1,130 @@
-.contacts iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
+.ContactUs-div{
+  background-color: #1a1a1a;
 }
-.contacts .right {
+
+.ContactUs {
   padding: 50px;
 }
-.contacts h1 {
-  font-size: 30px;
-  font-weight: 400;
+
+.ContactUs .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 1200px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
 }
-.contacts p {
-  color: grey;
+
+.ContactUs-left, .ContactUs-right {
+  flex: 1;
+  padding: 20px;
 }
-.contacts .items {
-  margin: 30px 0;
-}
-.contacts .box p {
-  font-size: 17px;
-  margin-top: 10px;
-}
-.contacts textarea,
-.contacts input {
+
+.ContactUs-left iframe {
   width: 100%;
-  padding: 15px;
-  margin-bottom: 15px;
-  outline: none;
-  border: 1px solid grey;
+  height: 450px;
+  border: 0;
+  border-radius: 8px;
 }
-form .flexSB input:nth-child(1) {
-  margin-right: 10px;
+
+.ContactUs-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
-.contacts h3 {
-  margin-top: 20px;
-  font-weight: 500;
+
+.ContactUs-right h1 {
+  font-size: 42px; /* Increased font size */
+  color: #333;
+  font-weight: 700; /* Increased font weight */
   margin-bottom: 10px;
 }
-.contacts span {
-  color: #1eb2a6;
-  font-weight: 600;
-  font-size: 15px;
-  word-spacing: 5px;
+
+.ContactUs-right p {
+  font-size: 20px; /* Increased font size */
+  color: #555;
+  font-weight: 400; /* Normal font weight */
+  margin-bottom: 20px;
 }
-@media screen and (max-width: 768px) {
-  .contacts .container {
-    flex-direction: column;
-  }
-  .contacts iframe {
-    height: 50vh;
-  }
-  .contacts .row {
-    width: 100%;
-  }
+
+.ContactUs-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.ContactUs-box h4 {
+  font-size: 24px; /* Increased font size */
+  color: #37322f;
+  font-weight: 600; /* Increased font weight */
+  margin-bottom: 10px;
+}
+
+.ContactUs-box p {
+  font-size: 18px; /* Increased font size */
+  font-weight: 600;
+  color: #646362;
+  margin: 0;
+  transition: color 0.3s;
+}
+
+.ContactUs-box p:hover {
+ color: #333;
+  font-weight: 400;
+}
+
+.ContactUs form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.ContactUs form .flexSB {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.ContactUs form input, .ContactUs form textarea {
+  width: 100%;
+  padding: 12px; /* Increased padding */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 16px; /* Increased font size */
+  font-weight: 400; /* Normal font weight */
+}
+
+.ContactUs form .primary-btn {
+  padding: 12px 24px; /* Increased padding */
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-size: 16px; /* Increased font size */
+  font-weight: 600; /* Increased font weight */
+}
+
+.ContactUs form .primary-btn:hover {
+  background-color: #0056b3;
+}
+
+.ContactUs h3 {
+  margin-top: 20px;
+  font-size: 24px; /* Increased font size */
+  font-weight: 600; /* Increased font weight */
+}
+
+.ContactUs span {
+  font-size: 22px; /* Increased font size */
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  font-weight: 400; /* Normal font weight */
 }

@@ -32,7 +32,7 @@ const LoanHistory = () => {
 
   return (
     <div className="loan-history-container">
-      <h2 className="loan-history-heading">Loan History</h2>
+      <h2 className="loan-history-heading">User Loan History</h2>
       {loanHistory.length === 0 ? (
         <div className="loan-history-message">
           <p>No loan history found. Apply for a new loan now!</p>

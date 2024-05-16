@@ -13,6 +13,17 @@
   position: relative;
 }
 
+.profile-card-byAdmin{
+  width: 1100px;
+  min-height: 450px;
+  margin: 50px auto; /* Add margin */
+  padding-top: 15px; /* Add padding */
+  background-color: rgba(255, 255, 255, 1);
+  background: #fff;
+  border-radius: 12px;
+  position: relative;
+}
+
 /* Profile Card Content */
 .profile-card__cnt {
   display: grid;
@@ -88,6 +99,14 @@
   transition: all .3s;
 }
 
+.loan-details-admin-heading {
+  text-align: center;
+  margin-top: 25px;
+  color: #333;
+  font-size: 30px;
+  font-weight: 600;
+}
+
 .profile-card-form {
   box-shadow: 0 4px 30px rgba(15, 22, 56, 0.35);
   max-width: 80%;
@@ -124,6 +143,23 @@
   cursor: pointer;
   backface-visibility: hidden;
   transition: all .3s;
+}
+
+.profile-card__buttonByAdmin{
+  background: none;
+  border: none;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 35px 15px;
+  padding: 8px 20px;
+  min-width: 300px;
+  border-radius: 12px;
+  min-height: 55px;
+  color: #fff;
+  cursor: pointer;
+  backface-visibility: hidden;
+  transition: all 1.3s;
 }
 
 /* Button Modifications */

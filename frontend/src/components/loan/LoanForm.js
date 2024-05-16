@@ -4,6 +4,7 @@ import {
   TextField,
   Button,
   Grid,
+  Box,
   Typography,
   Container,
   MenuItem,
@@ -93,6 +94,7 @@ const LoanForm = () => {
   ];
 
   return (
+    <Box bgcolor="#1a1a1a" p={2} marginTop={4}>
     <Container
       maxWidth="md"
       style={{
@@ -100,6 +102,7 @@ const LoanForm = () => {
         paddingTop: "30px",
         backgroundColor: "#f0f0f0",
         marginBottom: "25px",
+        borderRadius: '16px',
       }}
     >
       <form onSubmit={handleSubmit}>
@@ -306,6 +309,7 @@ const LoanForm = () => {
         </Grid>
       </form>
     </Container>
+    </Box>
   );
 };
 

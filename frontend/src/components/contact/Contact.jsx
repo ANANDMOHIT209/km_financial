@@ -17,7 +17,7 @@ const Contact = () => {
               <div className='ContactUs-items grid2'>
                 <div className='ContactUs-box'>
                   <h4>Address:</h4>
-                  <p>198 West 21th Street, Suite 721 New York NY 10016</p>
+                  <p>Ramdas Peth, Nagpur - 440010</p>
                 </div>
                 <div className='ContactUs-box'>
                   <h4>Email Address:</h4>

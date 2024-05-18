@@ -20,8 +20,12 @@ import { useHistory } from "react-router-dom";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import sampleImage from './/../../assets/images/emi.png'; // replace with your actual image path
+import CustomAlert from "../common/customAlert";
 
 const EmiCalculator = () => {
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
   const history = useHistory();
   const [loanDetails, setLoanDetails] = useState({
     loan_amount: 10000.0,
@@ -53,7 +57,8 @@ const EmiCalculator = () => {
       );
       setCalculationResult(response.data);
     } catch (error) {
-      alert("Error calculating loan:", error.response.data.detail);
+      setAlertMessage("Please Register or Login to access the EMI Calculator");
+      setShowAlert(true); 
     }
   };
 
@@ -91,6 +96,9 @@ const EmiCalculator = () => {
       }}
     >
       <Container maxWidth="lg">
+      {showAlert && (
+        <CustomAlert message={alertMessage} onClose={() => setShowAlert(false)} />
+      )}
       <Typography variant="h1" gutterBottom align="center" sx={{ fontWeight: 'bold',  fontSize: '3rem' }}>
       EMI Calculator
             </Typography>
@@ -100,7 +108,7 @@ const EmiCalculator = () => {
               <Typography variant="h6" gutterBottom align="center" sx={{ fontWeight: 'bold', fontSize: '1.2rem',  paddingBottom: '20px' }}>
               
               </Typography>
-
+       
               <form onSubmit={handleSubmit}>
                 <Grid container spacing={4}>
                   <Grid item xs={12}>

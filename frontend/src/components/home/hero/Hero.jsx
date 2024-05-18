@@ -59,11 +59,11 @@ function Hero() {
               </h4>
             </div>
             <div className="gap"></div>
-            <h4 style={{ fontSize: '20px', color: '#37322f' }}>Your Gateway To</h4>
+            <h4 style={{ fontSize: '20px', color: '#ffffff' }}>Your Gateway To</h4>
             <div className="gap"></div>
             <h2><p className={`txtTitle ${isInViewport ? 'typing-text' : ''} ${animationCompleted ? 'finished' : ''}`}>Fast Loans, Easy Approval</p></h2>
             <div className="gap"></div>
-            <h4 style={{ fontSize: '20px', color: '#37322f' }}>Unlock funds effortlessly with our streamlined loan process.</h4>
+            <h4 style={{ fontSize: '20px', color: '#ffffff' }}>Unlock funds effortlessly with our streamlined loan process.</h4>
             <div>
               <Link to="/applyloan" className='primary-btn-hero'>
                 GET LOAN NOW <i className='fa fa-long-arrow-alt-right'></i>

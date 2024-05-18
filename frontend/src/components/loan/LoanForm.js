@@ -20,7 +20,7 @@ import "./LoanForm.css";
 const LoanForm = () => {
   const history = useHistory();
   const [formData, setFormData] = useState({
-    applicant_name: "Yash Anand",
+    applicant_name: "",
     aadhar_no: "400832569462",
     pan_no: "SD0947LK0M",
     bank_details: "Axis Bank, Patna",

@@ -49,7 +49,7 @@ const UpdateLoanForm = () => {
     };
 
     fetchLoanDetails();
-  }, [loanId]);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -68,7 +68,7 @@ const UpdateLoanForm = () => {
         "Content-Type": "application/json",
       };
       const updateData = loanDetails;
-      await axios.put(
+      const response =  await axios.put(
         `http://localhost:8000/loan/update/${loanId}`,
         updateData,
         { headers },

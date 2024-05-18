@@ -57,23 +57,23 @@
 .faq-page-header .baseline {
   color: #1997fc;
   font-size: 1.4rem;
-  margin-top: 1.2rem
+  margin-top: 1.2rem;
 }
-.faq-page-content{
+
+.faq-page-content {
   margin: auto;
   padding-bottom: 9vw;
   position: relative;
   width: 41.66667%;
 }
 
-.faq-page-content h1{
+.faq-page-content h1 {
   font-family: Circular Pro Book, sans-serif;
   text-rendering: optimizelegibility;
 }
 
 .faq-page-content h2 {
   font-family: Circular Pro Book, sans-serif;
-  font-family:  sans-serif;
   font-size: 25px;
   margin-top: 4vw;
 }
@@ -89,6 +89,32 @@
 .faq-page-content .link {
   color: #7caeff; /* Adjust link color */
 }
+
+/* Media Query for Mobile View */
+@media (max-width: 844px) {
+  .faq-page-header .title {
+    font-size: 4rem; /* Reduce font size for mobile */
+  }
+
+  .faq-page-header .baseline {
+    font-size: 1rem; /* Reduce font size for mobile */
+  }
+
+  .faq-page-content {
+    width: 80%; /* Adjust content width for mobile */
+  }
+
+  .faq-page-content h2 {
+    font-size: 20px; /* Adjust heading size for mobile */
+    margin-top: 6vw;
+  }
+
+  .faq-page-content p {
+    font-size: 14px; /* Adjust paragraph size for mobile */
+    margin-top: 3vw;
+  }
+}
+
 
 /*--------------faq-------------*/
 

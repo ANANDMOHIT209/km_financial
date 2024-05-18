@@ -1,5 +1,6 @@
 .aboutHome {
   height: auto;
+  padding-top: 40px;
 }
 .aboutHome #heading {
   text-align: left;
@@ -7,8 +8,9 @@
 }
 .aboutHome .left img {
   width: 100%;
-  height: 100%;
+  height: 90%;
   object-fit: cover;
+  border-radius: 15px;
 }
 .aboutHome .right {
   padding: 80px 50px;

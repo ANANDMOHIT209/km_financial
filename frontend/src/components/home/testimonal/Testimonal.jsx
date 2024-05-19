@@ -6,24 +6,24 @@ import "./style.css"
 const Testimonal = () => {
   return (
     <>
-      <section className='testimonal padding'>
-        <div className='container'>
-          <Heading subtitle='TESTIMONIAL' title='What our Customer says about us' />
+      <section className='testimonials padding'>
+        <div className='testimonials-container'>
+          <Heading subtitle='TESTIMONIAL' title='What our Customers say about us' />
 
-          <div className='content grid2'>
-            {testimonal.map((val) => (
-              <div className='items shadow'>
-                <div className='box flex'>
-                  <div className='img'>
-                    <img src={val.cover} alt='' />
-                    <i className='fa fa-quote-left icon'></i>
+          <div className='testimonials-content'>
+            {testimonal.map((val, index) => (
+              <div className='testimonials-item shadow' key={index}>
+                <div className='testimonials-box flex'>
+                  <div className='testimonials-img'>
+                    <img src={val.cover} alt={val.name} />
+                    <i className='fa fa-quote-left testimonials-icon'></i>
                   </div>
-                  <div className='name'>
+                  <div className='testimonials-name'>
                     <h2>{val.name}</h2>
                     <span>{val.post}</span>
                   </div>
                 </div>
-                <p>{val.desc}</p>
+                <p className='testimonials-desc'>{val.desc}</p>
               </div>
             ))}
           </div>

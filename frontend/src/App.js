@@ -69,6 +69,7 @@ import AllLoanHistory from "./components/admin/AllLoansDetails"
 import UserProfileByAdmin from "./components/admin/UserProfileByAdmin";
 import LoanDetailsByAdmin from "./components/admin/LoanDetailsByAdmin"
 import { AuthProvider, useAuth } from './AuthContext'; // Import the context
+import Newsletter from "./components/common/footer/Newsletter";
 
 function App() {
  return (

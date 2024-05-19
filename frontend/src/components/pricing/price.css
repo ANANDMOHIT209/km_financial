@@ -1,26 +1,62 @@
-.price .items {
-  padding: 40px;
+/* Pricing */
+/* Container for the pricing section */
+.pricing-section {
+  padding: 0px 0;
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.pricing-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pricing-page-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
+  padding: 100px 0 40px;
+  position: relative;
+  font-family: 'Circular Pro Medium', sans-serif;
+  line-height: 1;
 }
-.price h1 {
-  font-size: 50px;
-  margin: 20px 0;
-  color: #1eb2a6;
+
+.pricing-page-header .title {
+  font-size: 7.5rem; /* Adjust font size */
+  color: #f1f1f1;
 }
-.price h1 span {
-  font-size: 20px;
-  margin-right: 5px;
-  color: #000;
+
+.pricing-page-header .baseline {
+  color: #1997fc;
+  font-size: 2rem;
+  margin: 1.8rem 0;
 }
-.price p {
-  color: grey;
-  margin: 40px 0;
+
+@media (max-width: 844px) {
+  .pricing-container {
+    flex-direction: column;
+    padding: 100 15px;
+  }
+
+  .pricing-page-header .title {
+    font-size: 4rem; /* Reduce font size for mobile */
+    line-height: 1.4;
+  }
+
+  .pricing-page-header .baseline {
+    font-size: 2rem; /* Reduce font size for mobile */
+  }
+
 }
+
+
 /*--------------faq-------------*/
 /* styles.css */
 
 /* Reset */
-*,
+/* *,
 *:before,
 *:after {
   box-sizing: border-box;
@@ -30,7 +66,7 @@
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-}
+} */
 
 /* User Agent Stylesheet Overrides */
 .faq-page-wrapper {

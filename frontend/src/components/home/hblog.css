@@ -1,57 +1,124 @@
 /* Styles for Hblog component */
-.hblog {
-    background-color: #1a1a1a;
-    color: #fff;
-    padding-bottom: 50px;
+.hblog-section {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding-bottom: 50px;
+  padding-top: 20px;
+}
+
+.hblog-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.hblog-container h1 {
+  display: grid;
+  font-size: 8.5rem;
+  align-items: center;
+}
+
+.hblog-container h3 {
+  color: #1997fc;
+  font-size: 20px;
+  margin: 1.2rem 0;
+  text-align: center;
+}
+
+/* Additional styles for grid layout */
+.hblog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 992px) {
+  .hblog-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  /* Additional styles for images inside Hblog */
-  .hblog .img img {
-    width: 100%;
+}
+
+@media (max-width: 768px) {
+  .hblog-grid {
+    grid-template-columns: 1fr;
   }
-  
-  /* Additional styles for text inside Hblog */
-  .hblog .text {
-    padding: 40px 30px;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 576px) {
+  .hblog-text {
+    padding: 15px;
   }
-  
-  /* Additional styles for titles inside Hblog */
-  .hblog h1 {
-    font-weight: 500;
-    font-size: 22px;
-    line-height: 30px;
-    margin: 20px 0;
-    transition: 0.5s;
-    color: #fff; /* Retaining color from previous style */
-  }
-  
-  /* Additional styles for hovered titles inside Hblog */
-  .hblog h1:hover {
-    color: #1997fc;
-    cursor: pointer;
-  }
-  
-  /* Additional styles for admin info inside Hblog */
-  .hblog .admin span {
-    text-transform: uppercase;
-    font-weight: 500;
-    color: #1997fc;
-  }
-  
-  /* Additional styles for labels inside Hblog */
-  .hblog .admin label {
-    margin-left: 10px;
-    color: grey;
-    font-size: 14px;
-  }
-  
-  /* Additional styles for last label inside Hblog */
-  .hblog .admin span:last-child label {
-    color: #1eb2a6;
-  }
-  
-  /* Additional styles for description inside Hblog */
-  .hblog p {
-    color: grey;
-  }
-  
+}
+
+/* Additional styles for blog items */
+.hblog-item {
+  margin-bottom: 30px;
+}
+
+/* Additional styles for images */
+.hblog-image img {
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.hblog-image img:hover {
+  transform: scale(1.05);
+}
+
+/* Additional styles for text content */
+.hblog-text {
+  padding: 20px;
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  margin-top: -50px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Additional styles for titles */
+.hblog-text h2 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  margin: 20px 0;
+  transition: color 0.3s;
+  color: #fff;
+}
+
+.hblog-text h2:hover {
+  color: #1997fc;
+  cursor: pointer;
+}
+
+/* Additional styles for admin info */
+.hblog-admin {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.hblog-admin span {
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #1997fc;
+}
+
+.hblog-admin label {
+  margin-left: 5px;
+  color: grey;
+  font-size: 14px;
+}
+
+.hblog-admin span:last-child label {
+  color: #1eb2a6;
+}
+
+/* Additional styles for description */
+.hblog-text p {
+  color: grey;
+  font-size: 16px;
+  line-height: 24px;
+}

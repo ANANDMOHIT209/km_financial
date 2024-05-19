@@ -1,148 +1,151 @@
 /* about.css */
 
-/* about.css */
-
-.aboutHome {
+.about-home {
   padding: 50px 0;
+  background-color: #1a1a1a;
 }
 
-.container {
+.about-container {
   display: flex;
+  max-width: 85%;
+  margin: auto;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
-.flexSB {
+.about-flexSB {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.row {
+.about-row {
   flex: 1;
   padding: 20px;
 }
 
-.left, .right {
+.about-left, .about-right {
   flex: 1;
 }
 
-.left img {
+.about-left img {
   max-width: 100%;
   height: auto;
   display: block;
   margin: auto;
+  border-radius: 25px;
 }
 
-.right {
+.about-right {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.items {
+.about-items {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.item-container {
+.about-item-container {
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 20px;
   background: #fff;
 }
 
-.item-content {
+.about-item-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.item-img img {
+.about-item-img img {
   max-width: 100px;
   height: auto;
 }
 
-.item-text {
+.about-item-text {
   flex: 1;
   margin-left: 20px;
 }
 
-.item-text h2 {
+.about-item-text h2 {
   margin: 0;
   font-size: 24px;
   color: #333;
 }
 
-.item-text p {
+.about-item-text p {
   margin: 10px 0 0;
   color: #666;
 }
 
 @media (max-width: 768px) {
-  .container {
+  .about-container {
     flex-direction: column;
   }
 
-  .row {
+  .about-row {
     padding: 10px;
   }
 
-  .item-content {
+  .about-item-content {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .item-img img {
+  .about-item-img img {
     max-width: 80px;
   }
 
-  .item-text {
+  .about-item-text {
     margin-left: 0;
     margin-top: 10px;
   }
 
-  .item-text h2 {
+  .about-item-text h2 {
     font-size: 20px;
   }
 }
 
 @media (max-width: 480px) {
-  .aboutHome {
+  .about-home {
     padding: 20px 0;
   }
 
-  .left img {
+  .about-left img {
     width: 100%;
     height: auto;
   }
 
-  .item-container {
+  .about-item-container {
     padding: 15px;
   }
 
-  .item-content {
+  .about-item-content {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .item-img img {
+  .about-item-img img {
     max-width: 60px;
   }
 
-  .item-text h2 {
+  .about-item-text h2 {
     font-size: 18px;
   }
 
-  .item-text p {
+  .about-item-text p {
     font-size: 14px;
   }
 }
 
+
 /* Awrapper Container styles */
 .awrapper-container {
-  padding: 20px;
+  padding: 50px 0;
   background-color: #1a1a1a;
 }
 

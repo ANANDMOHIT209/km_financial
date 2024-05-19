@@ -5,40 +5,38 @@ import Heading from "../common/heading/Heading";
 
 const Hblog = () => {
   return (
-    <>
-      <section className='hblog'>
-        <div className='container'>
-          <Heading subtitle='OUR BLOGS' title='Recent Article' />
-          <div className='grid2'>
-            {blog.slice(0, 3).map((val, index) => (
-              <div className='items shadow' key={index}>
-                <div className='img'>
-                  <img src={val.cover} alt='' />
-                </div>
-                <div className='text'>
-                  <div className='admin flexSB'>
-                    <span>
-                      <i className='fa fa-user'></i>
-                      <label htmlFor=''>{val.type}</label>
-                    </span>
-                    <span>
-                      <i className='fa fa-calendar-alt'></i>
-                      <label htmlFor=''>{val.date}</label>
-                    </span>
-                    <span>
-                      <i className='fa fa-comments'></i>
-                      <label htmlFor=''>{val.com}</label>
-                    </span>
-                  </div>
-                  <h1>{val.title}</h1>
-                  <p>{val.desc}</p>
-                </div>
+    <section className='hblog-section'>
+      <div className='hblog-container'>
+        <Heading subtitle='OUR BLOGS' title='Recent Articles' />
+        <div className='hblog-grid'>
+          {blog.slice(0, 3).map((val, index) => (
+            <div className='hblog-item' key={index}>
+              <div className='hblog-image'>
+                <img src={val.cover} alt='' />
               </div>
-            ))}
-          </div>
+              <div className='hblog-text'>
+                <div className='hblog-admin flexSB'>
+                  <span>
+                    <i className='fa fa-user'></i>
+                    <label htmlFor=''>{val.type}</label>
+                  </span>
+                  <span>
+                    <i className='fa fa-calendar-alt'></i>
+                    <label htmlFor=''>{val.date}</label>
+                  </span>
+                  <span>
+                    <i className='fa fa-comments'></i>
+                    <label htmlFor=''>{val.com}</label>
+                  </span>
+                </div>
+                <h2>{val.title}</h2>
+                <p>{val.desc}</p>
+              </div>
+            </div>
+          ))}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
 

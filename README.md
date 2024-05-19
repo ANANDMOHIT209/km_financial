@@ -1,36 +1,58 @@
-# km_financial #
+# Setting Up km_financial #
 
-### Required Installation ###
+### Prerequisites ###
 
-```
-    pip install fastapi uvicorn sqlalchemy
-    pip install PyJWT pandas passlib timedelta
-    pip install python-multipart
-    pip install scikit-learn==1.3.2
-    python.exe -m pip install --upgrade pip
-    npm install axiom axios
-    npm install path-browserify browserify-fs
-```
+Before getting started, make sure you have Python and Node.js installed on your system.
 
-### Required Setup ###
+### Step 1: Install Required Packages ###
 
-1. Create a virtual env 
-```
-    python -m venv env
+Open your command prompt or terminal and run the following commands to install the necessary Python packages:
+
+```bash
+pip install fastapi uvicorn sqlalchemy PyJWT pandas passlib timedelta python-multipart scikit-learn==1.3.2
+python -m pip install --upgrade pip
 ```
 
-2. Open env setup in command prompt
-```
-    env\Scripts\activate.bat
+Then, install the required Node.js packages:
+
+```bash
+npm install axiom axios path-browserify browserify-fs
 ```
 
-3. To exit from env setup
-```
-    exit
+### Step 2: Create a Virtual Environment ###
+
+Navigate to your project directory in the command prompt or terminal and create a virtual environment by running:
+
+```bash
+python -m venv env
 ```
 
-### For running Backend ###
-```
-    uvicorn main:app --reload
+### Step 3: Activate the Virtual Environment ###
+
+Activate the virtual environment by running the appropriate script based on your operating system:
+
+- For Windows:
+
+```bash
+env\Scripts\activate.bat
 ```
 
+- For macOS/Linux:
+
+```bash
+source env/bin/activate
+```
+
+### Step 4: Run the Backend ###
+
+Finally, start the backend server by running:
+
+```bash
+uvicorn main:app --reload
+```
+
+Now, you're all set to run and develop the km_financial application! When you're finished, you can exit the virtual environment by running:
+
+```bash
+deactivate
+```

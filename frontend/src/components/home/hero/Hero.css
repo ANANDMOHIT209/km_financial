@@ -13,8 +13,8 @@
   color: #fff;  
   font-family: "PP Mori", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-/* Typing Animation */
 
+/* Typing Animation */
 @keyframes typing {
   from {
     width: 0;
@@ -74,13 +74,8 @@
   font-size: 48px;
   color: #ffffff;
   font-weight: 600;
- }
- /*
-.txtCompanyTitle{
-  font-size: 48px;
-  -webkit-text-fill-color: transparent;
-  background: linear-gradient(90deg, rgb(229, 14, 60) 0.41%, rgb(18, 12, 203) 40.68%, rgb(231, 36, 104) 64.12%, rgb(10, 111, 134) 97.82%) text, rgba(0, 0, 0, 0);
-} */
+}
+
 .txtTitle {
   font-size: 48px;
   font-weight: 700;
@@ -92,57 +87,60 @@
 .gap {
   margin-bottom: 15px;
 }
-/* primary-btn-hero */
 
+/* primary-btn-hero */
 .primary-btn-hero {
   position: relative;
   z-index: 1;
   background-color: #007bff;
-  /* Blue color for the button */
   color: #fff;
-  /* White text color */
   margin-top: 50px;
-  /* Remove button border */
   padding: 15px 20px;
-  /* Add padding to the button */
   font-size: 20px;
   font-weight: 500;
-  /* Set font size */
   cursor: pointer;
-  /* Change cursor to pointer on hover */
   transition: background-color 0.3s ease;
-  /* Smooth transition for background color change */
   text-decoration: none;
-  /* Remove default text decoration */
   display: inline-block;
-  /* Make the button inline block */
   border-radius: 5px;
-  /* Add some border radius for a rounded appearance */
 }
 
 .primary-btn-hero:hover {
   background-color: #0056b3;
-  /* Darker blue color on hover */
 }
 
 .primary-btn-hero i {
   margin-left: 5px;
-  /* Add some space between the button text and the icon */
 }
 
+/* Media Query for Mobile Devices */
 @media screen and (max-width: 768px) {
+  .hero {
+    background-position: center;
+    padding-top: 50%;
+    height: auto; /* Allow height to adjust based on content */
+    padding-right: 20px; /* Adjust padding for smaller screens */
+  }
+
+  .hero .container {
+    padding: 0 15px; /* Add padding to container for better spacing */
+  }
+
+  .txtSmallTitle, .txtTitle {
+    font-size: 24px; /* Reduce font size for smaller screens */
+  }
+
+  .primary-btn-hero {
+    margin-top: 15px; /* Adjust margin for button */
+    font-size: 16px; /* Reduce font size for button text */
+    padding: 10px 15px; /* Adjust padding for button */
+  }
+
+  .gap {
+    margin-bottom: 10px; /* Adjust gap size */
+  }
+
   .margin {
     height: 40vh;
-  }
-  .hero {
-    background-position: right;
-    padding-top: 50%;
-    height: 80vh;
-  }
-  .hero .row {
-    width: 100%;
-  }
-  .primary-btn-hero{
-      margin-top: 15px;
   }
 }

@@ -4,8 +4,9 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background-color: #1a1a1a; /* Dark background */
+    background-color: #333333; /* Dark background */
     color: #f1f1f1; /* White text */
+    border-radius: 10px;
 }
 
 /* Container for the image */

@@ -1,17 +1,45 @@
 /* Heading.css */
 
-#heading {
-    text-align: center;
+.headingC {
+  text-align: center;
+  padding: 20px;
+}
+
+.title {
+  color: #f1f1f1;
+  font-size: 3rem; /* Smaller initial font size for better scaling */
+  margin: 0.5rem 0;
+}
+
+.subtitle {
+  color: #1997fc;
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+/* Responsive styles for mobile view */
+@media (max-width: 768px) {
+  .heading {
+    max-width: 70%;
   }
-  
   .title {
-    color: #f1f1f1;
-    font-size: 8rem;
+    font-size: 2.5rem; /* Smaller font size for mobile */
   }
-  
+
   .subtitle {
-    color: #1997fc;
-    font-size: 20px;
-    margin-top: 1.2rem;
+    font-size: 1.25rem; /* Smaller font size for mobile */
   }
-  
+}
+
+@media (max-width: 480px) {
+  .heading {
+    max-width: 70%;
+  }
+  .title {
+    font-size: 2rem; /* Further reduce font size for smaller screens */
+  }
+
+  .subtitle {
+    font-size: 1rem; /* Further reduce font size for smaller screens */
+  }
+}

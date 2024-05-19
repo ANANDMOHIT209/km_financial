@@ -55,6 +55,16 @@
 /* Additional styles for blog items */
 .hblog-item {
   margin-bottom: 30px;
+  height: 100%; /* Ensure full height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (min-width: 769px) {
+  .hblog-item {
+    height: 450px; /* Fixed height for desktop view */
+  }
 }
 
 /* Additional styles for images */
@@ -76,6 +86,7 @@
   margin-top: -50px;
   position: relative;
   z-index: 1;
+  flex-grow: 1; /* Allow the text container to grow */
 }
 
 /* Additional styles for titles */

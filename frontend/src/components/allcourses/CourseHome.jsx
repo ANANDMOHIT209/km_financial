@@ -7,8 +7,8 @@ const CourseHome = () => {
   return (
     <>
       <Back title='Explore Our Products' />
-      <CoursesCard />
       <OnlineCourses />
+      <CoursesCard />      
     </>
   )
 }

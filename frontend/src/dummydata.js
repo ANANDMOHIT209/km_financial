@@ -50,7 +50,7 @@ export const awrapper = [
 export const coursesCard = [
   {
     id: 1,
-    cover: "../images/courses/loan1.png",
+    cover: "../images/courses/12.png",
     coursesName: "Introduction to Personal Loans",
     courTeacher: [
       {
@@ -64,7 +64,7 @@ export const coursesCard = [
   },
   {
     id: 2,
-    cover: "../images/courses/loan2.png",
+    cover: "../images/courses/13.png",
     coursesName: "Mastering Mortgage Basics",
     courTeacher: [
       {
@@ -78,7 +78,7 @@ export const coursesCard = [
   },
   {
     id: 3,
-    cover: "../images/courses/loan3.png",
+    cover: "../images/courses/16.png",
     coursesName: "Understanding Credit Scores ",
     courTeacher: [
       {
@@ -92,7 +92,7 @@ export const coursesCard = [
   },
   {
     id: 4,
-    cover: "../images/courses/loan4.png",
+    cover: "../images/courses/8.svg",
     coursesName: "Exploring Auto Financing Options",
     courTeacher: [
       {
@@ -106,7 +106,7 @@ export const coursesCard = [
   },
   {
     id: 5,
-    cover: "../images/courses/loan5.png",
+    cover: "../images/courses/9.svg",
     coursesName: "Managing Student Loans Effectively",
     courTeacher: [
       {
@@ -120,7 +120,7 @@ export const coursesCard = [
   },
   {
     id: 6,
-    cover: "../images/courses/loan6.png",
+    cover: "../images/courses/10.svg",
     coursesName: "Advanced Debt Consolidation Techniques",
     courTeacher: [
       {
@@ -134,7 +134,7 @@ export const coursesCard = [
   },
   {
     id: 7,
-    cover: "../images/courses/loan7.png",
+    cover: "../images/courses/11.png",
     coursesName: "Navigating Small Business Loans",
     courTeacher: [
       {
@@ -148,7 +148,7 @@ export const coursesCard = [
   },
   {
     id: 8,
-    cover: "../images/courses/loan8.png",
+    cover: "../images/courses/12.png",
     coursesName: "Understanding Loan Agreements and Terms",
     courTeacher: [
       {
@@ -162,7 +162,7 @@ export const coursesCard = [
   },
   {
     id: 9,
-    cover: "../images/courses/loan9.png",
+    cover: "../images/courses/15.png",
     coursesName: "Financial Literacy: A Comprehensive Guide",
     courTeacher: [
       {
@@ -177,66 +177,66 @@ export const coursesCard = [
 ];
 export const online = [
   {
-    cover: "./images/loan-features/document-dollar.svg",
-    courseName: "Personal Loan",
-    course: "upto 5 Lakhs",
+  "cover": "./images/loan-features/document-dollar.svg",
+  "loanTypes": "Personal Loan",
+  "description": "This loan is for a variety of personal expenses, such as debt consolidation, home improvement, or unexpected medical bills."
   },
   {
-    cover: "../images/loan-features/document-dollar.svg",
-    courseName: "Two-Wheeler Loan",
-    course: "loreum ipsum",
+  "cover": "./images/loan-features/document-dollar.svg",
+  "loanTypes": "Auto Loan",
+  "description": "Used to finance the purchase of a new or used car, truck, or motorcycle."
   },
   {
-    cover: "./images/loan-features/document-dollar.svg",
-    courseName: "Gold Loan",
-    course: "loreum ipsum",
+  "cover": "./images/loan-features/document-dollar.svg",
+  "loanTypes": "Home Loan (Mortgage)",
+  "description": "Used to finance the purchase of a home."
   },
   {
-    cover: "./images/loan-features/document-dollar.svg",
-    courseName: "Loan Against FD",
-    course: "loreum ipsum",
+  "cover": "./images/loan-features/document-dollar.svg",
+  "loanTypes": "Education Loan",
+  "description": "Used to finance college or other higher education expenses."
   },
   {
-    cover: "./images/loan-features/document-dollar.svg",
-    courseName: "Used Car Loan",
-    course: "loreum ipsum",
+  "cover": "./images/loan-features/document-dollar.svg",
+  "loanTypes": "Business Loan",
+  "description": "Used to finance business expenses, such as starting a business, expanding an existing business, or purchasing equipment."
   },
   {
-    cover: "../images/loan-features/document-dollar.svg",
-    courseName: "Buisness Loan",
-    course: "loreum ipsum",
+  "cover": "./images/loan-features/document-dollar.svg",
+  "loanTypes": "Line of Credit",
+  "description": "A revolving line of credit that allows you to borrow money as needed, up to a certain limit."
   },
   {
-    cover: "./images/loan-features/document-dollar.svg",
-    courseName: "Financing Against Securities",
-    course: "loreum ipsum",
+  "cover": "./images/loan-features/document-dollar.svg",
+  "loanTypes": "Debt Consolidation Loan",
+  "description": "Combines multiple debts into one loan with a lower interest rate, simplifying repayment."
   },
   {
-    cover: "./images/loan-features/document-dollar.svg",
-    courseName: "Loan Against Property",
-    course: "loreum ipsum",
+  "cover": "./images/loan-features/document-dollar.svg",
+  "loanTypes": "Home Equity Loan/Line of Credit (HELOC)",
+  "description": "Uses the equity in your home as collateral to borrow money for various purposes."
   },
   {
-    cover: "./images/loan-features/document-dollar.svg",
-    courseName: "Home Loan",
-    course: "loreum ipsum",
+  "cover": "./images/loan-features/document-dollar.svg",
+  "loanTypes": "Peer-to-Peer (P2P) Loan",
+  "description": "Borrow money directly from individual investors through an online platform."
   },
   {
-    cover: "./images/loan-features/document-dollar.svg",
-    courseName: "Buissness Loan",
-    course: "loreum ipsum",
+  "cover": "./images/loan-features/document-dollar.svg",
+  "loanTypes": "Gold Loan",
+  "description": "A secured loan in India where you use gold jewelry as collateral."
   },
   {
-    cover: "./images/loan-features/document-dollar.svg",
-    courseName: "loreum ipsum",
-    course: "loreum ipsum",
+  "cover": "./images/loan-features/document-dollar.svg",
+  "loanTypes": "Student Loan (Government)",
+  "description": "Government-backed loan options with subsidized interest rates for educational purposes."
   },
   {
-    cover: "./images/loan-features/document-dollar.svg",
-    courseName: "loreum ipsum",
-    course: "loreum ipsum",
-  },
-];
+  "cover": "./images/loan-features/document-dollar.svg",
+  "loanTypes": "Microloan",
+  "description": "Small loans offered to entrepreneurs to help start or grow their businesses."
+  }
+  ];
 export const team = [
   {
     cover: "./images/team/t1.webp",
@@ -386,25 +386,22 @@ export const blog = [
 
 
 export const testimonal = [
-  {
-    id: 1,
-    name: "ROGER SCOTT",
-    post: "Businessman",
-    desc: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
-    cover: "./images/testo/t1.webp",
-  },
-  {
-    id: 2,
-    name: "ROGER SCOTT",
-    post: "Student",
-    desc: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
-    cover: "./images/testo/t2.webp",
-  },
-  {
-    id: 3,
-    name: "ROGER SCOTT",
-    post: "Businessman",
-    desc: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
-    cover: "./images/testo/t3.webp",
-  },
+    {
+    "id": 1,
+    "name": "Priya Sharma",
+    "rating": 5,
+    "review": "Fantastic experience with [Loan Company Name]! They were incredibly helpful throughout the entire process of securing a personal loan. The application was easy to navigate, and their customer service was excellent. I highly recommend them!"
+    },
+    {
+    "id": 2,
+    "name": "Rahul Kapoor",
+    "rating": 5,
+    "review": "[Loan Company Name] offered a competitive interest rate on my business loan. The approval process was a bit lengthy, but the loan officer was very informative and kept me updated. Overall, a positive experience."
+    },
+    {
+    "id": 3,
+    "name": "Aisha Singh",
+    "rating": 5,
+    "review": "The online application for [Loan Company Name] was straightforward, but their communication regarding my student loan application could have been better. It took several calls to get a clear answer on the status. However, the loan itself is beneficial."
+    }    
 ]

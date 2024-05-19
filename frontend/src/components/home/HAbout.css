@@ -1,0 +1,155 @@
+/* General Styles */
+.home-about {
+    padding: 40px 0;
+    background-color: #121212; /* Dark background */
+    color: #fff; /* Light text for better contrast */
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px 40px 0;
+  }
+  
+  .grid2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .product-card-container {
+    margin-top: 30px;
+  }
+  
+  .product-card-item {
+    background: #1f1f1f; /* Darker background for cards */
+    border: 1px solid #333; /* Slightly lighter border */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Darker shadow */
+    transition: transform 0.3s;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .product-card-item:hover {
+    transform: translateY(-10px);
+  }
+  
+  .product-card-content {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  .product-card-img img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #333; /* Add a separator line */
+  }
+  
+  .product-card-title {
+    font-size: 1.25rem;
+    color: #fff;
+    margin: 15px 0 5px;
+  }
+  
+  .product-card-rate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+  }
+  
+  .product-card-rate i {
+    color: #ffc107;
+    margin: 0 2px;
+  }
+  
+  .product-card-rate label {
+    font-size: 0.875rem;
+    color: #ccc; /* Lighter color for better contrast */
+    margin-left: 5px;
+  }
+  
+  .product-card-details {
+    margin: 15px 0;
+  }
+  
+  .product-card-teacher {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+  }
+  
+  .teacher-img img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .teacher-info h4 {
+    font-size: 1rem;
+    color: #fff;
+    margin: 0;
+  }
+  
+  .teacher-info span {
+    font-size: 0.875rem;
+    color: #ccc; /* Lighter color for better contrast */
+  }
+  
+  .outline-btn {
+    border: 1px solid #007bff;
+    background-color: transparent;
+    color: #fdfdfd;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px 0 ;
+    max-width: 90%;
+    transition: background-color 0.3s, color 0.3s;
+    align-self: center;
+  }
+  
+  .outline-btn:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* Responsive styles for mobile view */
+  @media (max-width: 768px) {
+    .grid2 {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .product-card-item {
+      width: 100%;
+      max-width: 90%;
+    }
+  
+    .product-card-title {
+      font-size: 1.125rem;
+    }
+  
+    .product-card-rate label {
+      font-size: 0.75rem;
+    }
+  
+    .teacher-info h4 {
+      font-size: 0.875rem;
+    }
+  
+    .teacher-info span {
+      font-size: 0.75rem;
+    }
+  }
+  
